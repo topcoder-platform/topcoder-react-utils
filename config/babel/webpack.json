@@ -1,0 +1,42 @@
+{
+  "presets": ["env", "react", "stage-2"],
+  "env": {
+    "development": {
+      "presets": [["env", { "modules": false }]],
+      "plugins": [
+        ["react-css-modules", {
+          "filetypes": {
+            ".scss": {
+              "syntax": "postcss-scss"
+            }
+          },
+          "generateScopedName": "[path][name]___[local]"
+        }],
+        "react-hot-loader/babel"
+      ]
+    },
+    "production": {
+      "plugins": [
+        ["react-css-modules", {
+          "filetypes": {
+            ".scss": {
+              "syntax": "postcss-scss"
+            }
+          },
+          "generateScopedName": "[hash:base64:6]"
+        }]
+      ]
+    }
+  },
+  "plugins": [
+    "inline-react-svg",
+    ["module-resolver", {
+      "extensions": [".js", ".jsx"],
+      "root": [
+        "./src/shared",
+        "./src"
+      ]
+    }],
+    "transform-runtime"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "name": "topcoder-react-utils",
+  "version": "0.0.13",
+  "description": "Topcoder collection of generic ReactJS components and utils",
+  "main": "index.js",
+  "engines": {
+    "node": "~8.9.4",
+    "npm": "~5.6.0"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/topcoder-platform/topcoder-react-utils.git"
+  },
+  "keywords": [
+    "Topcoder",
+    "React"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/topcoder-platform/topcoder-react-utils/issues"
+  },
+  "homepage": "https://github.com/topcoder-platform/topcoder-react-utils#readme",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-css-modules-transform": "^1.4.0",
+    "babel-plugin-dynamic-import-node": "^1.2.0",
+    "babel-plugin-inline-react-svg": "^0.5.2",
+    "babel-plugin-module-resolver": "^3.0.0",
+    "babel-plugin-react-css-modules": "^3.3.2",
+    "babel-plugin-transform-assets": "^0.2.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "react-hot-loader": "^3.1.3"
+  }
+}
