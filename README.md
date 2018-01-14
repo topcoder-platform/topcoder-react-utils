@@ -11,25 +11,13 @@ $ npm install --save topcoder-react-utils
 
 You are done if you will use only components and utilities provided by this
 package. If you are to use configurations, you must also install peer
-dependencies. If you like to explicitly add them to the `package.json` of your
-project do
+dependencies:
 ```
 $ npm install -g install-peerdeps
 $ install-peerdeps topcoder-react-utils
 ```
 
-Alternatively, you can do
-```
-$ npm install --save install-peerdeps
-```
-
-then add to your `package.json` the following script:
-```json
-"postinstall": "install-peerdeps -S topcoder-react-utils"
-```
-
-Now, in both cases, `$ npm install` will install all necessary dependencies, but
-in the second case they won't be stored into your `package.json`.
+Peer dependencies will be also stored into `package.json` of your project, thus future invokations of `npm install` will automatically install them, and you won't need to use `install-peerdeps` as long as you don't update `topcoder-react-utils` version.
 
 ### Configurations
 - [**Babel Configurations**](docs/babel-config.md) &mdash; Standard configurations

@@ -8,26 +8,20 @@
 
 /* global document, window */
 
+import _ from 'lodash';
 import PT from 'prop-types';
 import React from 'react';
 import Url from 'url-parse';
 
 export default function GenericLink(props) {
   const {
-    activeClassName,
-    activeStyle,
     children,
     className,
     enforceA,
-    exact,
-    isActive,
-    location,
     onClick,
     onMouseDown,
     openNewTab,
-    replace,
     routerLinkType,
-    strict,
     to,
   } = props;
   /* Renders the link as <a> element if either opted explicitely, or the link
@@ -45,15 +39,17 @@ export default function GenericLink(props) {
     );
   }
 
+  const linkProps = _.omit(props, [
+    'children',
+    'enforceA',
+    'openNewTab',
+    'routerLinkType',
+  ]);
+
   /* Otherwise we render the link as React Router's Link or NavLink element. */
   return React.createElement(
     routerLinkType, {
-      activeClassName,
-      activeStyle,
-      className,
-      exact,
-      isActive,
-      location,
+      ...linkProps,
       onClick: (e) => {
         /* If a custom onClick(..) handler was provided we execute it. */
         if (onClick) onClick(e);
@@ -69,45 +65,28 @@ export default function GenericLink(props) {
          * references the same page we are already in. */
         } else window.scroll(0, 0);
       },
-      onMouseDown,
-      replace,
-      strict,
-      to,
-    },
+    }, children,
   );
 }
 
 GenericLink.defaultProps = {
-  activeClassName: null,
-  activeStyle: null,
   children: null,
   className: null,
   enforceA: false,
-  exact: false,
-  isActive: null,
-  location: null,
   onClick: null,
   onMouseDown: null,
   openNewTab: false,
   replace: false,
-  strict: false,
   to: '',
 };
 
 GenericLink.propTypes = {
-  activeClassName: PT.string,
-  activeStyle: PT.string,
   children: PT.node,
   className: PT.string,
   enforceA: PT.bool,
-  exact: PT.bool,
-  isActive: PT.func,
-  location: PT.shape(),
   onClick: PT.func,
   onMouseDown: PT.func,
   openNewTab: PT.bool,
-  replace: PT.bool,
-  routerLinkType: PT.element.isRequired,
-  strict: PT.bool,
+  routerLinkType: PT.func.isRequired,
   to: PT.oneOfType([PT.object, PT.string]),
 };

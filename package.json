@@ -1,8 +1,8 @@
 {
   "name": "topcoder-react-utils",
-  "version": "0.0.19",
+  "version": "0.0.21",
   "description": "Topcoder collection of generic ReactJS components and utils",
-  "main": "index.js",
+  "main": "dist/index.js",
   "engines": {
     "node": "~8.9.4",
     "npm": "~5.6.0"
