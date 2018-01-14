@@ -2,7 +2,9 @@
 
 Auxiliary wrappers around [React Router](https://github.com/ReactTraining/react-router)'s
 `<Link>` and `<NavLink>` components; they help to handle external and internal
-links in a single uniform manner;
+links in a single uniform manner.
+
+[Examples](#examples)
 
 **Why?** &mdash; We use React Router to handle routing of our applications.
 React Router's `<Link>` and `<NavLink>` components work only with the
@@ -30,7 +32,7 @@ use `enforceA` property to handle such case.
 Both `<Link>` and `<NavLink>` support all properties of the underlying React
 Router's components, along with some additional props:
 
-### `<Link>` properties
+### Link properties
 - **`children`** &mdash; *Node* &mdash; Optional. Child ReactJS node to render
 inside the link;
 - **`className`** &mdash; *String* &mdash; Optional. Class(es) to apply to the
@@ -49,12 +51,12 @@ one;
 - **`to`** &mdash; *String* &mdash; Optional. Link URL. Defaults to empty
 string.
 
-### `<NavLink>` properties
+### NavLink properties
 `<NavLink>` supports all properties of `<Link>`, listed above, and the following
 additional ones, coming from React Router:
 - **`activeClassName`** &mdash; *String* &mdash; Optional. Class(es) to apply to
 the rendered link when it is active;
-- **`activeStyle`** &mdash; *String* &mash; Optional. Styles to apply to the
+- **`activeStyle`** &mdash; *String* &mdash; Optional. Styles to apply to the
 rendered link when it is active;
 - **`exact`** &mdash; *Boolean* &mdash; Optional. When *true*, the active
 class/style will only be applied if the location is matched exactly;
@@ -69,3 +71,14 @@ different location, a `location` can be passed.
 slash on a location’s pathname will be taken into consideration when determining
 if the location matches the current URL. See the <Route strict> documentation
 for more information.
+
+### <a name="examples">Examples</a>
+
+Minimal `<Link>` example:
+```js
+import { Link } from 'topcoder-react-utils';
+
+export default function LinksExample() {
+  return <Link to="some/url">Link to Some URL</a>;
+}
+```

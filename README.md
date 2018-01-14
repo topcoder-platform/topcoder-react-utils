@@ -17,7 +17,10 @@ $ npm install -g install-peerdeps
 $ install-peerdeps topcoder-react-utils
 ```
 
-Peer dependencies will be also stored into `package.json` of your project, thus future invokations of `npm install` will automatically install them, and you won't need to use `install-peerdeps` as long as you don't update `topcoder-react-utils` version.
+Peer dependencies will be also stored into `package.json` of your project, thus
+future invokations of `npm install` will automatically install them, and you
+won't need to use `install-peerdeps` as long as you don't update
+`topcoder-react-utils` version.
 
 ### Configurations
 - [**Babel Configurations**](docs/babel-config.md) &mdash; Standard configurations
@@ -26,7 +29,13 @@ for [Babel](https://babeljs.io/);
 configurations for [ESLint](https://eslint.org/).
 
 ### Components
-- [**Link and NavLink**](docs/link-and-navlink.md) &mdash; Auxiliary wrappers around [React Router](https://github.com/ReactTraining/react-router)'s `<Link>` and `<NavLink>` components; they help to handle external and internal links in a single uniform manner;
+- [**Button**](docs/button.md) &mdash; Handles buttons and button-like links
+(components that look like regular buttons, but behave as links) in the same
+uniform manner;
+- [**Link and NavLink**](docs/link-and-navlink.md) &mdash; Auxiliary wrappers
+around [React Router](https://github.com/ReactTraining/react-router)'s `<Link>`
+and `<NavLink>` components; they help to handle external and internal links in
+the same uniform manner.
 
 ### Utilities
 *To be added*
