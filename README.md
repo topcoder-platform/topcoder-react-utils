@@ -1,11 +1,33 @@
 # Topcoder React Utils
-[Topcoder](https://www.topcoder.com) collection of generic ReactJS configurations, components and utilities to be shared between all internal and external ReactJS projects developed by Topcoder community.
+The [Topcoder](https://www.topcoder.com) collection of generic ReactJS configurations, components and utilities to be shared between all internal and external ReactJS projects developed by the Topcoder community.
 
-### Documentation
-This package provides: various configuration files that helps to unify configuration of various applications created at Topcoder, ReactJS components and utilities (non-react classes and functions)  that help to solve various typical problems in the same pattern accross all our apps.
+### Installation
+Install this package as
+```
+$ npm install --save topcoder-react-utils
+```
+
+You are done if you will use only components and utilities provided by this package. If you are to use configurations, you must also install peer dependencies. If you like to explicitly add them to the `package.json` of your project do
+```
+$ npm install -g install-peerdeps
+$ install-peerdeps topcoder-react-utils
+```
+
+Alternatively, you can do
+```
+$ npm install --save install-peerdeps
+```
+
+then add to your `package.json` the following script:
+```json
+"postinstall": "install-peerdeps -S topcoder-react-utils"
+```
+
+Now, in both cases, `$ npm install` will install all necessary dependencies, but in the second case they won't be stored into your `package.json`.
 
 #### Configurations
-- [**Babel Configurations**](docs/babel-config.md) &mdash; Standard configurations for [Babel](https://babeljs.io/)
+- [**Babel Configurations**](docs/babel-config.md) &mdash; Standard configurations for [Babel](https://babeljs.io/);
+- [**ESLint Configurations**](docs/eslint-config.md) &mdash; Standard configurations for [ESLint](https://eslint.org/).
 
 #### Components
 *To be added*
