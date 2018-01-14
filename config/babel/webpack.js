@@ -6,8 +6,8 @@ const reactCssModulesPluginOps = {
   filetypes: {
     '.scss': {
       syntax: 'postcss-scss',
-    }
-  }
+    },
+  },
 };
 
 const config = {

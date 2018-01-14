@@ -1,13 +1,19 @@
 {
   "name": "topcoder-react-utils",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "Topcoder collection of generic ReactJS components and utils",
   "main": "index.js",
   "engines": {
     "node": "~8.9.4",
     "npm": "~5.6.0"
   },
-  "scripts": {},
+  "scripts": {
+    "build": "babel src --out-dir dist",
+    "lint": "npm run lint:js",
+    "lint:js": "eslint --ext .js,.jsx .",
+    "prepublishOnly": "npm run build",
+    "test": "npm run lint"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/topcoder-platform/topcoder-react-utils.git"
@@ -42,5 +48,34 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.3.0",
     "react-hot-loader": "^3.1.3"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "prop-types": "^15.6.0",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "react-router-dom": "^4.2.2",
+    "url-parse": "^1.2.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "babel-plugin-css-modules-transform": "^1.4.0",
+    "babel-plugin-dynamic-import-node": "^1.2.0",
+    "babel-plugin-inline-react-svg": "^0.5.2",
+    "babel-plugin-module-resolver": "^3.0.0",
+    "babel-plugin-react-css-modules": "^3.3.2",
+    "babel-plugin-transform-assets": "^0.2.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "eslint": "^4.6.1",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-import-resolver-babel-module": "^4.0.0-beta.3",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jest": "^21.0.2",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.3.0"
   }
 }

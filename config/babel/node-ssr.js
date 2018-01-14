@@ -14,7 +14,7 @@ const transformAssetsPluginOptions = {
 config.plugins = config.plugins.concat([
   'dynamic-import-node',
   ['transform-assets', transformAssetsPluginOptions],
-  [ 'css-modules-transform', cssModulesTransformPluginOps ],
+  ['css-modules-transform', cssModulesTransformPluginOps],
 ]);
 
 const moduleResolverPluginOps
@@ -33,9 +33,10 @@ switch (process.env.BABEL_ENV) {
   case 'test':
     cssModulesTransformPluginOps.generateScopedName = '[path][name]___[local]';
     break;
+  default:
 }
 
-module.exports = (apt, ops) => {
+module.exports = (apt, ops = {}) => {
   const baseAssetsOutputPath = ops.baseAssetsOutputPath || '';
   transformAssetsPluginOptions.name
     = `${baseAssetsOutputPath}/images/[hash].[ext]`;

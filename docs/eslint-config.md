@@ -11,7 +11,7 @@ Under the hood it matches the standard [AirBnB ESLint](https://www.npmjs.com/pac
 To use it just create the following `.eslintrc`:
 ```json
 {
-  "extends": "topcoder-react-utils/config/eslint/default"
+  "extends": "./node_modules/topcoder-react-utils/config/eslint/default.json"
 }
 ```
 
