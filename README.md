@@ -38,7 +38,8 @@ and `<NavLink>` components; they help to handle external and internal links in
 the same uniform manner.
 
 ### Utilities
-*To be added*
+- [**SCSS Mixins**](docs/scss-mixins.md) &mdash; Collection of useful style
+mixins;
 
 ### Development
 *To be written*

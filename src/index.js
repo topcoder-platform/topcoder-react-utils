@@ -1,6 +1,6 @@
-import Button from './Button';
-import Link from './Link';
-import NavLink from './NavLink';
+import Button from 'components/Button';
+import Link from 'components/Link';
+import NavLink from 'components/NavLink';
 
 export {
   Button,

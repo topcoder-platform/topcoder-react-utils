@@ -71,8 +71,9 @@
     "url": "git+https://github.com/topcoder-platform/topcoder-react-utils.git"
   },
   "scripts": {
-    "build": "babel src --out-dir dist",
-    "build:dev": "babel --watch src --out-dir dist",
+    "build": "npm run clean && babel src --out-dir dist",
+    "build:dev": "npm run clean && babel --watch src --out-dir dist",
+    "clean": "rm -rf dist",
     "lint": "npm run lint:js",
     "lint:js": "eslint --ext .js,.jsx .",
     "prepublishOnly": "npm run build",

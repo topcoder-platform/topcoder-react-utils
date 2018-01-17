@@ -1,0 +1,38 @@
+/* Auxiliary mixins for fonts inclusion. */
+
+/**
+ * Includes a font, provided as a set of alternative files in EOT, WOFF, TTF,
+ * SVG formats into the app.
+ * $font-name {String} 
+ * $font-weight {Number}
+ * $font-style {String}
+ * $font-url {String} Path to the font file, without the filename itself.
+ * $font-file {String} Font filename, without extension (should be the same for
+ *  each version of the font in different formats.
+ */
+@mixin font-family($font-name, $font-weight, $font-style, $font-url, $font-file) {
+  @font-face {
+    font-family: '#{$font-name}';
+    src: url('#{$font-url}#{$font-file}.eot');
+    src: url('#{$font-url}#{$font-file}.eot?#iefix') format('embedded-opentype'), url('#{$font-url}#{$font-file}.woff') format('woff'), url('#{$font-url}#{$font-file}.ttf') format('truetype'), url('#{$font-url}#{$font-file}.svg##{$font-name}') format('svg');
+    font-weight: $font-weight;
+    font-style: $font-style;
+  }
+}
+
+/**
+ * Includes a font, provided in the TTF format only.
+ * $font-name {String}
+ * $font-weight {Number}
+ * $font-style {String}
+ * $font-url {String}
+ */
+@mixin font-family-ttf(
+  $font-name, $font-weight, $font-style, $font-url) {
+  @font-face {
+    font-family: $font-name;
+    font-style: $font-style;
+    font-weight: $font-weight;
+    src: url('#{$font-url}.ttf') format('truetype');
+  }
+}
