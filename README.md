@@ -14,7 +14,7 @@ package. If you are to use configurations, you must also install peer
 dependencies:
 ```
 $ npm install -g install-peerdeps
-$ install-peerdeps topcoder-react-utils
+$ install-peerdeps -d topcoder-react-utils
 ```
 
 Peer dependencies will be also stored into `package.json` of your project, thus

@@ -33,7 +33,7 @@ const config = {
 switch (process.env.BABEL_ENV) {
   case 'development':
     envPresetOps.modules = false;
-    reactCssModulesPluginOps.generateScopedName = '[path][name]___[local]';
+    reactCssModulesPluginOps.generateScopedName = '[path][name]___[local]___[hash:base64:6]';
     config.plugins.push('react-hot-loader/babel');
     break;
   case 'production':

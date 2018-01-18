@@ -12,15 +12,15 @@ const webpack = require('webpack');
 
 /**
  * Creates a new Webpack config object.
- * @param {String} context Base URL for resolution of relative config paths.
- * @param {String} publicPath Base URL for the output of the build assets.
  * @param {Object|String|String[]} entry Entry points. If an object is passed in
  *  the "polyfills" entry point will be extended or appended to include some
  *  polyfills we consider obligatory. If a string or an array is passed in,
  *  it will be turned into "main" entry point, and the "polyfills" entry point
  *  will be added to it.
+ * @param {String} context Base URL for resolution of relative config paths.
+ * @param {String} publicPath Base URL for the output of the build assets.
  */
-module.exports = function newConfig(context, publicPath, entry) {
+module.exports = function newConfig(entry, context, publicPath) {
   /* Writes UTC timestamp of the build time into .build-timestamp file. */
   const buildTimestamp = moment().toISOString();
   fs.writeFileSync(path.resolve(context, '.build-timestamp'), buildTimestamp);

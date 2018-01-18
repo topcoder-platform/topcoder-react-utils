@@ -29,13 +29,13 @@ switch (process.env.BABEL_ENV) {
   case 'development':
     envPresetsOps.modules = 'commonjs';
     _.pull(config.plugins, 'react-hot-loader/babel');
-    cssModulesTransformPluginOps.generateScopedName = '[path][name]___[local]';
+    cssModulesTransformPluginOps.generateScopedName = '[path][name]___[local]___[hash:base64:6]';
     break;
   case 'production':
     cssModulesTransformPluginOps.generateScopedName = '[hash:base64:6]';
     break;
   case 'test':
-    cssModulesTransformPluginOps.generateScopedName = '[path][name]___[local]';
+    cssModulesTransformPluginOps.generateScopedName = '[path][name]___[local]___[hash:base64:6]';
     break;
   default:
 }
