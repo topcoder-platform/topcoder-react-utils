@@ -47,14 +47,15 @@ module.exports = function configFactory(ops) {
 
   /* Stores misc build info into the local ".build-info" file in the context
    * directory. */
-  const buildInfo = JSON.stringify({
+  const buildInfo = {
     /* A random 32-bit key, that can be used for encryption. */
     rndkey: forge.random.getBytesSync(32),
 
     /* Build timestamp. */
     timestamp: moment.utc().toISOString(),
-  });
-  fs.writeFileSync(path.resolve(o.context, '.build-info'), buildInfo);
+  };
+  const buildInfoUrl = path.resolve(o.context, '.build-info');
+  fs.writeFileSync(buildInfoUrl, JSON.stringify(buildInfo));
 
   /* Entry points normalization. */
   const entry = _.isObject(o.entry)
@@ -67,7 +68,6 @@ module.exports = function configFactory(ops) {
     'babel-polyfill',
     'nodelist-foreach-polyfill',
   ]);
-
   return {
     context: o.context,
     entry,
@@ -100,64 +100,69 @@ module.exports = function configFactory(ops) {
         components: path.resolve(o.context, 'src/shared/components'),
         styles: path.resolve(o.context, 'src/styles'),
       },
+      extensions: ['.js', '.json', '.jsx', '.scss'],
     },
-    rules: [{
-      /* Loads font resources from "src/assets/fonts" folder. */
-      test: /\.(eot|otf|svg|ttf|woff2?)$/,
-      include: [/src[/\\]assets[/\\]fonts/],
-      loader: 'file-loader',
-      options: {
-        outputPaths: '/fonts/',
-        publicPath: o.publicPath,
-      },
-    }, {
-      /* Loads JS and JSX moudles, and inlines SVG assets. */
-      test: /\.(jsx?|svg)$/,
-      exclude: [/node_modules/],
-      loader: 'babel-loader',
-      options: {
-        babelrc: false,
-        extends: 'topcoder-react-utils/config/babel/webpack.json',
-        forceEnv: o.babelEnv,
-      },
-    }, {
-      /* Loads image assets. */
-      test: /\.(gif|jpe?g|png)$/,
-      loader: 'file-loader',
-      options: {
-        outputPath: '/images/',
-        publicPath: o.publicPath,
-      },
-    }, {
-      /* Loads SCSS stylesheets. */
-      test: /\.scss/,
-      exclude: /node_modules/,
-      use: ExtractCssChunks.extract({
-        fallback: 'style-loader',
-        use: [{
-          loader: 'css-loader',
-          localIdentName: o.cssLocalIdent,
-          modules: true,
-        }, {
-          loader: 'postcss-loader',
-          options: {
-            plugins: [autoprefixer],
-          },
-        }, 'resolve-url-loader', {
-          loader: 'sass-loader',
-          options: {
-            sourceMap: true,
-          },
-        }],
-      }),
-    }, {
-      /* Loads CSS stylesheets. It is assumed that CSS stylesheets come only
-       * from dependencies, as we use SCSS inside our own code. */
-      test: /\.css$/,
-      use: ExtractCssChunks.extract({
-        fallback: 'style-loader',
-        use: ['css-loader'],
-      }),
-    }],
+    module: {
+      rules: [{
+        /* Loads font resources from "src/assets/fonts" folder. */
+        test: /\.(eot|otf|svg|ttf|woff2?)$/,
+        include: [/src[/\\]assets[/\\]fonts/],
+        loader: 'file-loader',
+        options: {
+          outputPath: '/fonts/',
+          publicPath: o.publicPath,
+        },
+      }, {
+        /* Loads JS and JSX moudles, and inlines SVG assets. */
+        test: /\.(jsx?|svg)$/,
+        exclude: [/node_modules/],
+        loader: 'babel-loader',
+        options: {
+          babelrc: false,
+          forceEnv: o.babelEnv,
+          presets: ['topcoder-react-utils/config/babel/webpack'],
+        },
+      }, {
+        /* Loads image assets. */
+        test: /\.(gif|jpe?g|png)$/,
+        loader: 'file-loader',
+        options: {
+          outputPath: '/images/',
+          publicPath: o.publicPath,
+        },
+      }, {
+        /* Loads SCSS stylesheets. */
+        test: /\.scss/,
+        exclude: /node_modules/,
+        use: ExtractCssChunks.extract({
+          fallback: 'style-loader',
+          use: [{
+            loader: 'css-loader',
+            options: {
+              localIdentName: o.cssLocalIdent,
+              modules: true,
+            }
+          }, {
+            loader: 'postcss-loader',
+            options: {
+              plugins: [autoprefixer],
+            },
+          }, 'resolve-url-loader', {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+            },
+          }],
+        }),
+      }, {
+        /* Loads CSS stylesheets. It is assumed that CSS stylesheets come only
+        * from dependencies, as we use SCSS inside our own code. */
+        test: /\.css$/,
+        use: ExtractCssChunks.extract({
+          fallback: 'style-loader',
+          use: ['css-loader'],
+        }),
+      }],
+    },
   };
 };

@@ -15,14 +15,14 @@ const webpackMerge = require('webpack-merge');
  *
  *  The following options are accepted:
  *
+ * @param {String} ops.context Base URL for resolution of relative
+ *  config paths.
+ *
  * @param {Object|String|String[]} ops.entry Entry points. If an object is
  *  passed, in the "polyfills" entry point will be extended or appended to
  *  include some polyfills we consider obligatory. If a string or an array is
  *  passed in, it will be turned into "main" entry point, and the "polyfills"
  *  entry point will be added to it.
- *
- * @param {String} ops.context Base URL for resolution of relative
- *  config paths.
  *
  * @param {String} ops.publicPath Base URL for the output of the build assets.
  */

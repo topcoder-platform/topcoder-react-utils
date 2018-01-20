@@ -27,7 +27,7 @@ won't need to use `install-peerdeps` as long as you don't update
 for [Babel](https://babeljs.io/);
 - [**ESLint Configurations**](docs/eslint-config.md) &mdash; Standard
 configurations for [ESLint](https://eslint.org/);
-- [**Webpack Configurations**](docs/webpack-conifg.md) &mdash; Standard configurations for [Webpack](https://webpack.js.org/).
+- [**Webpack Configurations**](docs/webpack-config.md) &mdash; Standard configurations for [Webpack](https://webpack.js.org/).
 
 ### Components
 - [**Button**](docs/button.md) &mdash; Handles buttons and button-like links
