@@ -1,6 +1,8 @@
 # Webpack Configurations
 Standard configurations for [Webpack](https://webpack.js.org/).
 
+[Example](#example)
+
 **Why?** &mdash; Webpack is the heart of our build pipeline for ReactJS
 applications. A proper Webpack configurations is necessary for many features in
 our code, and it has a serious impact on the performance of the compiled code.
@@ -119,3 +121,52 @@ mutation of the config object.
     - [OptimizeCssAssetsPlugin](https://www.npmjs.com/package/optimize-css-assets-webpack-plugin);
     - [UglifyJsPlugin](https://webpack.js.org/plugins/uglifyjs-webpack-plugin/).
 
+### Example
+Say, you want to setup Webpack configuration for development build in a new
+project. Create the following configuration file inside `config/webpack` folder
+(the exact folder is just a convention we like to use across the projects):
+```js
+// config/webpack/development.js
+
+/* Note that config JS files are not processed by Babel, thus you should use
+ * only the subset of JS syntax natively understood by the current Node version. */
+const configFactory = require('topcoder-react-utils/config/webpack/development');
+const path = require('path');
+
+const standardConfig = configFactory({
+  /* To resolve all paths in the config relative to the root folder of your code. */
+  context: path.resolve(__dirname, '../..'),
+
+  /* Entry point of you code. You can also pass in JS object with keys naming
+   * the separate bundles you want to pack, and the values specifying their
+   * entry points. */
+  entry: './src',
+
+  /* You can use "publicPath" option here if you want to serve generated
+   * assets from a non-root folder of your server. */
+});
+
+/* Here you can make additional modifications of the config, if you need to,
+ * using "webpack-merge" package, or in some custom way. */
+
+module.exports = standardConfig;
+```
+
+To wire this config to your NPM build script, create another simple file in
+the root of your code:
+```js
+// webpack.config.js
+
+/* eslint-disable global-require */
+/* eslint-disable import/no-dynamic-require */
+
+module.exports = function buildConfig(env) {
+  return require(`./config/webpack/${env}.js`);
+}
+```
+
+Now you can define your NPM build script, using the necessary config, like so
+(the clean step is handy, it should be defined as a separate `clean` script):
+```
+"build:dev": "npm run clean && ./node_modules/.bin/webpack --env=development --progress --profile --colors --display-optimization-bailout"
+```

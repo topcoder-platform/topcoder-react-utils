@@ -43,6 +43,7 @@ const webpack = require('webpack');
 module.exports = function configFactory(ops) {
   const o = _.defaults(_.clone(ops), {
     cssLocalIdent: '[hash:base64:6]',
+    publicPath: '',
   });
 
   /* Stores misc build info into the local ".build-info" file in the context
