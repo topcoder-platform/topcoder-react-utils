@@ -99,6 +99,7 @@ module.exports = function configFactory(ops) {
         /* Aliases to JS an JSX files are handled by Babel. */
         assets: path.resolve(o.context, 'src/assets'),
         components: path.resolve(o.context, 'src/shared/components'),
+        fonts: path.resolve(o.context, 'src/assets/fonts'),
         styles: path.resolve(o.context, 'src/styles'),
       },
       extensions: ['.js', '.json', '.jsx', '.scss'],

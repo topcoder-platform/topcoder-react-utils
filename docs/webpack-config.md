@@ -67,6 +67,7 @@ mutation of the config object.
   - The following path aliases will be automatically set:
     - **`assets`** for `[CONTEXT]/src/assets`;
     - **`components`** for `[CONTEXT]/src/shared/components`;
+    - **`fonts`** for `[CONTEXT]/src/assets/fonts`;
     - **`styles`** for `[CONTEXT]/src/styles`.
 
   - The following environment variables will be emulated inside the output
