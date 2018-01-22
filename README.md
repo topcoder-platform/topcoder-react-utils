@@ -9,18 +9,17 @@ Install this package as
 $ npm install --save topcoder-react-utils
 ```
 
-You are done if you will use only components and utilities provided by this
-package. If you are to use configurations, to build or test your code, you must
-also install the peer dependencies:
+You are done if you only use components and utilities provided by this
+package. If you are to use configurations to build or test your code, you
+also need to install all development dependencies into your own package:
 ```
-$ npm install -g install-peerdeps
-$ install-peerdeps -od topcoder-react-utils
+$ adopt-dev-deps topcoder-react-utils
 ```
 
-Peer dependencies will be also stored as dev dependencies into `package.json` of
-your project, thus future invokations of `npm install` will automatically
-install them, and you won't need to use `install-peerdeps` as long as you don't
-update `topcoder-react-utils` version.
+Installed dev dependencies will be stored into your `package.json`, thus
+further invokations of `npm install` will automatically install them. You
+only need to call `adopt-dev-deps` again if you update
+`topcoder-react-utils` to a newer version.
 
 ### Configurations
 - [**Babel Configurations**](docs/babel-config.md) &mdash; Standard configurations

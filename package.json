@@ -1,4 +1,7 @@
 {
+  "bin": {
+    "adopt-dev-deps": "./bin/adopt-dev-deps"
+  },
   "bugs": {
     "url": "https://github.com/topcoder-platform/topcoder-react-utils/issues"
   },
@@ -44,7 +47,9 @@
     "nodelist-foreach-polyfill": "^1.2.0",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
     "postcss-loader": "^2.0.10",
+    "react-hot-loader": "^3.1.3",
     "resolve-url-loader": "^2.2.1",
+    "rimraf": "^2.6.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.1",
     "webpack": "^3.10.0",
@@ -63,44 +68,6 @@
   "license": "MIT",
   "main": "dist/index.js",
   "name": "topcoder-react-utils",
-  "peerDependencies": {
-    "autoprefixer": "^7.2.5",
-    "babel-cli": "^6.26.0",
-    "babel-eslint": "^7.2.3",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-css-modules-transform": "^1.4.0",
-    "babel-plugin-dynamic-import-node": "^1.2.0",
-    "babel-plugin-inline-react-svg": "^0.5.2",
-    "babel-plugin-module-resolver": "^3.0.0",
-    "babel-plugin-react-css-modules": "^3.3.2",
-    "babel-plugin-transform-assets": "^0.2.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
-    "css-loader": "^0.28.9",
-    "eslint": "^4.6.1",
-    "eslint-config-airbnb": "^15.1.0",
-    "eslint-import-resolver-babel-module": "^4.0.0-beta.3",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jest": "^21.0.2",
-    "eslint-plugin-jsx-a11y": "^5.1.1",
-    "eslint-plugin-react": "^7.3.0",
-    "extract-css-chunks-webpack-plugin": "^2.0.18",
-    "file-loader": "^1.1.6",
-    "node-forge": "^0.7.1",
-    "node-sass": "^4.7.2",
-    "nodelist-foreach-polyfill": "^1.2.0",
-    "optimize-css-assets-webpack-plugin": "^3.2.0",
-    "postcss-loader": "^2.0.10",
-    "resolve-url-loader": "^2.2.1",
-    "sass-loader": "^6.0.6",
-    "style-loader": "^0.19.1",
-    "webpack": "^3.10.0",
-    "webpack-hot-middleware": "^2.21.0",
-    "webpack-merge": "^4.1.1"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/topcoder-platform/topcoder-react-utils.git"
@@ -114,5 +81,5 @@
     "prepublishOnly": "npm run build",
     "test": "npm run lint"
   },
-  "version": "0.0.28"
+  "version": "0.0.29"
 }
