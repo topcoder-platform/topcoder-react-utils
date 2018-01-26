@@ -1,6 +1,7 @@
 /**
- * Base Webpack configuration. It is what can be just reused between
- * the development and production configs with a few changes.
+ * Base Webpack configuration for ReactJS applications. It is further extended
+ * for development and production use in the "app-development" and
+ * "app-production" configs.
  */
 
 const _ = require('lodash');
@@ -79,7 +80,7 @@ module.exports = function configFactory(ops) {
     output: {
       chunkFilename: '[name].js',
       filename: '[name].js',
-      path: path.resolve(__dirname, path.resolve(o.context, 'build')),
+      path: path.resolve(__dirname, o.context, 'build'),
       publicPath: `${o.publicPath}/`,
     },
     plugins: [
@@ -143,7 +144,7 @@ module.exports = function configFactory(ops) {
             options: {
               localIdentName: o.cssLocalIdent,
               modules: true,
-            }
+            },
           }, {
             loader: 'postcss-loader',
             options: {

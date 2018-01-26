@@ -1,8 +1,8 @@
 /**
- * Production Webpack configuration.
+ * Production Webpack configuration for ReactJS applications.
  */
 
-const baseFactory = require('./default');
+const baseFactory = require('./app-base');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');

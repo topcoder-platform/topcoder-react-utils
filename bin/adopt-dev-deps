@@ -9,7 +9,8 @@ const { spawnSync } = require('child_process');
 
 /* Locates and loads the "package.json" file of the donor package, from which we
  * want to adopt dev dependencies. */
-const src = process.argv[2] || '..';
+let src = process.argv[2];
+if (!src || src === 'topcoder-react-utils') src = '..';
 
 let url = path.dirname(require.resolve(src));
 for (;;) {

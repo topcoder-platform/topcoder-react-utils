@@ -10,12 +10,20 @@ The standard Webpack configuration shared among our projects ensure consistency
 and the ease of maintanance of our codebases.
 
 Several Webpack configurations are provided by this package:
-- [**config/webpack/default**](#base) &mdash; Base Webpack configuration, it is
-  extended in different ways both by *development* and *production* configs
-  below. It might be useful for you if you need to compose a config alternative
-  to them;
-- [**config/webpack/development**](#development) &mdash; For development builds;
-- [**config/webpack/production**](#production) &mdash; For production builds.
+- [**config/webpack/app-base**](#app-base) &mdash; Base Webpack configuration for
+  ReactJS applications. It is further extended for development and production
+  use by the *app-development* and *app-production* configs below.
+- [**config/webpack/app-development**](#app-development) &mdash; Development Webpack
+  configuration for ReactJS applications;
+- [**config/webpack/app-production**](#app-production) &mdash; Production Webpack
+  configuration for ReactJS applications;
+- [**config/webpack/lib-base**](#lib-base) &mdash; Base Webpack configuration
+  for ReactJS libraries. It is further extended for development and production
+  use by the *lib-development* and *lib-production* configs below;
+- [**config/webpack/lib-development**](#lib-development) &mdash; Development
+  Webpack configuration for ReactJS libraries;
+- [**config/webpack/lib-production**](#lib-production) &mdash; Production
+  Webpack configuration for ReactJS libraries.
 
 Each of these modules provides a configuration factory that takes an option hash
 as the argument, and returns config object. The option hash allows to easily
@@ -25,7 +33,7 @@ returned config object can be further customized with use of
 mutation of the config object.
 
 ### Configuration Details
-- <a name="base">**`config/webpack/default`**</a>
+- <a name="app-base">**`config/webpack/app-base`**</a>
   - Config factory handles the following fields in the options object:
     - **`babelEnv`** &mdash; *String* &mdash; Babel environment to use for
       the Babel compilation step;
@@ -90,9 +98,9 @@ mutation of the config object.
     - **`rndkey`** &mdash; The value set for `BUILD_RNDKEY`;
     - **`timestamp`** &mdash; The value set for `BUILD_TIMESTAMP`.
 
-- <a name="development">**`config/webpack/development`**</a>
+- <a name="app-development">**`config/webpack/app-development`**</a>
 
-  This configration is based on the [`config/webpack/default`](#base) and
+  This configration is based on the [`config/webpack/app-base`](#app-base) and
   it differs from that in the following:
   - *development* Babel environment is enforced, and sets
     `[path][name]___[local]___[hash:base64:6]` as the value of
@@ -111,9 +119,9 @@ mutation of the config object.
     - [NoEmitOnErrorsPlugin](https://webpack.js.org/plugins/no-emit-on-errors-plugin/);
     - [NamedModulesPlugin](https://webpack.js.org/plugins/named-modules-plugin/).
 
-- <a name="production">**`config/webpack/production`**</a>
+- <a name="app-production">**`config/webpack/app-production`**</a>
 
-  This configuration is based on the [`config/webpack/default`](#base) and
+  This configuration is based on the [`config/webpack/app-base`](#app-base) and
   it differs from that in the following:
   - *production* Babel environment is enforced;
   - Emulates the following environment variables:
@@ -121,6 +129,18 @@ mutation of the config object.
   - Adds the following plugins:
     - [OptimizeCssAssetsPlugin](https://www.npmjs.com/package/optimize-css-assets-webpack-plugin);
     - [UglifyJsPlugin](https://webpack.js.org/plugins/uglifyjs-webpack-plugin/).
+
+- <a name="lib-base">**`config/webpack/lib-base`**</a>
+
+  This, and the next two configurations are intended for building of ReactJS
+  libraries; i.e. they do as much of compilation and packing of a ReactJS package,
+  as possible, so that the package can be further imported and used by another
+  ReactJS package. This is still a work in progress, thus it is likey to be
+  changed a lot. We'll add better documentation once it is stable.
+
+- <a name="lib-development">**`config/webpack/lib-development`**</a>
+- <a name="lib-production">**`config/webpack/lib-production`**</a>
+
 
 ### Example
 Say, you want to setup Webpack configuration for development build in a new
@@ -162,7 +182,7 @@ the root of your code:
 /* eslint-disable import/no-dynamic-require */
 
 module.exports = function buildConfig(env) {
-  return require(`./config/webpack/${env}.js`);
+  return require(`./config/webpack/app-${env}.js`);
 }
 ```
 

@@ -1,8 +1,9 @@
 /**
- * Development Webpack configuration.
+ * Development Webpack configuration for ReactJS applications.
  */
 
-const baseFactory = require('./default');
+const _ = require('lodash');
+const baseFactory = require('./app-base');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
 
@@ -27,17 +28,11 @@ const webpackMerge = require('webpack-merge');
  * @param {String} ops.publicPath Base URL for the output of the build assets.
  */
 module.exports = function configFactory(ops) {
-  return webpackMerge.smart(baseFactory({
+  const res = webpackMerge.smart(baseFactory({
     ...ops,
     babelEnv: 'development',
     cssLocalIdent: '[path][name]___[local]___[hash:base64:6]',
   }), {
-    entry: {
-      polyfills: [
-        'react-hot-loader/patch',
-        'webpack-hot-middleware/client?reload=true',
-      ],
-    },
     plugins: [
       new webpack.DefinePlugin({
         'process.env': {
@@ -50,4 +45,13 @@ module.exports = function configFactory(ops) {
       new webpack.NamedModulesPlugin(),
     ],
   });
+  if (!_.isArray(res.entry.main)) {
+    res.entry.main = [res.entry.main];
+  }
+  res.entry.main = [
+    'react-hot-loader/patch',
+    'webpack-hot-middleware/client?reload=true',
+  ].concat(res.entry.main);
+  console.log(res);
+  return res;
 };

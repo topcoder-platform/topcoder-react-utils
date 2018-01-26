@@ -13,7 +13,7 @@ You are done if you only use components and utilities provided by this
 package. If you are to use configurations to build or test your code, you
 also need to install all development dependencies into your own package:
 ```
-$ adopt-dev-deps
+$ adopt-dev-deps topcoder-react-utils
 ```
 
 Installed dev dependencies will be stored into your `package.json`, thus
