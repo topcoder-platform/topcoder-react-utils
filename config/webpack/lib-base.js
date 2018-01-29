@@ -57,9 +57,9 @@ module.exports = function configFactory(ops) {
         loader: 'file-loader',
         options: {
           emitFile: false,
-          name: '[name].[ext]',
-          outputPath: '/fonts/',
-          publicPath: '~topcoder-react-ui-kit/src/assests',
+          name: '[path][name].[ext]',
+          outputPath: '/',
+          publicPath: '~topcoder-react-ui-kit',
         },
       }, {
         /* Loads JS and JSX moudles, and inlines SVG assets. */
