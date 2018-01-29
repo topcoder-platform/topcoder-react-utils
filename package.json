@@ -81,5 +81,5 @@
     "prepublishOnly": "npm run build",
     "test": "npm run lint"
   },
-  "version": "0.0.34"
+  "version": "0.0.35"
 }
