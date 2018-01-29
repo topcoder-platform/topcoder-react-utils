@@ -78,6 +78,9 @@ mutation of the config object.
     - **`fonts`** for `[CONTEXT]/src/assets/fonts`;
     - **`styles`** for `[CONTEXT]/src/styles`.
 
+    Also `resolve.symlinks` Webpack option is set to *false* to avoid problems
+    with resolution of assets from packages linked with `npm link`.
+
   - The following environment variables will be emulated inside the output
     JS bundle:
     - **`BUILD_RNDKEY`** &mdash; A random 32 bit key that can be used

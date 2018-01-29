@@ -104,6 +104,7 @@ module.exports = function configFactory(ops) {
         styles: path.resolve(o.context, 'src/styles'),
       },
       extensions: ['.js', '.json', '.jsx', '.scss'],
+      symlinks: false,
     },
     module: {
       rules: [{

@@ -17,7 +17,7 @@ const baseFactory = require('./lib-base');
  *
  * @param {String} ops.context Base URL for resolution of relative config
  * paths.
- * 
+ *
  * @param {String} ops.entry Entry point of the library.
  *
  * @return {Object} Webpack configuration.

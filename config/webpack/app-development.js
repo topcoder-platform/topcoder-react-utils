@@ -52,6 +52,5 @@ module.exports = function configFactory(ops) {
     'react-hot-loader/patch',
     'webpack-hot-middleware/client?reload=true',
   ].concat(res.entry.main);
-  console.log(res);
   return res;
 };

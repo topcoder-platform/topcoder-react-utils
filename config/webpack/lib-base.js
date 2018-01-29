@@ -4,12 +4,9 @@
  * configs.
  */
 
-const _ = require('lodash');
 const autoprefixer = require('autoprefixer');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const path = require('path');
-const postcssUrl = require('postcss-url');
-const webpack = require('webpack');
 
 /**
  * Creates a new Webpack config object.
@@ -66,7 +63,7 @@ module.exports = function configFactory(ops) {
         test: /\.(jsx?|svg)$/,
         exclude: [
           /node_modules/,
-          /src[/\\]assets[/\\]fonts/
+          /src[/\\]assets[/\\]fonts/,
         ],
         loader: 'babel-loader',
         options: {
@@ -112,6 +109,7 @@ module.exports = function configFactory(ops) {
         styles: path.resolve(ops.context, 'src/styles'),
       },
       extensions: ['.js', '.json', '.jsx', '.scss'],
+      symlinks: false,
     },
   };
 };
