@@ -137,7 +137,6 @@ module.exports = function configFactory(ops) {
       }, {
         /* Loads SCSS stylesheets. */
         test: /\.scss/,
-        exclude: /node_modules/,
         use: ExtractCssChunks.extract({
           fallback: 'style-loader',
           use: [{

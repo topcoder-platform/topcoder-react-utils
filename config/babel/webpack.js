@@ -1,7 +1,5 @@
 /* Babel preset for the Webpack build. */
 
-const envPresetOps = {};
-
 const reactCssModulesPluginOps = {
   filetypes: {
     '.scss': {
@@ -12,7 +10,7 @@ const reactCssModulesPluginOps = {
 
 const config = {
   presets: [
-    ['env', envPresetOps],
+    'env',
     'react',
     'stage-2',
   ],
@@ -32,7 +30,6 @@ const config = {
 
 switch (process.env.BABEL_ENV) {
   case 'development':
-    envPresetOps.modules = false;
     reactCssModulesPluginOps.generateScopedName = '[path][name]___[local]___[hash:base64:6]';
     config.plugins.push('react-hot-loader/babel');
     break;

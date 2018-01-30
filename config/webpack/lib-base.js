@@ -25,15 +25,21 @@ const path = require('path');
  *
  * @param {String} ops.entry Entry point of the library.
  *
+ * @param {String} ops.library Name of the library.
+ *
  * @return {Object} Webpack config.
  */
 module.exports = function configFactory(ops) {
   return {
     context: ops.context,
     entry: ops.entry,
+    externals: [
+      'react-css-super-themr',
+      'topcoder-react-utils',
+    ],
     output: {
       filename: 'index.js',
-      library: 'topcoder-react-ui-kit',
+      library: ops.library,
       path: path.resolve(__dirname, ops.context, 'dist'),
       libraryTarget: 'umd',
     },
@@ -47,8 +53,7 @@ module.exports = function configFactory(ops) {
         /* Handles font imports in url(..) instructions in CSS. Effectively,
          * with such configuration it just rewrites those URLs to point to
          * the original location of the font assets in
-         * the "topcoder-react-ui-kit" package, when it is installed as
-         * a dependency. */
+         * the library being build. */
         test: /\.(eot|otf|svg|ttf|woff2?)$/,
         include: [/src[/\\]assets[/\\]fonts/],
         loader: 'file-loader',
@@ -56,7 +61,7 @@ module.exports = function configFactory(ops) {
           emitFile: false,
           name: '[path][name].[ext]',
           outputPath: '/',
-          publicPath: '~topcoder-react-ui-kit',
+          publicPath: `~${ops.library}`,
         },
       }, {
         /* Loads JS and JSX moudles, and inlines SVG assets. */

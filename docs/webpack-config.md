@@ -135,15 +135,72 @@ mutation of the config object.
 
 - <a name="lib-base">**`config/webpack/lib-base`**</a>
 
-  This, and the next two configurations are intended for building of ReactJS
-  libraries; i.e. they do as much of compilation and packing of a ReactJS package,
-  as possible, so that the package can be further imported and used by another
-  ReactJS package. This is still a work in progress, thus it is likey to be
-  changed a lot. We'll add better documentation once it is stable.
+  This config is intended for ReactJS libraries; it allows to perform as much
+  compilation of isomorphic ReactJS code as possible, so that the package can be
+  further imported and used by another ReactJS package.
+
+  - Config factory handles the following fields in the options object:
+
+    - **`babelEnv`** &mdash; *String* &mdash; Babel environment to use for the
+      Babel compilation step;
+
+    - **`context`** &mdash; *String* &mdash; Base URL for the resolution of
+      relative config paths;
+
+    - **`cssLocalIdent`** &mdash; *String* &mdash; Optional. The template for
+      the CSS classnames generation by the Webpack's css-loader; it is passed
+      into the localIdentName param of the loader. It should match the
+      corresponding setting in the Babel config. Defaults to [hash:base64:6].
+
+    - **`entry`** &mdash; *Object|String|String[]* &mdash; Entry points. If an
+      object is passed in, the polyfills entry point (chunk) is extended or
+      appended to include some polyfills we consider obligatory (babel-polyfill,
+      nodelist-foreach-polyfill). If a string or a string array is passed in, it
+      is assigned to the main entry pont, and the polyfills entry point is added
+      then;
+
+    - **`library`** &mdash; *String* &mdash; Name of the library to be build.
+      It is important for proper resolution of the library assets.
+
+  - The generated config will opt to:
+    - References to the font assets (EOF, OTF, SVG, TTF, WOFF, WOFF2 files from
+      the `src/assets/fonts` folder of the library source code) will rewritten
+      to `~LIBRARY_NAME/src/assets/fonts/FILENAME.FILE_EXTENSION`
+      so that the host package of the library will be able to find and bundle
+      them;
+    - Bundle SCSS files from any folder of your source code, beside
+      `node_modules` and its subfolders. The files will be compiled,
+      bundled and extracted into the `dist/style.css`
+      bundles;
+    - Bundle JS, JSX, and SVG files; they will be compiled into the
+      `dist/index.js` bundles, using the Babel environment
+      specified in the factory options, and
+      [`config/babel/webpack`](./babel-config.js#webpack) config.
+
+  - The following path aliases will be automatically set:
+    - **`assets`** for `[CONTEXT]/src/assets`;
+    - **`components`** for `[CONTEXT]/src/shared/components`;
+    - **`fonts`** for `[CONTEXT]/src/assets/fonts`;
+    - **`styles`** for `[CONTEXT]/src/styles`.
+
+    Also `resolve.symlinks` Webpack option is set to *false* to avoid problems
+    with resolution of assets from packages linked with `npm link`.
+
+  - The following packages are declared as externals:
+    - `react-css-super-themr`
+    - `topcoder-react-utils`
 
 - <a name="lib-development">**`config/webpack/lib-development`**</a>
+
+  Extends and tunes [`config/webpack/lib-base`](#lib-base) to use *development*
+  Babel environment, and sets `[path][name]___[local]___[hash:base64:6]` as
+  the template for generated CSS classnames.
+
 - <a name="lib-production">**`config/webpack/lib-production`**</a>
 
+  Extends and tunes [`config/webpack/lib-base`](#lib-base) to use *production*
+  Babel environment, and sets `[hash:base64:6]` as the template for generated
+  CSS classnames. Also enables optimizations for generated CSS and JS code.
 
 ### Example
 Say, you want to setup Webpack configuration for development build in a new
