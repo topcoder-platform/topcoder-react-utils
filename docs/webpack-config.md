@@ -211,7 +211,7 @@ project. Create the following configuration file inside `config/webpack` folder
 
 /* Note that config JS files are not processed by Babel, thus you should use
  * only the subset of JS syntax natively understood by the current Node version. */
-const configFactory = require('topcoder-react-utils/config/webpack/development');
+const configFactory = require('topcoder-react-utils/config/webpack/app-development');
 const path = require('path');
 
 const standardConfig = configFactory({
@@ -242,7 +242,7 @@ the root of your code:
 /* eslint-disable import/no-dynamic-require */
 
 module.exports = function buildConfig(env) {
-  return require(`./config/webpack/app-${env}.js`);
+  return require(`./config/webpack/${env}.js`);
 }
 ```
 
