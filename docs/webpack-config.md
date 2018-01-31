@@ -187,8 +187,16 @@ mutation of the config object.
     with resolution of assets from packages linked with `npm link`.
 
   - The following packages are declared as externals:
-    - `react-css-super-themr`
-    - `topcoder-react-utils`
+    - `babel-runtime`,
+    - `lodash`,
+    - `moment`,
+    - `prop-types`,
+    - `react`,
+    - `react-css-super-themr`,
+    - `react-dom`,
+    - `react-router-dom`,
+    - `topcoder-react-utils`,
+    - `url-parse`
 
 - <a name="lib-development">**`config/webpack/lib-development`**</a>
 

@@ -34,8 +34,16 @@ module.exports = function configFactory(ops) {
     context: ops.context,
     entry: ops.entry,
     externals: [
+      'babel-runtime',
+      'lodash',
+      'moment',
+      'prop-types',
+      'react',
       'react-css-super-themr',
+      'react-dom',
+      'react-router-dom',
       'topcoder-react-utils',
+      'url-parse',
     ],
     output: {
       filename: 'index.js',

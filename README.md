@@ -34,6 +34,8 @@ only need to call `adopt-dev-deps` again if you update
 for [Babel](https://babeljs.io/);
 - [**ESLint Configurations**](docs/eslint-config.md) &mdash; Standard
 configurations for [ESLint](https://eslint.org/);
+- [**Stylelint Configurations**](docs/stylelint-config.md) &mdash; Standard
+  configurations for [Stylelint](https://stylelint.io)
 - [**Webpack Configurations**](docs/webpack-config.md) &mdash; Standard configurations for [Webpack](https://webpack.js.org/).
 
 ### <a name="components">Components</a>
@@ -46,6 +48,7 @@ and `<NavLink>` components; they help to handle external and internal links in
 the same uniform manner.
 
 ### <a name="utilities">Utilities</a>
+- [**Global Styles**](docs/global-styles.md) &mdash; TO BE DOCUMENTED;
 - [**SCSS Mixins**](docs/scss-mixins.md) &mdash; Collection of useful style
 mixins;
 
