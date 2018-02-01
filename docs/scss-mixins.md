@@ -34,3 +34,46 @@ To use, import the main mixins file into your SCSS, e.g.:
   - **`$url`** Path to the font file, including the filename (without
   file extension).
   
+### Media Mixins
+These mixins help to create conditional SCSS, responsive to the viewport size.
+
+We consider five viewport sizes: extra-small (XS), small (SM), medium (MD),
+large (LG), and extra-large (XL). It is assumed that mobile devices have SM
+screen size; tablets have MD screens, and desktops have LG or XL screen size.
+The actual break-points between these sizes are defined by four variables with
+the following default values:
+- **`$screen-xs`** — 320px;
+- **`$screen-sm`** — 768px;
+- **`$screen-md`** — 1024px;
+- **`$screen-lg`** — 1280px.
+
+Each of these variables set the maximal pixel size of the corresponding
+viewport; i.e. XS viewport may have any width under `$screen-xs` (inclusive);
+MD viewport may have a width from `$screen-sm` (exclusive) up to `$screen-md`
+(inclusive); XL viewport may have any width above `$screen-lg` (exclusive).
+
+Based on these variables, we provide two sets of media mixins:
+- **`@mixin xs`**, **`@mixin sm`**, **`@mixin md`**, **`@mixin lg`**,
+  **`@mixin xl`** &mdash; allow to apply styling to a single specified
+  size of the viewport;
+- **`@mixin xs-to-sm`**, **`@mixin xs-to-md`**, **`@mixin xs-to-lg`**,
+  **`@mixin sm-to-md`**, **`@mixin sm-to-lg`**, **`@mixin sm-to-xl`**,
+  **`@mixin md-to-lg`**, **`@mixin md-to-xl`**, **`@mixin lg-to-xl`** &mdash;
+ allow to apply styling for a range of viewport sizes, from the first mentioned
+ in the mixin name to the last one, both inclusive.
+
+The both kinds of these mixins you can use the same way:
+```scss
+// style.scss
+
+.someClass {
+  // General style
+  background: green;
+
+  // The element will become red on the smallest screens (XS to SM), which means
+  // any screen smaller than MD.
+  @include xs-to-sm {
+    background: red;
+  }
+}
+```
