@@ -73,5 +73,23 @@ For convenient development you can link this package into your host package:
     the `topcoder-react-utils` package, so that any changes you do there become
     automatically available to the host package.
 
+CI/CD is set up with CircleCI 2.0 for this repo. A commit to any branch, beside
+`master` will trigger testing of the commited code (it will run `$ npm test` and
+ensures that it does not fail). A commit to the protected `master` branch (only
+organization members and repo admins can commit to `master`) will trigger the
+testing, and, if successful, release of the updated package to the NPM registry.
+
+For successful release to NPM you should bump the package version in the
+`package.json`. To do it conveniently you can use one of the commands:
+- `$ npm version patch`
+- `$ npm version minor`
+- `$ npm version major`
+
+Say, if the current package version is `v0.1.2` these commands will bump `2`,
+`1`, and `0`, correspondingly. Mind that `patch` updates should not introduce
+any breaking changes into the codebase! Breaking changes should be done via
+`minor` or `major` update, and they should be documented in
+the [CHANGELOG](CHANGELOG.md).
+
 ### <a name="license">License</a>
 Topcoder React Utils is [MIT Licensed](LICENSE.md)
