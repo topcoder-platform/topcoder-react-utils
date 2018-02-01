@@ -1,3 +1,8 @@
+![Dev Build Status](https://img.shields.io/circleci/project/github/topcoder-platform/topcoder-react-utils/develop.svg?label=develop)
+![Master Build Status](https://img.shields.io/circleci/project/github/topcoder-platform/topcoder-react-utils/master.svg?label=master)
+![Latest NPM Release](https://img.shields.io/npm/v/topcoder-react-utils.svg)
+![NPM Downloads](https://img.shields.io/npm/dm/topcoder-react-utils.svg)
+
 # Topcoder React Utils
 The [Topcoder](https://www.topcoder.com) collection of generic ReactJS
 configurations, components and utilities to be shared between all internal and
