@@ -48,6 +48,7 @@ configurations for [ESLint](https://eslint.org/);
 - [**Webpack Configurations**](docs/webpack-config.md) &mdash; Standard configurations for [Webpack](https://webpack.js.org/).
 
 ### <a name="components">Components</a>
+- [**`Avatar`**](docs/avatar.md) &mdash; The standard component for user avatars;
 - [**`Button`**](docs/button.md) &mdash; Handles buttons and button-like links
   (components that look like regular buttons, but behave as links) in the same
   uniform manner;
