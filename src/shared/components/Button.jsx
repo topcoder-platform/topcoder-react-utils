@@ -78,7 +78,7 @@ Button.propTypes = {
   size: PT.string,
   theme: PT.shape({
     button: PT.string.isRequired,
-    disabled: PT.string.isRequired,
+    disabled: PT.string,
     link: PT.string,
     regular: PT.string,
   }).isRequired,

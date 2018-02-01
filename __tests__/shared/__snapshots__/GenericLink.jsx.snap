@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Matches snapshots in a minimalistic example 1`] = `
+<button
+  className={null}
+  onClick={[Function]}
+>
+  {"to":"SOME/TEST/URL","className":null,"onMouseDown":null,"replace":false,"children":"LINK"}
+</button>
+`;
+
+exports[`Matches snapshots when rendered as <a> element 1`] = `
+<a
+  className={null}
+  href="SOME/TEST/URL"
+  onClick={null}
+  onMouseDown={null}
+  rel="noopener noreferrer"
+  target=""
+>
+  LINK
+</a>
+`;
+
+exports[`Matches snapshots when rendered as <a> element 2`] = `
+<a
+  className={null}
+  href="SOME/TEST/URL"
+  onClick={null}
+  onMouseDown={null}
+  rel="noopener noreferrer"
+  target="_blank"
+>
+  LINK
+</a>
+`;

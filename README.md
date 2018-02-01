@@ -39,13 +39,16 @@ only need to call `adopt-dev-deps` again if you update
 `topcoder-react-utils` to a newer version.
 
 ### <a name="configurations">Configurations</a>
-- [**Babel Configurations**](docs/babel-config.md) &mdash; Standard configurations
-for [Babel](https://babeljs.io/);
+- [**Babel Configurations**](docs/babel-config.md) &mdash; Standard
+  configurations for [Babel](https://babeljs.io/);
 - [**ESLint Configurations**](docs/eslint-config.md) &mdash; Standard
-configurations for [ESLint](https://eslint.org/);
+  configurations for [ESLint](https://eslint.org/);
+- [**Jest Configurations**](docs/jest-config.md) &mdash; Standard configurations
+  for [Jest](https://facebook.github.io/jest/);
 - [**Stylelint Configurations**](docs/stylelint-config.md) &mdash; Standard
   configurations for [Stylelint](https://stylelint.io)
-- [**Webpack Configurations**](docs/webpack-config.md) &mdash; Standard configurations for [Webpack](https://webpack.js.org/).
+- [**Webpack Configurations**](docs/webpack-config.md) &mdash; Standard
+  configurations for [Webpack](https://webpack.js.org/).
 
 ### <a name="components">Components</a>
 - [**`Avatar`**](docs/avatar.md) &mdash; The standard component for user avatars;
@@ -59,12 +62,13 @@ configurations for [ESLint](https://eslint.org/);
 - [**`ScalableRect`**](docs/scalable-rect.md) &mdash; Container that keeps
   the specified aspect ratio regardless the width you set.
   
-
 ### <a name="utilities">Utilities</a>
 - [**Global Styles**](docs/global-styles.md) &mdash; Global styles necessary for
   a generic application;
 - [**SCSS Mixins**](docs/scss-mixins.md) &mdash; Collection of useful style
-  mixins.
+  mixins;
+- [**Jest utils**](docs/jest-utils.md) &mdash; Collection of helpers to be used
+  in Jest tests code.
 
 ### <a name="development">Development</a>
 For convenient development you can link this package into your host package:

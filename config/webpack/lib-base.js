@@ -38,6 +38,7 @@ module.exports = function configFactory(ops) {
       'lodash',
       'moment',
       'prop-types',
+      'raf',
       'react',
       'react-css-super-themr',
       'react-dom',

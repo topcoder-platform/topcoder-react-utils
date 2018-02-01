@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Matches snapshots when active 1`] = `
+<button
+  className="BUTTON_CLASS ACTIVE_CLASS REGULAR_CLASS"
+  onClick={[Function]}
+  onMouseDown={null}
+>
+  BUTTON
+</button>
+`;
+
+exports[`Matches snapshots when active 2`] = `
+<button
+  className="BUTTON_CLASS ACTIVE_CLASS"
+  onClick={[Function]}
+  onMouseDown={null}
+>
+  BUTTON
+</button>
+`;
+
+exports[`Matches snapshots when disabled 1`] = `
+<div
+  className="BUTTON_CLASS XL_CLASS DISABLED_CLASS"
+>
+  BUTTON
+</div>
+`;
+
+exports[`Matches snapshots when disabled 2`] = `
+<div
+  className="BUTTON_CLASS XL_CLASS"
+>
+  BUTTON
+</div>
+`;
+
+exports[`Matches snapshots when rendered as link 1`] = `
+<Link
+  className="BUTTON_CLASS ACTIVE_CLASS LINK_CLASS"
+  enforceA={false}
+  onClick={null}
+  onMouseDown={null}
+  openNewTab={false}
+  replace={false}
+  to="/SOME/TEST/URL"
+>
+  BUTTON
+</Link>
+`;
+
+exports[`Matches snapshots when rendered as link 2`] = `
+<Link
+  className="BUTTON_CLASS ACTIVE_CLASS"
+  enforceA={false}
+  onClick={null}
+  onMouseDown={null}
+  openNewTab={false}
+  replace={false}
+  to="/SOME/TEST/URL"
+>
+  BUTTON
+</Link>
+`;

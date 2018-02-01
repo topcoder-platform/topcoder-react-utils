@@ -33,7 +33,7 @@ export default function GenericLink(props) {
         href={to}
         onClick={onClick}
         onMouseDown={onMouseDown}
-        rel={openNewTab ? 'noopener noreferrer' : ''}
+        rel="noopener noreferrer"
         target={openNewTab ? '_blank' : ''}
       >{children}</a>
     );

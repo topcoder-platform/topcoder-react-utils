@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Matches snapshots 1`] = `"DEFAULT_AVATAR"`;
+
+exports[`Matches snapshots 2`] = `
+<img
+  alt="Avatar"
+  className="avatarClassName"
+  src="url/to/the/avatar"
+/>
+`;

@@ -8,7 +8,7 @@
 import PT from 'prop-types';
 import React from 'react';
 
-function Avatar({ DefaultAvatar, theme, url }) {
+export default function Avatar({ DefaultAvatar, theme, url }) {
   return url
     ? <img alt="Avatar" src={url} className={theme.avatar} />
     : <DefaultAvatar className={theme.avatar} />;
@@ -19,7 +19,7 @@ Avatar.defaultProps = {
 };
 
 Avatar.propTypes = {
-  DefaultAvatar: PT.node.isRequired,
+  DefaultAvatar: PT.func.isRequired,
   theme: PT.shape({
     avatar: PT.string.isRequired,
   }).isRequired,
