@@ -60,7 +60,7 @@ module.exports = function configFactory(ops) {
   fs.writeFileSync(buildInfoUrl, JSON.stringify(buildInfo));
 
   /* Entry points normalization. */
-  const entry = _.isObject(o.entry)
+  const entry = _.isPlainObject(o.entry)
     ? _.cloneDeep(o.entry) : { main: o.entry };
   if (!entry.polyfills) entry.polyfills = [];
   else if (!_.isArray(entry.polyfills)) {
