@@ -13,8 +13,12 @@ external ReactJS projects developed by the Topcoder community.
 
 ### <a name="installation">Installation</a>
 Install this package as
-```
+```bash
 $ npm install --save topcoder-react-utils
+```
+Import the global stylesheet into the root ReactJS component of your app:
+```js
+import 'topcoder-react-utils/dist/style.css';
 ```
 
 You are done if you only use components and utilities provided by this
@@ -39,18 +43,22 @@ configurations for [ESLint](https://eslint.org/);
 - [**Webpack Configurations**](docs/webpack-config.md) &mdash; Standard configurations for [Webpack](https://webpack.js.org/).
 
 ### <a name="components">Components</a>
-- [**Button**](docs/button.md) &mdash; Handles buttons and button-like links
-(components that look like regular buttons, but behave as links) in the same
-uniform manner;
-- [**Link and NavLink**](docs/link-and-navlink.md) &mdash; Auxiliary wrappers
-around [React Router](https://github.com/ReactTraining/react-router)'s `<Link>`
-and `<NavLink>` components; they help to handle external and internal links in
-the same uniform manner.
+- [**`Button`**](docs/button.md) &mdash; Handles buttons and button-like links
+  (components that look like regular buttons, but behave as links) in the same
+  uniform manner;
+- [**`Link` and `NavLink`**](docs/link-and-navlink.md) &mdash; Auxiliary wrappers
+  around [React Router](https://github.com/ReactTraining/react-router)'s `<Link>`
+  and `<NavLink>` components; they help to handle external and internal links in
+  the same uniform manner;
+- [**`ScalableRect`**](docs/scalable-rect) &mdash; Container that keeps
+  the specified aspect ratio regardless its width you set.
+  
 
 ### <a name="utilities">Utilities</a>
-- [**Global Styles**](docs/global-styles.md) &mdash; TO BE DOCUMENTED;
+- [**Global Styles**](docs/global-styles.md) &mdash; Global styles necessary for
+  a generic application;
 - [**SCSS Mixins**](docs/scss-mixins.md) &mdash; Collection of useful style
-mixins;
+  mixins.
 
 ### <a name="development">Development</a>
 For convenient development you can link this package into your host package:
@@ -80,13 +88,11 @@ organization members and repo admins can commit to `master`) will trigger the
 testing, and, if successful, release of the updated package to the NPM registry.
 
 For successful release to NPM you should bump the package version in the
-`package.json`. To do it conveniently you can use one of the commands:
-- `$ npm version patch`
-- `$ npm version minor`
-- `$ npm version major`
-
-Say, if the current package version is `v0.1.2` these commands will bump `2`,
-`1`, and `0`, correspondingly. Mind that `patch` updates should not introduce
+`package.json`. To do it conveniently you can use `$ npm version UPDATE_TYPE`
+command, where `UPDATE_TYPE` stays for one of `patch`/`minor`/`major` to bump up
+`2`, `1`, or `0` in a sample version number `v0.1.2`. This command will update
+`package.json` and `package-lock.json`, and create a new commit and tag in the
+checked-out Git branch. Mind that `patch` updates should not introduce
 any breaking changes into the codebase! Breaking changes should be done via
 `minor` or `major` update, and they should be documented in
 the [CHANGELOG](CHANGELOG.md).
