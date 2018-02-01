@@ -50,8 +50,8 @@ configurations for [ESLint](https://eslint.org/);
   around [React Router](https://github.com/ReactTraining/react-router)'s `<Link>`
   and `<NavLink>` components; they help to handle external and internal links in
   the same uniform manner;
-- [**`ScalableRect`**](docs/scalable-rect) &mdash; Container that keeps
-  the specified aspect ratio regardless its width you set.
+- [**`ScalableRect`**](docs/scalable-rect.md) &mdash; Container that keeps
+  the specified aspect ratio regardless the width you set.
   
 
 ### <a name="utilities">Utilities</a>

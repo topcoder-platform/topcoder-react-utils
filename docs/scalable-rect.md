@@ -1,7 +1,8 @@
 # ScalableRect
-Container that keeps the specified aspect ratio regardless its width you set.
+Container that keeps the specified aspect ratio regardless the width you set.
 
-[Example](#example)
+[Code Example](#example),
+[Live Demo](https://community-app.topcoder-dev.com/examples/scalable-rect)
 
 **Why?** &mdash; From time to time you need to render an HTML element with
 a specified aspect ratio of its sizes. HTML/CSS allows to achieve that, but
