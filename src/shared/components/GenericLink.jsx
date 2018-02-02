@@ -58,7 +58,7 @@ export default function GenericLink(props) {
          * preventing event processing by React Router. */
         const url = new Url(to);
         if (url.origin !== document.location.origin) {
-          document.location = to;
+          document.location.assign(to);
           e.preventDefault();
 
         /* Scroll to the top-left corner of the page, just in case the link

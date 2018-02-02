@@ -1,4 +1,4 @@
-/* global window */
+/* global document, window */
 
 import GenericLink from 'components/GenericLink';
 import PT from 'prop-types';
@@ -65,15 +65,18 @@ test('onClick(..) works when rendered as custom <Link>', () => {
   simulate.click(link);
   expect(clickHandler).toHaveBeenCalled();
 
+  const domain = 'https://some.domain.com';
+  document.location.assign = jest.fn();
   doc = renderDom((
     <GenericLink
       className="LINK"
       routerLinkType={Link}
-      to="https://some.domain.com"
+      to={domain}
     >LINK</GenericLink>
   ));
   link = findInDomByClass(doc, 'LINK');
   simulate.click(link);
 
+  expect(document.location.assign).toHaveBeenCalledWith(domain);
   expect(window.scroll).toHaveBeenCalledTimes(1);
 });

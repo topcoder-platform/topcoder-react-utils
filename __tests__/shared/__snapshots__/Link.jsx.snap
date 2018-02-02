@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Matches snapshots 1`] = `
+<GenericLink
+  className={null}
+  enforceA={false}
+  onClick={null}
+  onMouseDown={null}
+  openNewTab={false}
+  replace={false}
+  routerLinkType={[Function]}
+  to=""
+/>
+`;

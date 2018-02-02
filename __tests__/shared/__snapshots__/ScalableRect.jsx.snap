@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshots match 1`] = `
+<div
+  className="src-shared-components-ScalableRect-___style__container___3YhfN"
+  style={
+    Object {
+      "paddingBottom": "100%",
+    }
+  }
+>
+  <div
+    className="src-shared-components-ScalableRect-___style__wrapper___3qZoW"
+  >
+    CONTENT
+  </div>
+</div>
+`;
+
+exports[`Snapshots match 2`] = `
+<div
+  className="CLASS_NAME"
+>
+  <div
+    className="src-shared-components-ScalableRect-___style__container___3YhfN"
+    style={
+      Object {
+        "paddingBottom": "100%",
+      }
+    }
+  >
+    <div
+      className="src-shared-components-ScalableRect-___style__wrapper___3qZoW"
+    >
+      CONTENT
+    </div>
+  </div>
+</div>
+`;
