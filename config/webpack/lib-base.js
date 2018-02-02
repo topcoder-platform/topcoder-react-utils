@@ -112,6 +112,14 @@ module.exports = function configFactory(ops) {
             },
           }],
         }),
+      }, {
+        /* Loads CSS stylesheets. It is assumed that CSS stylesheets come only
+        * from dependencies, as we use SCSS inside our own code. */
+        test: /\.css$/,
+        use: ExtractCssChunks.extract({
+          fallback: 'style-loader',
+          use: ['css-loader'],
+        }),
       }],
     },
     resolve: {
