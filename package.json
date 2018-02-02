@@ -91,5 +91,5 @@
     "prepublishOnly": "npm run build",
     "test": "npm run lint && npm run jest"
   },
-  "version": "0.0.39"
+  "version": "0.1.0"
 }
