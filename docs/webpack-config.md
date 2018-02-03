@@ -208,7 +208,7 @@ mutation of the config object.
 
   Extends and tunes [`config/webpack/lib-base`](#lib-base) to use *production*
   Babel environment, and sets `[hash:base64:6]` as the template for generated
-  CSS classnames. Also enables optimizations for generated CSS and JS code.
+  CSS classnames.
 
 ### Example
 Say, you want to setup Webpack configuration for development build in a new
