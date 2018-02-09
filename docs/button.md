@@ -87,19 +87,19 @@ First of all, you want to define button theme, here is a good example to start f
   opacity: 0.3;
 }
 
-/* To ensure that visited button-like links look the same as the non-visited
- * ones (as typical buttons should not look different if they used to be clicked
- * before). */
-.link:visited {
-  color: black;
-  font: normal 15px arial;
-}
-
 /* .link and .regular classes are applied only to active buttons and button-like
  * links. Here we provide visual feedback for button "active", "focus", and
  * "hover" states. */
 .link,
 .regular {
+  /* To ensure that visited button-like links look the same as the non-visited
+  * ones (as typical buttons should not look different if they used to be clicked
+  * before). */
+  &:visited {
+    color: black;
+    font: normal 15px arial;
+  }
+
   &:focus {
     box-shadow: 0 0 2px 1px #cfe6ff;
     border-color: #59a7ff;
