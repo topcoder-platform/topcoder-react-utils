@@ -1,5 +1,13 @@
 # Topcoder React Utils Changelog
 
+### v0.2.0
+- Webpack configs for apps updated to emulate `process.env.BABEL_ENV` instead of
+  `process.env.NODE_ENV`. The original intent behind emulation of that constant
+  was to distinguish development and production bundles during the runtime; in
+  our code depending on this package it is `BABEL_ENV` allows to distinguish
+  the builds, while `NODE_ENV` serve to switch between dev and prod APIs to be
+  used during the runtime.
+
 ### v0.1.0
 The first release of the package. In general, everything is set up, we are going
 to move in difference stuff, without changing created package structure.

@@ -113,10 +113,10 @@ mutation of the config object.
     - [`react-hot-loader/patch`](https://github.com/gaearon/react-hot-loader)
     - [`webpack-hot-middleware/client?reload=true`](https://github.com/glenjamin/webpack-hot-middleware)
   - Emulates the following environment variables:
-    - `DEV_TOOLS` &mdash; It is set to *true* to signal the code that
-      Redux dev tools should be enabled;
-    - `NODE_ENV` &mdash; It is set to *development* to inform any
+    - **`BABEL_ENV`** &mdash; It is set to *development* to inform any
       interested code that it is running in dev mode.
+    - **`DEV_TOOLS`** &mdash; It is set to *true* to signal the code that
+      Redux dev tools should be enabled;
   - Adds the following plugins:
     - [HotModuleReplacementPlugin](https://webpack.js.org/plugins/hot-module-replacement-plugin/);
     - [NoEmitOnErrorsPlugin](https://webpack.js.org/plugins/no-emit-on-errors-plugin/);
@@ -128,7 +128,7 @@ mutation of the config object.
   it differs from that in the following:
   - *production* Babel environment is enforced;
   - Emulates the following environment variables:
-    - `NODE_ENV` &mdash; It is set to *production*.
+    - **`BABEL_ENV`** &mdash; It is set to *production*.
   - Adds the following plugins:
     - [OptimizeCssAssetsPlugin](https://www.npmjs.com/package/optimize-css-assets-webpack-plugin);
     - [UglifyJsPlugin](https://webpack.js.org/plugins/uglifyjs-webpack-plugin/).
