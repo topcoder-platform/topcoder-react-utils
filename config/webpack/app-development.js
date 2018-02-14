@@ -38,6 +38,7 @@ module.exports = function configFactory(ops) {
         'process.env': {
           BABEL_ENV: JSON.stringify('development'),
           DEV_TOOLS: JSON.stringify(true),
+          NODE_ENV: JSON.stringify('development'),
         },
       }),
       new webpack.HotModuleReplacementPlugin(),
