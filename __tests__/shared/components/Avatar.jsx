@@ -1,6 +1,6 @@
 import Avatar from 'components/Avatar';
 import React from 'react';
-import { snapshot } from '../../jest-utils';
+import { snapshot } from 'utils/jest';
 
 const testTheme = {
   avatar: 'avatarClassName',

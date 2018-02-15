@@ -65,10 +65,16 @@ only need to call `adopt-dev-deps` again if you update
 ### <a name="utilities">Utilities</a>
 - [**Global Styles**](docs/global-styles.md) &mdash; Global styles necessary for
   a generic application;
+- [**Isomorphy**](docs/isomorphy-utils.md) &mdash; Collection of helpers to deal
+  with isomorphic aspects of the code;
+- [**Jest utils**](docs/jest-utils.md) &mdash; Collection of helpers to be used
+  in Jest tests code;
 - [**SCSS Mixins**](docs/scss-mixins.md) &mdash; Collection of useful style
   mixins;
-- [**Jest utils**](docs/jest-utils.md) &mdash; Collection of helpers to be used
-  in Jest tests code.
+- [**Server**](docs/server.md) &mdash; Easy creation and launch of web-server
+  with standard configuration, that serves a ReactJS application with or without
+  server-side rendering, supports development tools (Hop Module Reloading), and
+  can be further configured for the needs of specific projects.
 
 ### <a name="development">Development</a>
 For convenient development you can link this package into your host package:
