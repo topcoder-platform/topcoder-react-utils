@@ -8,6 +8,7 @@ module.exports = {
     '\\.(scss|css)$': 'identity-obj-proxy',
   },
   rootDir: '../..',
+  testMatch: ['**/__tests__/**/*.js?(x)'],
   testPathIgnorePatterns: [
     '/node_modules/',
   ],

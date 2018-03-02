@@ -36,6 +36,7 @@ module.exports = function configFactory(ops) {
       new webpack.DefinePlugin({
         'process.env': {
           BABEL_ENV: JSON.stringify('production'),
+          NODE_ENV: JSON.stringify('production'),
         },
       }),
 
