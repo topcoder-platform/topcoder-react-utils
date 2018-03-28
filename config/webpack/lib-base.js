@@ -64,7 +64,10 @@ module.exports = function configFactory(ops) {
          * the original location of the font assets in
          * the library being build. */
         test: /\.(eot|otf|svg|ttf|woff2?)$/,
-        include: [/src[/\\]assets[/\\]fonts/],
+        include: [
+          /node_modules/,
+          /src[/\\]assets[/\\]fonts/,
+        ],
         loader: 'file-loader',
         options: {
           emitFile: false,

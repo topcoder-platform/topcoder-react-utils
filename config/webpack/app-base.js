@@ -110,7 +110,10 @@ module.exports = function configFactory(ops) {
       rules: [{
         /* Loads font resources from "src/assets/fonts" folder. */
         test: /\.(eot|otf|svg|ttf|woff2?)$/,
-        include: [/src[/\\]assets[/\\]fonts/],
+        include: [
+          /node_modules/,
+          /src[/\\]assets[/\\]fonts/,
+        ],
         loader: 'file-loader',
         options: {
           outputPath: '/fonts/',
