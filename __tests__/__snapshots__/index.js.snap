@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Exports expected stuff 1`] = `
+Object {
+  "Avatar": [Function],
+  "Button": [Function],
+  "Link": [Function],
+  "NavLink": [Function],
+  "ScalableRect": [Function],
+  "utils": Object {
+    "isomorphy": Object {
+      "buildTimestamp": [Function],
+      "isClientSide": [Function],
+      "isDevBuild": [Function],
+      "isProdBuild": [Function],
+      "isServerSide": [Function],
+    },
+  },
+}
+`;
