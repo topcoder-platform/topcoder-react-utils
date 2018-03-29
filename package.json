@@ -24,6 +24,7 @@
     "react-helmet": "^5.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
     "request-ip": "^2.0.2",
     "serialize-javascript": "^1.4.0",
     "serve-favicon": "^2.4.5",
@@ -94,8 +95,8 @@
     "url": "git+https://github.com/topcoder-platform/topcoder-react-utils.git"
   },
   "scripts": {
-    "build": "npm run clean && ./node_modules/.bin/webpack --env=production --colors --display-optimization-bailout --profile --progress && BABEL_END=production babel src/server --out-dir dist/server",
-    "build:dev": "npm run clean && ./node_modules/.bin/webpack --env=development --bail --colors --display-optimization-bailout --profile --progress --watch && BABEL_ENV=development babel src/server --out-dir dist/server --watch",
+    "build": "npm run clean && ./node_modules/.bin/webpack --env=production --colors --display-optimization-bailout --profile --progress && BABEL_END=production babel src --out-dir dist/server-side",
+    "build:dev": "npm run clean && (./node_modules/.bin/webpack --env=development --bail --colors --display-optimization-bailout --profile --progress --watch | BABEL_ENV=development babel src --out-dir dist/server-side --watch)",
     "clean": "rm -rf dist",
     "jest": "jest --no-cache --maxWorkers=4 --config config/jest/default.js",
     "lint": "npm run lint:js && npm run lint:scss",

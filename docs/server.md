@@ -57,6 +57,7 @@ props:
   it is not async in NodeJS.
 - **`beforeRender`** &mdash; *Function* &mdash; Optional. The hook to be
   executed right before the generation of HTML template of the page. If given,
+  it will receive the HTTP request as its only argument, and
   it should return a promise that resolves to an object with the following
   fields (all are optional):
   - **`config`** &mdash; *Object* &mdash; Config object to inject into the
@@ -66,5 +67,6 @@ props:
   - **`store`** &mdash; *Object* &mdash; Redux store which state will be
     injected into HTML template as the initial state of the app.
 - **`onExpressJsSetup`** &mdash; *Function* &mdash; Custom setup of ExpressJS
-  server.
+  server. Express server instance will be passed in as the only argument to this
+  function.
 - **`port`** &mdash; *Number|String* &mdash; The port to be used by the server.

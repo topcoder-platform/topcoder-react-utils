@@ -25,14 +25,14 @@ export default async function factory(webpackConfig, options) {
     server.use(favicon(options.favicon));
   }
 
-  server.use(bodyParser.json());
+  server.use(bodyParser.json({ limit: '300kb' }));
   server.use(bodyParser.urlencoded({ extended: false }));
   server.use(cookieParser());
   server.use(requestIp.mw());
 
   loggerMiddleware.token('ip', req => req.clientIp);
   const FORMAT = ':ip > :status :method :url :response-time ms :res[content-length] :referrer :user-agent';
-  server.use(loggerMiddleware(FORMAT), {
+  server.use(loggerMiddleware(FORMAT, {
     stream: new stream.Writable({
       decodeStrings: false,
       write: (chunk, encoding, cb) => {
@@ -40,7 +40,7 @@ export default async function factory(webpackConfig, options) {
         cb();
       },
     }),
-  });
+  }));
 
   /* Setup of Hot Module Reloading for development environment.
    * These dependencies are not used, nor installed for production use,
