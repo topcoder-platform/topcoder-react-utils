@@ -88,8 +88,8 @@ module.exports = function configFactory(ops) {
         filename: '[name].css',
       }),
       new webpack.DefinePlugin({
-        BUILD_RNDKEY: JSON.stringify(buildInfo.rndkey),
-        'process.env': {
+        global: {
+          BUILD_RNDKEY: JSON.stringify(buildInfo.rndkey),
           BUILD_TIMESTAMP: JSON.stringify(buildInfo.timestamp),
           FRONT_END: true,
         },

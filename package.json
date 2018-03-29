@@ -6,16 +6,30 @@
     "url": "https://github.com/topcoder-platform/topcoder-react-utils/issues"
   },
   "dependencies": {
+    "atob": "^2.0.3",
     "babel-runtime": "^6.26.0",
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.2",
+    "helmet": "^3.11.0",
     "lodash": "^4.17.4",
     "moment": "^2.20.1",
+    "morgan": "^1.9.0",
+    "node-forge": "^0.7.1",
     "prop-types": "^15.6.0",
     "raf": "^3.4.0",
     "react": "^16.1.1",
     "react-css-super-themr": "^2.2.0",
     "react-dom": "^16.1.1",
+    "react-helmet": "^5.2.0",
+    "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "url-parse": "^1.2.0"
+    "redux": "^3.7.2",
+    "request-ip": "^2.0.2",
+    "serialize-javascript": "^1.4.0",
+    "serve-favicon": "^2.4.5",
+    "url-parse": "^1.2.0",
+    "winston": "^2.4.0"
   },
   "description": "Topcoder collection of generic ReactJS components and utils",
   "devDependencies": {
@@ -46,7 +60,6 @@
     "file-loader": "^1.1.6",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^22.1.4",
-    "node-forge": "^0.7.1",
     "node-sass": "^4.7.2",
     "nodelist-foreach-polyfill": "^1.2.0",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
@@ -61,6 +74,7 @@
     "stylelint": "^8.4.0",
     "stylelint-config-standard": "^18.0.0",
     "webpack": "^3.10.0",
+    "webpack-dev-middleware": "^2.0.5",
     "webpack-hot-middleware": "^2.21.0",
     "webpack-merge": "^4.1.1"
   },
@@ -81,8 +95,8 @@
     "url": "git+https://github.com/topcoder-platform/topcoder-react-utils.git"
   },
   "scripts": {
-    "build": "npm run clean && ./node_modules/.bin/webpack --env=production --colors --display-optimization-bailout --profile --progress",
-    "build:dev": "npm run clean && ./node_modules/.bin/webpack --env=development --bail --colors --display-optimization-bailout --profile --progress --watch",
+    "build": "npm run clean && ./node_modules/.bin/webpack --env=production --colors --display-optimization-bailout --profile --progress && BABEL_END=production babel src --out-dir dist/server-side",
+    "build:dev": "npm run clean && (./node_modules/.bin/webpack --env=development --bail --colors --display-optimization-bailout --profile --progress --watch | BABEL_ENV=development babel src --out-dir dist/server-side --watch)",
     "clean": "rm -rf dist",
     "jest": "jest --no-cache --maxWorkers=4 --config config/jest/default.js",
     "lint": "npm run lint:js && npm run lint:scss",
@@ -91,5 +105,5 @@
     "prepublishOnly": "npm run build",
     "test": "npm run lint && npm run jest"
   },
-  "version": "0.2.2"
+  "version": "0.2.3"
 }

@@ -81,7 +81,7 @@ mutation of the config object.
     Also `resolve.symlinks` Webpack option is set to *false* to avoid problems
     with resolution of assets from packages linked with `npm link`.
 
-  - The following environment variables will be emulated inside the output
+  - The following global variables will be emulated inside the output
     JS bundle:
     - **`BUILD_RNDKEY`** &mdash; A random 32 bit key that can be used
       for encryption, it is set just as a global variable accessible in
