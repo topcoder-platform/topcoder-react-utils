@@ -3,6 +3,7 @@
  */
 
 import _ from 'lodash';
+import config from 'config';
 import forge from 'node-forge';
 import fs from 'fs';
 import path from 'path';
@@ -12,6 +13,8 @@ import serializeJs from 'serialize-javascript';
 import { Helmet } from 'react-helmet';
 import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
+
+const sanitizedConfig = _.omit(config, 'SECRET');
 
 /**
  * Reads build-time information about the app. This information is generated
@@ -70,14 +73,14 @@ export default async function factory(webpackConfig, options) {
     global.BUILD_INFO = buildInfo;
 
     const [{
-      config,
+      configToInject,
       extraScripts,
       store,
     }, {
       cipher,
       iv,
     }] = await Promise.all([
-      ops.beforeRender(req),
+      ops.beforeRender(req, sanitizedConfig),
       prepareCipher(buildInfo.key),
     ]);
 
@@ -116,7 +119,7 @@ export default async function factory(webpackConfig, options) {
      * Hovewer, for a number of reasons, encryption of injected data is still
      * better than injection of a plain text. */
     cipher.update(forge.util.createBuffer(JSON.stringify({
-      CONFIG: config,
+      CONFIG: configToInject || sanitizedConfig,
       ISTATE: store ? store.getState() : null,
     }), 'utf8'));
     cipher.finish();

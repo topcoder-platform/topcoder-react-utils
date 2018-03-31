@@ -2,7 +2,6 @@
  * Standard web servers.
  */
 
-import atob from 'atob';
 import _ from 'lodash';
 import http from 'http';
 
@@ -12,10 +11,6 @@ import { isServerSide } from 'utils/isomorphy';
 import 'raf/polyfill';
 
 import serverFactory from './server';
-
-/* Polyfill for codes that rely on atob(..) function present in broswer
- * environments. */
-global.atob = atob;
 
 /* TODO: Should use the isClientSide(..) method from isomorphy module, once that
  * module is moved to topcoder-react-utils. */

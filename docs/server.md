@@ -55,13 +55,18 @@ props:
   logging. Defaults to `console`, otherwise it is expected to provide the same
   interface. Note that `console` is not efficient for production use, because
   it is not async in NodeJS.
-- **`beforeRender`** &mdash; *Function* &mdash; Optional. The hook to be
-  executed right before the generation of HTML template of the page. If given,
-  it will receive the HTTP request as its only argument, and
-  it should return a promise that resolves to an object with the following
-  fields (all are optional):
-  - **`config`** &mdash; *Object* &mdash; Config object to inject into the
-    template.
+- **`beforeRender`** &mdash; *Function(req, config)* &mdash; Optional. The hook to be
+  executed right before the generation of HTML template of the page.
+
+  **Arguments:**
+  - **`req`** &mdash; *Object* &mdash; ExpressJS HTTP request;
+  - **`config`** &mdash; *Object* &mdash; App config that server wants to inject
+    into HTML page template;
+  
+  **Returns:** Promise that resolves to an object with the following fields:
+  - **`config`** &mdash; *Object* &mdash; Optional. The actual config object
+    to be injected into the page. If omitted, the one proposed by the server
+    will be used.
   - **`extraScripts`** &mdash; *String[]* &mdash; Additional script tags to be
     injected into the page.
   - **`store`** &mdash; *Object* &mdash; Redux store which state will be

@@ -9,6 +9,7 @@
     "atob": "^2.0.3",
     "babel-runtime": "^6.26.0",
     "body-parser": "^1.18.2",
+    "config": "^1.30.0",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.2",
     "helmet": "^3.11.0",
@@ -105,5 +106,5 @@
     "prepublishOnly": "npm run build",
     "test": "npm run lint && npm run jest"
   },
-  "version": "0.2.3"
+  "version": "0.2.4"
 }
