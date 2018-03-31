@@ -8,6 +8,7 @@ Object {
   "NavLink": [Function],
   "ScalableRect": [Function],
   "utils": Object {
+    "config": Config {},
     "isomorphy": Object {
       "buildTimestamp": [Function],
       "isClientSide": [Function],
