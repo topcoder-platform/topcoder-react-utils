@@ -104,4 +104,6 @@ export default async function factory(webpackConfig, options) {
     /* Finally, the error response. */
     res.status(status).send(errorResponse);
   });
+
+  return server;
 }
