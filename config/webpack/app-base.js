@@ -107,6 +107,9 @@ module.exports = function configFactory(ops) {
       symlinks: false,
     },
     module: {
+      noParse: [
+        /node_modules[\\/]config/,
+      ],
       rules: [{
         /* Loads font resources from "src/assets/fonts" folder. */
         test: /\.(eot|otf|svg|ttf|woff2?)$/,

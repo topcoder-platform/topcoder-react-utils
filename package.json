@@ -6,7 +6,6 @@
     "url": "https://github.com/topcoder-platform/topcoder-react-utils/issues"
   },
   "dependencies": {
-    "atob": "^2.0.3",
     "babel-runtime": "^6.26.0",
     "body-parser": "^1.18.2",
     "config": "^1.30.0",
@@ -106,5 +105,5 @@
     "prepublishOnly": "npm run build",
     "test": "npm run lint && npm run jest"
   },
-  "version": "0.2.5"
+  "version": "0.2.6"
 }
