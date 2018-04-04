@@ -25,6 +25,7 @@ const sanitizedConfig = _.omit(config, 'SECRET');
  * @param {String} context Webpack context path used during the build.
  * @return {Promise} Resolves to the build-time information.
  */
+/* TODO: Use sync read, to simplify related code. */
 function getBuildInfo(context) {
   const url = path.resolve(context, '.build-info');
   return new Promise((resolve, reject) => {
@@ -48,6 +49,7 @@ function prepareCipher(key) {
     forge.random.getBytes(32, (err, iv) => {
       if (err) reject(err);
       else {
+        console.log('KEY', key);
         const cipher = forge.cipher.createCipher('AES-CBC', key);
         cipher.start({ iv });
         resolve({ cipher, iv });
@@ -65,13 +67,14 @@ function prepareCipher(key) {
 export default async function factory(webpackConfig, options) {
   const buildInfo = await getBuildInfo(webpackConfig.context);
 
+  global.TRU_CONSTANTS = buildInfo;
+  console.log('BUILD INFO', buildInfo);
+
   const ops = _.defaults(_.clone(options), {
     beforeRender: () => Promise.resolve({}),
   });
 
   return async (req, res) => {
-    global.BUILD_INFO = buildInfo;
-
     const [{
       configToInject,
       extraScripts,

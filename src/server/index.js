@@ -5,18 +5,10 @@
 import _ from 'lodash';
 import http from 'http';
 
-import { isServerSide } from 'utils/isomorphy';
-
 /* Polyfill required by ReactJS. */
 import 'raf/polyfill';
 
 import serverFactory from './server';
-
-/* TODO: Should use the isClientSide(..) method from isomorphy module, once that
- * module is moved to topcoder-react-utils. */
-if (!isServerSide()) {
-  throw new Error('Cannot execute server-side code in other environment');
-}
 
 /**
  * Normalizes a port into a number, string, or false.

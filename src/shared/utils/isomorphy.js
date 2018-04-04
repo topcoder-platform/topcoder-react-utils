@@ -7,7 +7,7 @@
  * @return {Boolean}
  */
 export function isClientSide() {
-  return Boolean(global.FRONT_END);
+  return Boolean(global.TRU_FRONT_END);
 }
 
 /**
@@ -15,7 +15,14 @@ export function isClientSide() {
  * @return {Boolean}
  */
 export function isServerSide() {
-  return !global.FRONT_END;
+  return !global.TRU_FRONT_END;
+}
+
+/**
+ * @return {String} Code mode: "development" or "production".
+ */
+function getMode() {
+  return isClientSide() ? global.TRU_CONSTANTS.mode : process.env.BABEL_ENV;
 }
 
 /**
@@ -24,7 +31,7 @@ export function isServerSide() {
  * @return {Boolean}
  */
 export function isDevBuild() {
-  return process.env.BABEL_ENV === 'development';
+  return getMode() === 'development';
 }
 
 /**
@@ -33,7 +40,7 @@ export function isDevBuild() {
  * @return {Boolean}
  */
 export function isProdBuild() {
-  return process.env.BABEL_ENV === 'production';
+  return getMode() === 'production';
 }
 
 /**
@@ -41,6 +48,5 @@ export function isProdBuild() {
  * @return {String} ISO date/time string.
  */
 export function buildTimestamp() {
-  if (isClientSide()) return global.BUILD_TIMESTAMP;
-  return global.BUILD_INFO.timestamp;
+  return global.TRU_CONSTANTS.timestamp;
 }

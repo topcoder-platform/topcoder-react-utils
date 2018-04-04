@@ -95,8 +95,8 @@
     "url": "git+https://github.com/topcoder-platform/topcoder-react-utils.git"
   },
   "scripts": {
-    "build": "npm run clean && ./node_modules/.bin/webpack --env=production --colors --display-optimization-bailout --profile --progress && BABEL_END=production babel src --out-dir dist/src",
-    "build:dev": "npm run clean && (./node_modules/.bin/webpack --env=development --bail --colors --display-optimization-bailout --profile --progress --watch | BABEL_ENV=development babel src --out-dir dist/src --watch)",
+    "build": "npm run clean && ./node_modules/.bin/webpack --env=production --colors --display-optimization-bailout --profile --progress && BABEL_ENV=production babel src/server --out-dir dist/server",
+    "build:dev": "npm run clean && (./node_modules/.bin/webpack --env=development --bail --colors --display-optimization-bailout --profile --progress --watch | BABEL_ENV=development babel src/server --out-dir dist/server --watch)",
     "clean": "rm -rf dist",
     "jest": "jest --no-cache --maxWorkers=4 --config config/jest/default.js",
     "lint": "npm run lint:js && npm run lint:scss",

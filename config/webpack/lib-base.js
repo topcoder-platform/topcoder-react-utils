@@ -39,7 +39,6 @@ module.exports = function configFactory(ops) {
       'lodash',
       'moment',
       'prop-types',
-      'raf',
       'react',
       'react-css-super-themr',
       'react-dom',
@@ -59,6 +58,7 @@ module.exports = function configFactory(ops) {
       }),
     ],
     module: {
+      noParse: [],
       rules: [{
         /* Handles font imports in url(..) instructions in CSS. Effectively,
          * with such configuration it just rewrites those URLs to point to
