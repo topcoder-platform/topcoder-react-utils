@@ -76,6 +76,8 @@ only need to call `adopt-dev-deps` again if you update
   with standard configuration, that serves a ReactJS application with or without
   server-side rendering, supports development tools (Hop Module Reloading), and
   can be further configured for the needs of specific projects.
+- [**Webpack**](docs/webpack-utils.md) &mdash; Various utils related to the
+  Webpack bundling process.
 
 ### <a name="development">Development</a>
 For convenient development you can link this package into your host package:

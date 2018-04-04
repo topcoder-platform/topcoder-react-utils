@@ -1,0 +1,12 @@
+{
+  "presets": [
+    "../config/babel/node-ssr"
+  ],
+  "plugins": [
+    ["module-resolver", {
+      "alias": {
+        "topcoder-react-utils/dist": "./src"
+      }
+    }]
+  ]
+}

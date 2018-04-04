@@ -8,9 +8,9 @@ both at server- and client-side.
 
 Use it this way:
 ```js
-import { utils } from 'topcoder-react-utils';
+import { config } from 'topcoder-react-utils';
 
-const config = utils.config;
+// Some code relying on the config.
 ```
 
 Keep in mind that config still can be different at client- and server-side, due

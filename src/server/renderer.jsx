@@ -49,7 +49,7 @@ function prepareCipher(key) {
     forge.random.getBytes(32, (err, iv) => {
       if (err) reject(err);
       else {
-        console.log('KEY', key);
+        // console.log('KEY', key);
         const cipher = forge.cipher.createCipher('AES-CBC', key);
         cipher.start({ iv });
         resolve({ cipher, iv });
@@ -67,8 +67,8 @@ function prepareCipher(key) {
 export default async function factory(webpackConfig, options) {
   const buildInfo = await getBuildInfo(webpackConfig.context);
 
-  global.TRU_CONSTANTS = buildInfo;
-  console.log('BUILD INFO', buildInfo);
+  global.TRU_BUILD_INFO = buildInfo;
+  // console.log('BUILD INFO', buildInfo);
 
   const ops = _.defaults(_.clone(options), {
     beforeRender: () => Promise.resolve({}),

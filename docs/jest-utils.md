@@ -22,9 +22,9 @@ This module provides the following functions:
   e.g.:
 
   ```jsx
-  import { render } from 'topcoder-react-utils/jest-utils';
+  import { JU } from 'topcoder-react-utils';
 
-  console.log(render(<div>Example</div>));
+  console.log(JU.render(<div>Example</div>));
   ```
 
 - **`renderDom(component)`** &mdash; Renders given ReactJS component into DOM,
@@ -32,16 +32,16 @@ This module provides the following functions:
   a rendered node in the resulting tree, you can do it like this:
   ```jsx
   import React from 'react';
-  import { findInDomByClass, renderDom } from 'topcoder-react-utils/jest-utils';
+  import { JU } from 'topcoder-react-utils/jest-utils';
 
-  const dom = renderDom(
+  const dom = JU.renderDom(
     <div>
       Example component, containing a button you want to find in the render.
       <button className="BUTTON">Click me!</button>
     </div>
   );
 
-  const button = findInDomByClass(dom, 'BUTTON');
+  const button = JU.findInDomByClass(dom, 'BUTTON');
   ```
 
 - **`shallowRender(component)`** &mdash; Generates a shallow render of
@@ -50,9 +50,9 @@ This module provides the following functions:
   and returns the result.
 
   ```jsx
-  import { shallowRender } from 'topcoder-react-utils/jest-utils';
+  import { JU } from 'topcoder-react-utils/jest-utils';
 
-  console.log(shallowRender(<div>Example</div>));
+  console.log(JU.shallowRender(<div>Example</div>));
   ```
 
 - **`shallowSnapshot(component)`** &mdash; Makes a shallow snapshot test of
@@ -64,10 +64,10 @@ This module provides the following functions:
   ```jsx
   // Sample Jest test.
 
-  import { shallowSnapshot } from 'topcoder-react-utils/jest-utils';
+  import { JU } from 'topcoder-react-utils/jest-utils';
 
   test('A snapshot test', () => {
-    console.log(shallowSnapshot(<div>Example</div>));
+    console.log(JU.shallowSnapshot(<div>Example</div>));
   });
   ```
 
@@ -83,9 +83,9 @@ This module provides the following functions:
   ```jsx
   // Sample Jest test.
 
-  import { snapshot } from 'topcoder-react-utils/jest-utils';
+  import { JU } from 'topcoder-react-utils/jest-utils';
 
   test('A snapshot test', () => {
-    console.log(snapshot(<div>Example</div>));
+    console.log(JU.snapshot(<div>Example</div>));
   });
   ```

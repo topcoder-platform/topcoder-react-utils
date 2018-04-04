@@ -25,12 +25,12 @@ the native NodeJS server that exposes ExpressJS to the outside world.
 
 For the practical use, staring the server is as easy as:
 ```js
-import serverFactory from 'topcoder-react-utils/dist/src/server`;
+import { server } from 'topcoder-react-utils`;
 import webpackConfig from 'config/webpack/production.js`;
 
 const options = {}; // A number of extra options can be provided here.
 
-serverFactory(webpackConfig, options);
+server(webpackConfig, options);
 ```
 
 The `serverFactory(webpackConfig, options)` function initializes, and launches

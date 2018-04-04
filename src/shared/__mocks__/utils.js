@@ -1,4 +1,4 @@
-import mock from '../utils';
+import * as mock from '../utils';
 import isomorphy from '../utils/__mocks__/isomorphy';
 
 mock.isomorphy = isomorphy;

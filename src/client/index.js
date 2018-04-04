@@ -3,5 +3,5 @@
  */
 
 /* global BUILD_INFO window */
-window.TRU_CONSTANTS = BUILD_INFO;
+window.TRU_BUILD_INFO = BUILD_INFO;
 window.TRU_FRONT_END = true;

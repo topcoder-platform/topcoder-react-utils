@@ -5,12 +5,12 @@
  * from node-config.
  */
 
-/* eslint-env browser */
+/* global window */
 
 import { isClientSide } from './isomorphy';
 import { requireWeak } from './webpack';
 
 /* eslint-disable global-require */
-console.log('IS CLIENT SIDE', isClientSide());
+// console.log('IS CLIENT SIDE', isClientSide());
 module.exports = isClientSide() ? window.CONFIG : requireWeak('config');
 /* eslint-enable global-require */
