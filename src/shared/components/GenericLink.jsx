@@ -35,7 +35,9 @@ export default function GenericLink(props) {
         onMouseDown={onMouseDown}
         rel="noopener noreferrer"
         target={openNewTab ? '_blank' : ''}
-      >{children}</a>
+      >
+        {children}
+      </a>
     );
   }
 
@@ -47,26 +49,25 @@ export default function GenericLink(props) {
   ]);
 
   /* Otherwise we render the link as React Router's Link or NavLink element. */
-  return React.createElement(
-    routerLinkType, {
-      ...linkProps,
-      onClick: (e) => {
-        /* If a custom onClick(..) handler was provided we execute it. */
-        if (onClick) onClick(e);
+  return React.createElement(routerLinkType, {
+    ...linkProps,
+    replace: props.replace,
+    onClick: (e) => {
+      /* If a custom onClick(..) handler was provided we execute it. */
+      if (onClick) onClick(e);
 
-        /* If the URL leads to a different domain we make transition using JS,
-         * preventing event processing by React Router. */
-        const url = new Url(to);
-        if (url.origin !== document.location.origin) {
-          document.location.assign(to);
-          e.preventDefault();
+      /* If the URL leads to a different domain we make transition using JS,
+        * preventing event processing by React Router. */
+      const url = new Url(to);
+      if (url.origin !== document.location.origin) {
+        document.location.assign(to);
+        e.preventDefault();
 
-        /* Scroll to the top-left corner of the page, just in case the link
-         * references the same page we are already in. */
-        } else window.scroll(0, 0);
-      },
-    }, children,
-  );
+      /* Scroll to the top-left corner of the page, just in case the link
+        * references the same page we are already in. */
+      } else window.scroll(0, 0);
+    },
+  }, children);
 }
 
 GenericLink.defaultProps = {
@@ -87,6 +88,7 @@ GenericLink.propTypes = {
   onClick: PT.func,
   onMouseDown: PT.func,
   openNewTab: PT.bool,
+  replace: PT.bool,
   routerLinkType: PT.func.isRequired,
   to: PT.oneOfType([PT.object, PT.string]),
 };

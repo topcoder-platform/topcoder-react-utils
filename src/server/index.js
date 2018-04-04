@@ -5,18 +5,10 @@
 import _ from 'lodash';
 import http from 'http';
 
-import { isServerSide } from 'utils/isomorphy';
-
 /* Polyfill required by ReactJS. */
 import 'raf/polyfill';
 
 import serverFactory from './server';
-
-/* TODO: Should use the isClientSide(..) method from isomorphy module, once that
- * module is moved to topcoder-react-utils. */
-if (!isServerSide()) {
-  throw new Error('Cannot execute server-side code in other environment');
-}
 
 /**
  * Normalizes a port into a number, string, or false.
@@ -95,8 +87,8 @@ export default async function launch(webpackConfig, options) {
   httpServer.on('listening', () => {
     const addr = httpServer.address();
     const bind = _.isString(addr) ? `pipe ${addr}` : `port ${addr.port}`;
-    ops.logger.info(
-      `Server listening on ${bind} in ${process.env.NODE_ENV} mode`);
+    ops.logger.info(`Server listening on ${bind} in ${
+      process.env.NODE_ENV} mode`);
   });
 
   httpServer.listen(ops.port);

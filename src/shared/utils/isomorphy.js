@@ -2,12 +2,14 @@
  * Collection of helpers to deal with isomorphic aspects of the code.
  */
 
+/* global window */
+
 /**
  * Returns `true` when executed at the front end side; `false` otherwise.
  * @return {Boolean}
  */
 export function isClientSide() {
-  return Boolean(global.FRONT_END);
+  return typeof window !== 'undefined' && Boolean(window.TRU_FRONT_END);
 }
 
 /**
@@ -15,7 +17,14 @@ export function isClientSide() {
  * @return {Boolean}
  */
 export function isServerSide() {
-  return !global.FRONT_END;
+  return typeof window === 'undefined' || !window.TRU_FRONT_END;
+}
+
+/**
+ * @return {String} Code mode: "development" or "production".
+ */
+function getMode() {
+  return isClientSide() ? global.TRU_BUILD_INFO.mode : process.env.BABEL_ENV;
 }
 
 /**
@@ -24,7 +33,7 @@ export function isServerSide() {
  * @return {Boolean}
  */
 export function isDevBuild() {
-  return process.env.BABEL_ENV === 'development';
+  return getMode() === 'development';
 }
 
 /**
@@ -33,7 +42,7 @@ export function isDevBuild() {
  * @return {Boolean}
  */
 export function isProdBuild() {
-  return process.env.BABEL_ENV === 'production';
+  return getMode() === 'production';
 }
 
 /**
@@ -41,6 +50,5 @@ export function isProdBuild() {
  * @return {String} ISO date/time string.
  */
 export function buildTimestamp() {
-  if (isClientSide()) return global.BUILD_TIMESTAMP;
-  return global.BUILD_INFO.timestamp;
+  return (isClientSide() ? window : global).TRU_BUILD_INFO.timestamp;
 }

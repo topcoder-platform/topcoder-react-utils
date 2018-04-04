@@ -14,5 +14,7 @@ module.exports = function buildConfig(env) {
     config.module.rules.find(x => x.loader === 'babel-loader');
   babelLoader.options.presets[0] = `${__dirname}/config/babel/webpack`;
 
+  config.module.noParse.push(/src\/shared\/utils\/webpack\/require/);
+
   return config;
 };

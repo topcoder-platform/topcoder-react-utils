@@ -1,48 +1,65 @@
 /* Helper for loading of tested module. */
+
+/* global window */
+
 const m = () => require('utils/isomorphy');
 
 afterEach(() => {
-  delete global.BUILD_INFO;
-  delete global.BUILD_TIMESTAMP;
-  delete global.FRONT_END;
+  delete global.TRU_BUILD_INFO;
+  delete window.TRU_BUILD_INFO;
+  delete window.TRU_FRONT_END;
   delete process.env.BABEL_ENV;
-  process.env.NODE_ENV = 'test';
 });
 
 beforeEach(() => jest.resetModules());
 
 test('Client-side detection', () => {
-  global.FRONT_END = 'true';
+  window.TRU_FRONT_END = true;
   expect(m().isClientSide()).toBe(true);
   expect(m().isServerSide()).toBe(false);
 });
 
 test('Server-side detection', () => {
-  expect(global.FRONT_END).toBeUndefined();
   expect(m().isClientSide()).toBe(false);
   expect(m().isServerSide()).toBe(true);
 });
 
-test('Dev code build detection', () => {
-  process.env.BABEL_ENV = 'development';
+test('Dev mode detection - client side', () => {
+  window.TRU_BUILD_INFO = { mode: 'development' };
+  window.TRU_FRONT_END = true;
   expect(m().isDevBuild()).toBe(true);
   expect(m().isProdBuild()).toBe(false);
 });
 
-test('Prod code build detection', () => {
-  process.env.BABEL_ENV = 'production';
+test('Dev mode detection - server side', () => {
+  process.env.BABEL_ENV = 'development';
+  expect(m().isDevBuild()).toBe(true);
+  expect(m().isProdBuild()).toBe(false);
+  delete process.env.BABEL_ENV;
+});
+
+test('Prod mode - client side', () => {
+  window.TRU_BUILD_INFO = { mode: 'production' };
+  window.TRU_FRONT_END = true;
   expect(m().isDevBuild()).toBe(false);
   expect(m().isProdBuild()).toBe(true);
 });
 
-test('Build timestamp on client-side', () => {
-  global.BUILD_TIMESTAMP = 'DUMMY_TIMESTAMP';
-  global.FRONT_END = true;
-  expect(m().buildTimestamp()).toBe('DUMMY_TIMESTAMP');
+test('Prod mode - server side', () => {
+  process.env.BABEL_ENV = 'production';
+  expect(m().isDevBuild()).toBe(false);
+  expect(m().isProdBuild()).toBe(true);
+  delete process.env.BABEL_ENV;
 });
 
-test('Build timestamp on server-side', () => {
-  global.BUILD_INFO = { timestamp: 'DUMMY_TIMESTAMP' };
-  expect(global.FRONT_END).toBeUndefined();
-  expect(m().buildTimestamp()).toBe('DUMMY_TIMESTAMP');
+test('Build timestamp - client-side', () => {
+  window.TRU_BUILD_INFO = { timestamp: 'Test build timestamp' };
+  window.TRU_FRONT_END = true;
+  expect(m().buildTimestamp()).toBe('Test build timestamp');
+});
+
+test('Build timestamp - server-side', () => {
+  global.TRU_BUILD_INFO = { timestamp: 'Test build timestamp' };
+  expect(window.FRONT_END).toBeUndefined();
+  expect(m().buildTimestamp()).toBe('Test build timestamp');
 });

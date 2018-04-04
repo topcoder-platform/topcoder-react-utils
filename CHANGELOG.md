@@ -1,5 +1,11 @@
 # Topcoder React Utils Changelog
 
+### v0.3.0
+- Added the standard, configurable server setup;
+- Jest utils are now exposed in a different way;
+- Config / isomorphy / webpack utils added;
+- Updated dependencies.
+
 ### v0.2.0
 - Webpack configs for apps updated to emulate `process.env.BABEL_ENV` instead of
   `process.env.NODE_ENV`. The original intent behind emulation of that constant

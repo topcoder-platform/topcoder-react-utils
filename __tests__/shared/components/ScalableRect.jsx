@@ -7,6 +7,8 @@ test('Snapshots match', () => {
   snapshot((
     <ScalableRect
       className="CLASS_NAME"
-    >CONTENT</ScalableRect>
+    >
+      CONTENT
+    </ScalableRect>
   ));
 });

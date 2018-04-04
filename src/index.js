@@ -3,15 +3,21 @@ import Button from 'components/Button';
 import Link from 'components/Link';
 import NavLink from 'components/NavLink';
 import ScalableRect from 'components/ScalableRect';
-import utils from 'utils';
+import * as utils from 'utils';
 
 import 'styles/global.scss';
 
-export {
+import { requireWeak } from 'utils/webpack';
+
+const server = utils.isomorphy.isServerSide() ?
+  requireWeak('topcoder-react-utils/dist/server') : null;
+
+module.exports = {
   Avatar,
   Button,
   Link,
   NavLink,
   ScalableRect,
-  utils,
+  server,
+  ...utils,
 };

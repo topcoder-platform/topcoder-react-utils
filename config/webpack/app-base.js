@@ -51,7 +51,10 @@ module.exports = function configFactory(ops) {
    * directory. */
   const buildInfo = {
     /* A random 32-bit key, that can be used for encryption. */
-    rndkey: forge.random.getBytesSync(32),
+    key: forge.random.getBytesSync(32),
+
+    /* This will be equal to "development" or "production" */
+    mode: ops.babelEnv,
 
     /* Build timestamp. */
     timestamp: moment.utc().toISOString(),
@@ -69,6 +72,7 @@ module.exports = function configFactory(ops) {
   entry.polyfills = _.union(entry.polyfills, [
     'babel-polyfill',
     'nodelist-foreach-polyfill',
+    'topcoder-react-utils/src/client',
   ]);
   return {
     context: o.context,
@@ -88,11 +92,7 @@ module.exports = function configFactory(ops) {
         filename: '[name].css',
       }),
       new webpack.DefinePlugin({
-        global: {
-          BUILD_RNDKEY: JSON.stringify(buildInfo.rndkey),
-          BUILD_TIMESTAMP: JSON.stringify(buildInfo.timestamp),
-          FRONT_END: true,
-        },
+        BUILD_INFO: JSON.stringify(buildInfo),
       }),
     ],
     resolve: {
@@ -107,9 +107,6 @@ module.exports = function configFactory(ops) {
       symlinks: false,
     },
     module: {
-      noParse: [
-        /node_modules[\\/]config/,
-      ],
       rules: [{
         /* Loads font resources from "src/assets/fonts" folder. */
         test: /\.(eot|otf|svg|ttf|woff2?)$/,

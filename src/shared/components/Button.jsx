@@ -32,7 +32,16 @@ export default function Button({
   } else if (to) {
     if (theme.link) className += ` ${theme.link}`;
     return (
-      <Link
+      /* NOTE: This ESLint rule enforces us to use <a> and <button> properly
+       * in the situations where they are supposed to be used; it is correct
+       * from the document structure point of view, but it is not convenient
+       * from the developer point of view! The reason is that during active
+       * development / prototyping it is often necessary to replace a button
+       * by a link, and vice-versa, thus having a component that hides the
+       * visual and logic differences between button and links saves tons of
+       * developer time. Thus, we sacrifice this rule here in exchange for
+       * convenience and efficiency of development. */
+      <Link // eslint-disable-line jsx-a11y/anchor-is-valid
         className={className}
         enforceA={enforceA}
         onClick={onClick}
@@ -40,7 +49,9 @@ export default function Button({
         openNewTab={openNewTab}
         replace={replace}
         to={to}
-      >{children}</Link>
+      >
+        {children}
+      </Link>
     );
   }
   if (theme.regular) className += ` ${theme.regular}`;
@@ -49,7 +60,9 @@ export default function Button({
       className={className}
       onClick={onClick}
       onMouseDown={onMouseDown}
-    >{children}</button>
+    >
+      {children}
+    </button>
   );
 }
 

@@ -18,10 +18,10 @@ beforeEach(() => {
   window.CONFIG = _.clone(CLIENT_SIDE_CONFIG);
 });
 
-afterEach(() => delete global.FRONT_END);
+afterEach(() => delete window.TRU_FRONT_END);
 
 test('Serves injected config at the client side', () => {
-  global.FRONT_END = true;
+  window.TRU_FRONT_END = true;
   expect(isClientSide()).toBe(true);
   expect(require('utils/config')).toEqual(CLIENT_SIDE_CONFIG);
 });
