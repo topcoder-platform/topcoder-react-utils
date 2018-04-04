@@ -10,7 +10,9 @@ function Link(props) {
     <button
       onClick={props.onClick}
       className={props.className}
-    >{JSON.stringify(props)}</button>
+    >
+      {JSON.stringify(props)}
+    </button>
   );
 }
 
@@ -29,7 +31,9 @@ describe('Matches snapshots', () => {
       <GenericLink
         routerLinkType={Link}
         to="SOME/TEST/URL"
-      >LINK</GenericLink>
+      >
+        LINK
+      </GenericLink>
     ));
   });
   test('when rendered as <a> element', () => {
@@ -38,14 +42,18 @@ describe('Matches snapshots', () => {
         enforceA
         routerLinkType={Link}
         to="SOME/TEST/URL"
-      >LINK</GenericLink>
+      >
+        LINK
+      </GenericLink>
     ));
     snapshot((
       <GenericLink
         openNewTab
         routerLinkType={Link}
         to="SOME/TEST/URL"
-      >LINK</GenericLink>
+      >
+        LINK
+      </GenericLink>
     ));
   });
 });
@@ -59,7 +67,9 @@ test('onClick(..) works when rendered as custom <Link>', () => {
       onClick={clickHandler}
       routerLinkType={Link}
       to="SOME/TEST/URL"
-    >LINK</GenericLink>
+    >
+      LINK
+    </GenericLink>
   ));
   let link = findInDomByClass(doc, 'LINK');
   simulate.click(link);
@@ -72,7 +82,9 @@ test('onClick(..) works when rendered as custom <Link>', () => {
       className="LINK"
       routerLinkType={Link}
       to={domain}
-    >LINK</GenericLink>
+    >
+      LINK
+    </GenericLink>
   ));
   link = findInDomByClass(doc, 'LINK');
   simulate.click(link);

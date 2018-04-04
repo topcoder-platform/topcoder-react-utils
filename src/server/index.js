@@ -87,8 +87,8 @@ export default async function launch(webpackConfig, options) {
   httpServer.on('listening', () => {
     const addr = httpServer.address();
     const bind = _.isString(addr) ? `pipe ${addr}` : `port ${addr.port}`;
-    ops.logger.info(
-      `Server listening on ${bind} in ${process.env.NODE_ENV} mode`);
+    ops.logger.info(`Server listening on ${bind} in ${
+      process.env.NODE_ENV} mode`);
   });
 
   httpServer.listen(ops.port);

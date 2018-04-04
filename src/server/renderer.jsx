@@ -106,7 +106,9 @@ export default async function factory(webpackConfig, options) {
         <StaticRouter
           context={context}
           location={req.url}
-        ><App /></StaticRouter>
+        >
+          <App />
+        </StaticRouter>
       );
 
       if (store) App = <Provider store={store}>{App}</Provider>;
@@ -134,7 +136,7 @@ export default async function factory(webpackConfig, options) {
     )).join('');
 
     /* It is supposed to end with '/' symbol as path separator. */
-    const publicPath = webpackConfig.output.publicPath;
+    const { publicPath } = webpackConfig.output;
 
     res.send((
       `<!DOCTYPE html>

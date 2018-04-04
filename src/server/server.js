@@ -16,7 +16,7 @@ import rendererFactory from './renderer';
 
 export default async function factory(webpackConfig, options) {
   const renderer = await rendererFactory(webpackConfig, options);
-  const publicPath = webpackConfig.output.publicPath;
+  const { publicPath } = webpackConfig.output;
 
   const server = express();
   server.use(helmet());

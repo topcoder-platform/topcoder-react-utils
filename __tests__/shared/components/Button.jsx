@@ -19,14 +19,18 @@ describe('Matches snapshots', () => {
         active
         onClick={_.noop}
         theme={testTheme}
-      >BUTTON</Button>
+      >
+        BUTTON
+      </Button>
     ));
     shallowSnapshot((
       <Button
         active
         onClick={_.noop}
         theme={_.omit(testTheme, 'regular')}
-      >BUTTON</Button>
+      >
+        BUTTON
+      </Button>
     ));
   });
   test('when disabled', () => {
@@ -36,7 +40,9 @@ describe('Matches snapshots', () => {
         onClick={_.noop}
         theme={testTheme}
         size="xl"
-      >BUTTON</Button>
+      >
+        BUTTON
+      </Button>
     ));
     shallowSnapshot((
       <Button
@@ -44,7 +50,9 @@ describe('Matches snapshots', () => {
         onClick={_.noop}
         theme={_.omit(testTheme, 'disabled')}
         size="xl"
-      >BUTTON</Button>
+      >
+        BUTTON
+      </Button>
     ));
   });
   test('when rendered as link', () => {
@@ -53,14 +61,18 @@ describe('Matches snapshots', () => {
         active
         theme={testTheme}
         to="/SOME/TEST/URL"
-      >BUTTON</Button>
+      >
+        BUTTON
+      </Button>
     ));
     shallowSnapshot((
       <Button
         active
         theme={_.omit(testTheme, 'link')}
         to="/SOME/TEST/URL"
-      >BUTTON</Button>
+      >
+        BUTTON
+      </Button>
     ));
   });
 });

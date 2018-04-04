@@ -3,7 +3,7 @@ import * as isomorphy from './isomorphy';
 import * as webpack from './webpack';
 
 const JU = isomorphy.isServerSide() ?
-  webpack.requireWeak('topcoder-react-utils/dist/shared/utils/jest.js') : null;
+  webpack.requireWeak('topcoder-react-utils/dist/shared/utils/jest') : null;
 
 export {
   config,
