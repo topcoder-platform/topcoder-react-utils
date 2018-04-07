@@ -1,0 +1,6 @@
+{
+  "dummyKey": "Dummy Value",
+  "SECRET": {
+    "dummySecretKey": "Dummy Secret Value"
+  }
+}

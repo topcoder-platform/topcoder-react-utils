@@ -30,6 +30,7 @@ Object {
   "Button": [Function],
   "JU": Object {
     "findInDomByClass": [Function],
+    "findInDomManyByClass": [Function],
     "render": [Function],
     "renderDom": [Function],
     "shallowRender": [Function],

@@ -15,7 +15,7 @@ import stream from 'stream';
 import rendererFactory from './renderer';
 
 export default async function factory(webpackConfig, options) {
-  const renderer = await rendererFactory(webpackConfig, options);
+  const renderer = rendererFactory(webpackConfig, options);
   const { publicPath } = webpackConfig.output;
 
   const server = express();
