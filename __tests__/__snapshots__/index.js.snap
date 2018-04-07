@@ -116,7 +116,10 @@ Object {
   "NavLink": [Function],
   "ScalableRect": [Function],
   "config": Config {
-    "dummyConfigKey": "Dummy config value",
+    "SECRET": Object {
+      "dummySecretKey": "Dummy Secret Value",
+    },
+    "dummyKey": "Dummy Value",
   },
   "isomorphy": Object {
     "buildTimestamp": [Function],
