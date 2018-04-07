@@ -4,6 +4,11 @@
   "settings": {
     "import/resolver": {
       "babel-module": {}
-    }
+    },
+    "jsx-a11y/anchor-is-valid": ["error", {
+      "components": [],
+      "specialLink": ["hrefLeft", "hrefRight"],
+      "aspects": ["invalidHref", "noHref", "preferButton"]
+    }]
   }
 }

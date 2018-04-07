@@ -28,6 +28,16 @@ export function findInDomByClass(dom, className) {
 }
 
 /**
+ * Just an alias for TU.scryRenderedDOMComponentsWithClass(..).
+ * @param {Object} dom
+ * @param {Stirng} className
+ * @return {Array}
+ */
+export function findInDomManyByClass(dom, className) {
+  return TU.scryRenderedDOMComponentsWithClass(dom, className);
+}
+
+/**
  * Auxiliary wrapper around ReactJS Test Renderer.
  * @param {Object} component ReactJS component to render.
  * @return {Object} JSON representation of the rendered tree.
