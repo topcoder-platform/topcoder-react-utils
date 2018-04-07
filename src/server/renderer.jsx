@@ -8,6 +8,7 @@ import forge from 'node-forge';
 import fs from 'fs';
 import path from 'path';
 import React from 'react';
+import ReactDOM from 'react-dom/server';
 import serializeJs from 'serialize-javascript';
 
 import { Helmet } from 'react-helmet';
@@ -112,6 +113,8 @@ export default async function factory(webpackConfig, options) {
       );
 
       if (store) App = <Provider store={store}>{App}</Provider>;
+
+      App = ReactDOM.renderToString(App);
 
       /* This takes care about server-side rendering of page title and meta tags
        * (still demands injection into HTML template, which happens below). */
