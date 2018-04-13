@@ -1,0 +1,226 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Base rendering of HTML template 1`] = `
+"<!DOCTYPE html>
+      <html>
+        <head>
+          
+          
+          <link
+            href=\\"/test/public/path/main.css\\"
+            rel=\\"stylesheet\\"
+          />
+          
+          <link rel=\\"shortcut icon\\" href=\\"/favicon.ico\\" />
+          <meta charset=\\"utf-8\\" />
+          <meta
+            content=\\"width=device-width,initial-scale=1.0\\"
+            name=\\"viewport\\"
+          />
+        </head>
+        <body>
+          <div id=\\"react-view\\"></div>
+          <script id=\\"inj\\" type=\\"application/javascript\\">
+            window.SPLITS = {}
+            window.INJ=\\"MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDGF1OkTQprU3+cINSXQietFqgqagolJ5j9NlQutv03F1TZonSyrmykHqLzmKxXS0DK59BGs6WiptmyS+pXhsvdE\\"
+          </script>
+          <script
+            src=\\"/test/public/path/polyfills.js\\"
+            type=\\"application/javascript\\"
+          ></script>
+          
+          <script
+            src=\\"/test/public/path/main.js\\" 
+            type=\\"application/javascript\\"
+          ></script>
+        </body>
+      </html>"
+`;
+
+exports[`Config overriding for injection 1`] = `
+"<!DOCTYPE html>
+      <html>
+        <head>
+          
+          
+          <link
+            href=\\"/test/public/path/main.css\\"
+            rel=\\"stylesheet\\"
+          />
+          
+          <link rel=\\"shortcut icon\\" href=\\"/favicon.ico\\" />
+          <meta charset=\\"utf-8\\" />
+          <meta
+            content=\\"width=device-width,initial-scale=1.0\\"
+            name=\\"viewport\\"
+          />
+        </head>
+        <body>
+          <div id=\\"react-view\\"></div>
+          <script id=\\"inj\\" type=\\"application/javascript\\">
+            window.SPLITS = {}
+            window.INJ=\\"MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDGF1OkTQprU3+cINSXQietFqgqagolJ5j9NlQutv03F1V2aMuxzUDYDD7cyzqAGNMV/1JiJaq6hJDBBPyP0kOQPqRTHIpwZ3UR8U81Nr3rcN1VwLiH9Tq8uEbe/Wfy3thG6aD9S+CX0jMMtbOYD9Pjt\\"
+          </script>
+          <script
+            src=\\"/test/public/path/polyfills.js\\"
+            type=\\"application/javascript\\"
+          ></script>
+          
+          <script
+            src=\\"/test/public/path/main.js\\" 
+            type=\\"application/javascript\\"
+          ></script>
+        </body>
+      </html>"
+`;
+
+exports[`Hemlet integration works 1`] = `
+"<!DOCTYPE html>
+      <html>
+        <head>
+          <title data-react-helmet=\\"true\\">Test Page Title</title>
+          <meta data-react-helmet=\\"true\\" property=\\"description\\" content=\\"Test Page Description\\"/>
+          <link
+            href=\\"/test/public/path/main.css\\"
+            rel=\\"stylesheet\\"
+          />
+          
+          <link rel=\\"shortcut icon\\" href=\\"/favicon.ico\\" />
+          <meta charset=\\"utf-8\\" />
+          <meta
+            content=\\"width=device-width,initial-scale=1.0\\"
+            name=\\"viewport\\"
+          />
+        </head>
+        <body>
+          <div id=\\"react-view\\"><div data-reactroot=\\"\\"><p>Hello World!</p><p>Goodbye World!</p></div></div>
+          <script id=\\"inj\\" type=\\"application/javascript\\">
+            window.SPLITS = {}
+            window.INJ=\\"MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDGF1OkTQprU3+cINSXQietFqgqagolJ5j9NlQutv03F1TZonSyrmykHqLzmKxXS0DK59BGs6WiptmyS+pXhsvdE\\"
+          </script>
+          <script
+            src=\\"/test/public/path/polyfills.js\\"
+            type=\\"application/javascript\\"
+          ></script>
+          
+          <script
+            src=\\"/test/public/path/main.js\\" 
+            type=\\"application/javascript\\"
+          ></script>
+        </body>
+      </html>"
+`;
+
+exports[`Injection of additional JS scripts 1`] = `
+"<!DOCTYPE html>
+      <html>
+        <head>
+          
+          
+          <link
+            href=\\"/test/public/path/main.css\\"
+            rel=\\"stylesheet\\"
+          />
+          
+          <link rel=\\"shortcut icon\\" href=\\"/favicon.ico\\" />
+          <meta charset=\\"utf-8\\" />
+          <meta
+            content=\\"width=device-width,initial-scale=1.0\\"
+            name=\\"viewport\\"
+          />
+        </head>
+        <body>
+          <div id=\\"react-view\\"></div>
+          <script id=\\"inj\\" type=\\"application/javascript\\">
+            window.SPLITS = {}
+            window.INJ=\\"MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDGF1OkTQprU3+cINSXQietFqgqagolJ5j9NlQutv03F1TZonSyrmykHqLzmKxXS0DK59BGs6WiptmyS+pXhsvdE\\"
+          </script>
+          <script
+            src=\\"/test/public/path/polyfills.js\\"
+            type=\\"application/javascript\\"
+          ></script>
+          <script>Dummy JS Sript</script><script>Another Dummy JS Script</script>
+          <script
+            src=\\"/test/public/path/main.js\\" 
+            type=\\"application/javascript\\"
+          ></script>
+        </body>
+      </html>"
+`;
+
+exports[`Server-side rendering (SSR); injection of CSS chunks & Redux state 1`] = `
+"<!DOCTYPE html>
+      <html>
+        <head>
+          <title data-react-helmet=\\"true\\"></title>
+          
+          <link
+            href=\\"/test/public/path/main.css\\"
+            rel=\\"stylesheet\\"
+          />
+          <link data-chunk=\\"test-chunk-a\\" href=\\"/test-chunk-a.css\\" rel=\\"stylesheet\\" /><link data-chunk=\\"test-chunk-b\\" href=\\"/test-chunk-b.css\\" rel=\\"stylesheet\\" />
+          <link rel=\\"shortcut icon\\" href=\\"/favicon.ico\\" />
+          <meta charset=\\"utf-8\\" />
+          <meta
+            content=\\"width=device-width,initial-scale=1.0\\"
+            name=\\"viewport\\"
+          />
+        </head>
+        <body>
+          <div id=\\"react-view\\"><div data-reactroot=\\"\\">Hello Wold!</div></div>
+          <script id=\\"inj\\" type=\\"application/javascript\\">
+            window.SPLITS = {}
+            window.INJ=\\"MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDGF1OkTQprU3+cINSXQietFqgqagolJ5j9NlQutv03F1TZonSyrmykHqLzmKxXS0DLPyBqGDNu0Yb+sEvg3s2Nv7ZYfzgAL5LpxryHNGWLiWYlCFgBW1NkdubXDUzuNfddcSwOHmA68IbAvuQnY81RZWKcs/M+w/CFPnw0PiVYASg==\\"
+          </script>
+          <script
+            src=\\"/test/public/path/polyfills.js\\"
+            type=\\"application/javascript\\"
+          ></script>
+          
+          <script
+            src=\\"/test/public/path/main.js\\" 
+            type=\\"application/javascript\\"
+          ></script>
+        </body>
+      </html>"
+`;
+
+exports[`Setting of response HTTP status the server-side rendering 1`] = `
+"HTTP STATUS: 404
+<!DOCTYPE html>
+      <html>
+        <head>
+          <title data-react-helmet=\\"true\\"></title>
+          
+          <link
+            href=\\"/test/public/path/main.css\\"
+            rel=\\"stylesheet\\"
+          />
+          
+          <link rel=\\"shortcut icon\\" href=\\"/favicon.ico\\" />
+          <meta charset=\\"utf-8\\" />
+          <meta
+            content=\\"width=device-width,initial-scale=1.0\\"
+            name=\\"viewport\\"
+          />
+        </head>
+        <body>
+          <div id=\\"react-view\\"><div data-reactroot=\\"\\">404 Error Test</div></div>
+          <script id=\\"inj\\" type=\\"application/javascript\\">
+            window.SPLITS = {}
+            window.INJ=\\"MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDGF1OkTQprU3+cINSXQietFqgqagolJ5j9NlQutv03F1TZonSyrmykHqLzmKxXS0DK59BGs6WiptmyS+pXhsvdE\\"
+          </script>
+          <script
+            src=\\"/test/public/path/polyfills.js\\"
+            type=\\"application/javascript\\"
+          ></script>
+          
+          <script
+            src=\\"/test/public/path/main.js\\" 
+            type=\\"application/javascript\\"
+          ></script>
+        </body>
+      </html>"
+`;
+
+exports[`Throws in case of forge.random.getBytes(..) failure 1`] = `[Error: Emulated Failure of forge.random.getBytes(..)]`;

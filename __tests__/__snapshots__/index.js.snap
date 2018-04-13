@@ -8,6 +8,7 @@ Object {
   "Link": [Function],
   "NavLink": [Function],
   "ScalableRect": [Function],
+  "client": [Function],
   "config": undefined,
   "isomorphy": Object {
     "buildTimestamp": [Function],
@@ -30,6 +31,7 @@ Object {
   "Button": [Function],
   "JU": Object {
     "findInDomByClass": [Function],
+    "findInDomManyByClass": [Function],
     "render": [Function],
     "renderDom": [Function],
     "shallowRender": [Function],
@@ -114,8 +116,12 @@ Object {
   "Link": [Function],
   "NavLink": [Function],
   "ScalableRect": [Function],
+  "client": [Function],
   "config": Config {
-    "dummyConfigKey": "Dummy config value",
+    "SECRET": Object {
+      "dummySecretKey": "Dummy Secret Value",
+    },
+    "dummyKey": "Dummy Value",
   },
   "isomorphy": Object {
     "buildTimestamp": [Function],

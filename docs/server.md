@@ -64,7 +64,8 @@ props:
     into HTML page template;
   
   **Returns:** Promise that resolves to an object with the following fields:
-  - **`config`** &mdash; *Object* &mdash; Optional. The actual config object
+  - **`configToInject`** &mdash; *Object* &mdash; Optional. The actual config
+    object
     to be injected into the page. If omitted, the one proposed by the server
     will be used.
   - **`extraScripts`** &mdash; *String[]* &mdash; Additional script tags to be

@@ -8,6 +8,7 @@ import forge from 'node-forge';
 import fs from 'fs';
 import path from 'path';
 import React from 'react';
+import ReactDOM from 'react-dom/server';
 import serializeJs from 'serialize-javascript';
 
 import { Helmet } from 'react-helmet';
@@ -25,15 +26,9 @@ const sanitizedConfig = _.omit(config, 'SECRET');
  * @param {String} context Webpack context path used during the build.
  * @return {Promise} Resolves to the build-time information.
  */
-/* TODO: Use sync read, to simplify related code. */
 function getBuildInfo(context) {
   const url = path.resolve(context, '.build-info');
-  return new Promise((resolve, reject) => {
-    fs.readFile(url, (err, info) => {
-      if (err) reject(err);
-      else resolve(JSON.parse(info));
-    });
-  });
+  return JSON.parse(fs.readFileSync(url));
 }
 
 /**
@@ -62,13 +57,12 @@ function prepareCipher(key) {
  * Creates the middleware.
  * @param {Object} webpackConfig
  * @param {Object} options Additional options:
- * @return {Promise} Resolves to the middleware.
+ * @return {Function} Created middleware.
  */
-export default async function factory(webpackConfig, options) {
-  const buildInfo = await getBuildInfo(webpackConfig.context);
+export default function factory(webpackConfig, options) {
+  const buildInfo = getBuildInfo(webpackConfig.context);
 
   global.TRU_BUILD_INFO = buildInfo;
-  // console.log('BUILD INFO', buildInfo);
 
   const ops = _.defaults(_.clone(options), {
     beforeRender: () => Promise.resolve({}),
@@ -95,6 +89,8 @@ export default async function factory(webpackConfig, options) {
 
       /* Pre-rendered HTML markup for dynamic chunks. */
       splits: {},
+
+      store,
     };
 
     let helmet;
@@ -112,6 +108,8 @@ export default async function factory(webpackConfig, options) {
       );
 
       if (store) App = <Provider store={store}>{App}</Provider>;
+
+      App = ReactDOM.renderToString(App);
 
       /* This takes care about server-side rendering of page title and meta tags
        * (still demands injection into HTML template, which happens below). */
