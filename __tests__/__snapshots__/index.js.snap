@@ -8,6 +8,7 @@ Object {
   "Link": [Function],
   "NavLink": [Function],
   "ScalableRect": [Function],
+  "client": [Function],
   "config": undefined,
   "isomorphy": Object {
     "buildTimestamp": [Function],
@@ -115,6 +116,7 @@ Object {
   "Link": [Function],
   "NavLink": [Function],
   "ScalableRect": [Function],
+  "client": [Function],
   "config": Config {
     "SECRET": Object {
       "dummySecretKey": "Dummy Secret Value",

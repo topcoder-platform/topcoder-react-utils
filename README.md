@@ -63,6 +63,7 @@ only need to call `adopt-dev-deps` again if you update
   the specified aspect ratio regardless the width you set.
 
 ### <a name="utilities">Utilities</a>
+- [**Client**](docs/client.md) &mdash; Client-side initialization code.
 - [**Config**](docs/config.md) &mdash; Isomorphic app config;
 - [**Global Styles**](docs/global-styles.md) &mdash; Global styles necessary for
   a generic application;

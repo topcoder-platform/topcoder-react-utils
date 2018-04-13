@@ -28,6 +28,7 @@
     "request-ip": "^2.0.2",
     "serialize-javascript": "^1.4.0",
     "serve-favicon": "^2.5.0",
+    "shortid": "^2.2.8",
     "url-parse": "^1.2.0",
     "winston": "^2.4.0"
   },
@@ -105,5 +106,5 @@
     "prepublishOnly": "npm run build",
     "test": "npm run lint && npm run jest"
   },
-  "version": "0.3.0"
+  "version": "0.3.1"
 }

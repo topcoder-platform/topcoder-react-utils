@@ -1,3 +1,4 @@
+import client from 'client';
 import Avatar from 'components/Avatar';
 import Button from 'components/Button';
 import Link from 'components/Link';
@@ -13,6 +14,7 @@ const server = utils.isomorphy.isServerSide() ?
   requireWeak('topcoder-react-utils/dist/server') : null;
 
 module.exports = {
+  client,
   Avatar,
   Button,
   Link,
