@@ -2,9 +2,8 @@
  * Initialization of client-side code.
  */
 
-/* global BUILD_INFO document window */
+/* global document window */
 
-import forge from 'node-forge';
 import React from 'react';
 import ReactDom from 'react-dom';
 import shortId from 'shortid';
@@ -27,45 +26,19 @@ function render(Application, store) {
  * injected at the server-side, and also about setting up client side of hot
  * module reloading (HMR).
  * @param {Object} options Parameters accepted by the function.
- * @param {Function} options.Application Root component of the application to be
- *  rendered at the client side.
- * @param {String} options.appModulePath Optional. Path to the root module of
- *  the application. It should be provided to setup HMR.
- * @param {Function} options.customInit Optional. A custom function to be called
- *  before initial client-side rendering. It should return a promise that
- *  resolves to an object with the following params:
- *  - store {Object} - Optional. Redux store to be used.
+ * @param {Function} options.Application Rendered app component.
+ * @param {Function} options.storeFactory Optional. Given the initials state
+ *  of redux store should create the store.
  */
-export default async function Init(options) {
-  /* Injection of build-time data information into the client-side bundle. */
-  window.TRU_BUILD_INFO = BUILD_INFO;
-  window.TRU_FRONT_END = true;
-
-  /* Removes data injection script out of the document. */
-  const block = document.querySelector('script[id="inj"]');
-  document.getElementsByTagName('body')[0].removeChild(block);
-
-  /* Decodes data injected at the server side. */
-  const { key } = window.TRU_BUILD_INFO;
-  let data = forge.util.decode64(window.INJ);
-  const decipher = forge.cipher.createDecipher('AES-CBC', key);
-  decipher.start({ iv: data.slice(0, 32) });
-  decipher.update(forge.util.createBuffer(data.slice(32)));
-  decipher.finish();
-  data = JSON.parse(forge.util.decodeUtf8(decipher.output.data));
-
-  window.CONFIG = data.CONFIG;
-  window.ISTATE = data.ISTATE;
-
+export default async function Launch(options) {
   let store;
-  if (options.customInit) ({ store } = await options.customInit());
+  if (options.storeFactory) {
+    store = await options.storeFactory(window.ISTATE);
+  }
   render(options.Application, store);
 
-  if (module.hot && options.appModulePath) {
-    module.hot.accept(
-      options.appModulePath,
-      () => render(options.Application, store),
-    );
+  if (module.hot) {
+    module.hot.accept('.', () => render(options.Application, store));
 
     /* HMR of CSS code each time webpack hot middleware updates the code. */
     /* eslint-disable no-underscore-dangle */
