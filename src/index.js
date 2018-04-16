@@ -1,6 +1,6 @@
-import client from 'client';
 import Avatar from 'components/Avatar';
 import Button from 'components/Button';
+import client from 'client';
 import Link from 'components/Link';
 import NavLink from 'components/NavLink';
 import ScalableRect from 'components/ScalableRect';
@@ -14,9 +14,9 @@ const server = utils.isomorphy.isServerSide() ?
   requireWeak('topcoder-react-utils/dist/server') : null;
 
 module.exports = {
-  client,
   Avatar,
   Button,
+  client,
   Link,
   NavLink,
   ScalableRect,

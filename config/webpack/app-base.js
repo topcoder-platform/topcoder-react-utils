@@ -39,6 +39,12 @@ const webpack = require('webpack');
  *  passed in, it is assigned to the "main" entry point, and the "polyfills"
  *  entry point will be added to it.
  *
+ * @param {Boolean} ops.keepBuildInfo Optional. If `true` and a build info file
+ *  from a previous build is found, the factory will use that rather than
+ *  re-generating it. This provide the way to re-create webpack config at the
+ *  server startup, without re-writing the build info generated previously
+ *  during the bundling. Defaults to `false`.
+ *
  * @param {String} ops.publicPath Base URL for the output of the build assets.
  */
 module.exports = function configFactory(ops) {
@@ -47,20 +53,26 @@ module.exports = function configFactory(ops) {
     publicPath: '',
   });
 
-  /* Stores misc build info into the local ".build-info" file in the context
-   * directory. */
-  const buildInfo = {
-    /* A random 32-bit key, that can be used for encryption. */
-    key: forge.random.getBytesSync(32),
-
-    /* This will be equal to "development" or "production" */
-    mode: ops.babelEnv,
-
-    /* Build timestamp. */
-    timestamp: moment.utc().toISOString(),
-  };
+  let buildInfo;
   const buildInfoUrl = path.resolve(o.context, '.build-info');
-  fs.writeFileSync(buildInfoUrl, JSON.stringify(buildInfo));
+  /* If build-info file is found, we reuse those data. */
+  if (fs.existsSync(buildInfoUrl) && o.keepBuildInfo) {
+    buildInfo = JSON.parse(fs.readFileSync(buildInfoUrl));
+  } else {
+    /* Stores misc build info into the local ".build-info" file in the context
+     * directory. */
+    buildInfo = {
+      /* A random 32-bit key, that can be used for encryption. */
+      key: forge.random.getBytesSync(32),
+
+      /* This will be equal to "development" or "production" */
+      mode: ops.babelEnv,
+
+      /* Build timestamp. */
+      timestamp: moment.utc().toISOString(),
+    };
+    fs.writeFileSync(buildInfoUrl, JSON.stringify(buildInfo));
+  }
 
   /* Entry points normalization. */
   const entry = _.isPlainObject(o.entry)
@@ -72,7 +84,7 @@ module.exports = function configFactory(ops) {
   entry.polyfills = _.union(entry.polyfills, [
     'babel-polyfill',
     'nodelist-foreach-polyfill',
-    'topcoder-react-utils/src/client',
+    'topcoder-react-utils/src/client/init',
   ]);
   return {
     context: o.context,
@@ -117,7 +129,7 @@ module.exports = function configFactory(ops) {
         loader: 'file-loader',
         options: {
           outputPath: '/fonts/',
-          publicPath: o.publicPath,
+          publicPath: `${o.publicPath}/fonts`,
         },
       }, {
         /* Loads JS and JSX moudles, and inlines SVG assets. */
@@ -135,7 +147,7 @@ module.exports = function configFactory(ops) {
         loader: 'file-loader',
         options: {
           outputPath: '/images/',
-          publicPath: o.publicPath,
+          publicPath: `${o.publicPath}/images`,
         },
       }, {
         /* Loads SCSS stylesheets. */

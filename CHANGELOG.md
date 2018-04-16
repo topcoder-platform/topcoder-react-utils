@@ -1,5 +1,9 @@
 # Topcoder React Utils Changelog
 
+### v0.3.2
+- Adds the client-side initialization code, and makes some corrections of the
+  standard Wepback configs and server setup.
+
 ### v0.3.0
 - Added the standard, configurable server setup;
 - Jest utils are now exposed in a different way;
