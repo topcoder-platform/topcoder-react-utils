@@ -4,8 +4,10 @@ exports[`Export at client side 1`] = `
 Object {
   "Avatar": [Function],
   "Button": [Function],
+  "DevTools": [Function],
   "JU": null,
   "Link": [Function],
+  "MetaTags": [Function],
   "NavLink": [Function],
   "ScalableRect": [Function],
   "client": [Function],
@@ -16,6 +18,13 @@ Object {
     "isDevBuild": [Function],
     "isProdBuild": [Function],
     "isServerSide": [Function],
+  },
+  "redux": Object {
+    "combineReducers": [Function],
+    "handleActions": [Function],
+    "resolveAction": [Function],
+    "resolveReducers": [Function],
+    "storeFactory": [Function],
   },
   "server": null,
   "webpack": Object {
@@ -29,6 +38,7 @@ exports[`Export at server side 1`] = `
 Object {
   "Avatar": [Function],
   "Button": [Function],
+  "DevTools": [Function],
   "JU": Object {
     "findInDomByClass": [Function],
     "findInDomManyByClass": [Function],
@@ -114,6 +124,7 @@ Object {
     "snapshot": [Function],
   },
   "Link": [Function],
+  "MetaTags": [Function],
   "NavLink": [Function],
   "ScalableRect": [Function],
   "client": [Function],
@@ -129,6 +140,13 @@ Object {
     "isDevBuild": [Function],
     "isProdBuild": [Function],
     "isServerSide": [Function],
+  },
+  "redux": Object {
+    "combineReducers": [Function],
+    "handleActions": [Function],
+    "resolveAction": [Function],
+    "resolveReducers": [Function],
+    "storeFactory": [Function],
   },
   "server": [Function],
   "webpack": Object {

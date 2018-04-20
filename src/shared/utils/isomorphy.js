@@ -2,6 +2,8 @@
  * Collection of helpers to deal with isomorphic aspects of the code.
  */
 
+import _ from 'lodash';
+
 /* global window */
 
 /**
@@ -24,7 +26,7 @@ export function isServerSide() {
  * @return {String} Code mode: "development" or "production".
  */
 function getMode() {
-  return isClientSide() ? global.TRU_BUILD_INFO.mode : process.env.BABEL_ENV;
+  return _.get(global.TRU_BUILD_INFO, 'mode');
 }
 
 /**

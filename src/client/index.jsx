@@ -25,20 +25,26 @@ function render(Application, store) {
  * Initializes the code at client side. It takes care about receiving the data
  * injected at the server-side, and also about setting up client side of hot
  * module reloading (HMR).
- * @param {Object} options Parameters accepted by the function.
- * @param {Function} options.Application Rendered app component.
- * @param {Function} options.storeFactory Optional. Given the initials state
- *  of redux store should create the store.
+ * @param {String} applicationModulePath Optional.
+ * @param {Function} getApplication
+ * @param {Object} moduleHot
+ * @param {Function} storeFactory Optional.
  */
-export default async function Launch(options) {
+export default async function Launch({
+  applicationModulePath,
+  getApplication,
+  moduleHot,
+  storeFactory,
+}) {
   let store;
-  if (options.storeFactory) {
-    store = await options.storeFactory(window.ISTATE);
+  if (storeFactory) {
+    store = await storeFactory(window.ISTATE);
   }
-  render(options.Application, store);
+  render(getApplication(), store);
 
-  if (module.hot) {
-    module.hot.accept('.', () => render(options.Application, store));
+  if (moduleHot && applicationModulePath) {
+    moduleHot.accept(applicationModulePath, () =>
+      render(getApplication(), store));
 
     /* HMR of CSS code each time webpack hot middleware updates the code. */
     /* eslint-disable no-underscore-dangle */
