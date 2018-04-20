@@ -71,6 +71,7 @@ only need to call `adopt-dev-deps` again if you update
   with isomorphic aspects of the code;
 - [**Jest utils**](docs/jest-utils.md) &mdash; Collection of helpers to be used
   in Jest tests code;
+- [**Redux utils**](docs/redux-utils.md) &mdash; *TO BE DOCUMENTED*
 - [**SCSS Mixins**](docs/scss-mixins.md) &mdash; Collection of useful style
   mixins;
 - [**Server**](docs/server.md) &mdash; Easy creation and launch of web-server

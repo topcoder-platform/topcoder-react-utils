@@ -32,10 +32,9 @@ test('Dev mode detection - client side', () => {
 });
 
 test('Dev mode detection - server side', () => {
-  process.env.BABEL_ENV = 'development';
+  global.TRU_BUILD_INFO = { mode: 'development' };
   expect(m().isDevBuild()).toBe(true);
   expect(m().isProdBuild()).toBe(false);
-  delete process.env.BABEL_ENV;
 });
 
 test('Prod mode - client side', () => {
@@ -46,10 +45,9 @@ test('Prod mode - client side', () => {
 });
 
 test('Prod mode - server side', () => {
-  process.env.BABEL_ENV = 'production';
+  global.TRU_BUILD_INFO = { mode: 'production' };
   expect(m().isDevBuild()).toBe(false);
   expect(m().isProdBuild()).toBe(true);
-  delete process.env.BABEL_ENV;
 });
 
 test('Build timestamp - client-side', () => {
