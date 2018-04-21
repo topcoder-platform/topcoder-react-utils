@@ -2,7 +2,7 @@
 
 ### v0.3.4
 - Small fixes in the client / server setup.
-- `handleActions(..)` alias added to `redux` utils, to use that function without
+- `createActions(..)` alias added to `redux` utils, to use that function without
   explicit import of `redux-actions` module.
 
 ### v0.3.3
