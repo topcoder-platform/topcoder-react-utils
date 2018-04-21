@@ -84,7 +84,7 @@ module.exports = function configFactory(ops) {
   entry.polyfills = _.union(entry.polyfills, [
     'babel-polyfill',
     'nodelist-foreach-polyfill',
-    'topcoder-react-utils/src/client/init',
+    'topcoder-react-utils/dist/client/init',
   ]);
   return {
     context: o.context,

@@ -1,5 +1,18 @@
 # Topcoder React Utils Changelog
 
+### v0.3.4
+- Small fixes in the client / server setup.
+- `handleActions(..)` alias added to `redux` utils, to use that function without
+  explicit import of `redux-actions` module.
+
+### v0.3.3
+- Fixes and enhancements in the client / server setup (HMR, Redux, Server-side
+  rendering);
+- Added: `DevTools` (Redux Dev Tools); `<MetaTags>` (convenient management of
+  meta-tags that provide content for page title, social sharing links, etc.);
+  `redux` utils for creation of Redux store, and various auxiliary operations
+  with actions and reducers.
+
 ### v0.3.2
 - Adds the client-side initialization code, and makes some corrections of the
   standard Wepback configs and server setup.

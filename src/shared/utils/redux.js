@@ -6,8 +6,12 @@ import _ from 'lodash';
 import DevTools from 'components/DevTools';
 import promiseMiddleware from 'redux-promise';
 import { applyMiddleware, compose, createStore } from 'redux';
-import { handleActions } from 'redux-actions';
+import { createActions, handleActions } from 'redux-actions';
 import { isDevBuild } from './isomorphy';
+
+/* Auxiliary aliases. */
+module.exports.createActions = createActions;
+module.exports.handleActions = handleActions;
 
 /**
  * Reduce multiple reducers into a single reducer from left to right.
@@ -39,9 +43,6 @@ export function combineReducers(...reducers) {
     return nextState;
   };
 }
-
-/* Alias for handleActions from redux-actions. */
-module.exports.handleActions = handleActions;
 
 /**
  * Given any Flux Standard Action (FSA) with promise as the payload, it returns

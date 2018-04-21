@@ -48,7 +48,7 @@ export default async function factory(webpackConfig, options) {
   /* eslint-disable global-require */
   /* eslint-disable import/no-extraneous-dependencies */
   /* eslint-disable import/no-unresolved */
-  if (process.env.DEV_TOOLS) {
+  if (options.devMode) {
     const webpack = require('webpack');
     const webpackDevMiddleware = require('webpack-dev-middleware');
     const webpackHotMiddleware = require('webpack-hot-middleware');

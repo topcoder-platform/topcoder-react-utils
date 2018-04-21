@@ -1,6 +1,10 @@
 /**
  * Auxiliary wrapper around React Helmet that helps to generate meta tags for
  * generic use cases.
+ *
+ * NOTE: This component relies on `domain` path of Redux store to hold
+ * the current app domain, which will serve as the base path for the bundled
+ * images.
  */
 
 import PT from 'prop-types';
