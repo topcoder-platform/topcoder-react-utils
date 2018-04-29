@@ -1,5 +1,9 @@
 # Topcoder React Utils Changelog
 
+### v0.3.5
+- `cdnPublicPath` option added to the standard Webpack config for apps to support
+  assets loading via CDN.
+
 ### v0.3.4
 - Small fixes in the client / server setup.
 - `createActions(..)` alias added to `redux` utils, to use that function without

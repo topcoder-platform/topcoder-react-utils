@@ -25,6 +25,11 @@ const webpack = require('webpack');
  *
  * @param {String} ops.babelEnv BABEL_ENV to use for Babel during the build.
  *
+ * @param {String} ops.cdnPublicPath Optional. If provided, it will be used in
+ *  the frontend bundle instead of publicPath, to direct all asset request to
+ *  CDN. The publicPath still will be used by the server as the path to serve
+ *  the assets for CDN requests.
+ *
  * @param {String} ops.context Base URL for resolution of relative
  *  config paths.
  *
@@ -50,8 +55,9 @@ const webpack = require('webpack');
 module.exports = function configFactory(ops) {
   const o = _.defaults(_.clone(ops), {
     cssLocalIdent: '[hash:base64:6]',
-    publicPath: '',
   });
+
+  const publicPath = o.cdnPublicPath || o.publicPath || '';
 
   let buildInfo;
   const buildInfoUrl = path.resolve(o.context, '.build-info');
@@ -97,7 +103,7 @@ module.exports = function configFactory(ops) {
       chunkFilename: '[name].js',
       filename: '[name].js',
       path: path.resolve(__dirname, o.context, 'build'),
-      publicPath: `${o.publicPath}/`,
+      publicPath: `${publicPath}/`,
     },
     plugins: [
       new ExtractCssChunks({
@@ -129,7 +135,7 @@ module.exports = function configFactory(ops) {
         loader: 'file-loader',
         options: {
           outputPath: '/fonts/',
-          publicPath: `${o.publicPath}/fonts`,
+          publicPath: `${publicPath}/fonts`,
         },
       }, {
         /* Loads JS and JSX moudles, and inlines SVG assets. */
@@ -147,7 +153,7 @@ module.exports = function configFactory(ops) {
         loader: 'file-loader',
         options: {
           outputPath: '/images/',
-          publicPath: `${o.publicPath}/images`,
+          publicPath: `${publicPath}/images`,
         },
       }, {
         /* Loads SCSS stylesheets. */
