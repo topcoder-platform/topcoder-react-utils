@@ -6,6 +6,7 @@ import _ from 'lodash';
 import config from 'config';
 import forge from 'node-forge';
 import fs from 'fs';
+import moment from 'moment';
 import path from 'path';
 import React from 'react';
 import ReactDOM from 'react-dom/server';
@@ -128,13 +129,15 @@ export default function factory(webpackConfig, options) {
     cipher.finish();
     const INJ = forge.util.encode64(`${iv}${cipher.output.data}`);
 
-    if (context.status) res.status(context.status);
-    const styles = context.chunks.map(chunk => (
-      `<link data-chunk="${chunk}" href="/${chunk}.css" rel="stylesheet" />`
-    )).join('');
-
     /* It is supposed to end with '/' symbol as path separator. */
     const { publicPath } = webpackConfig.output;
+
+    const timestamp = moment(buildInfo.timestamp).valueOf();
+
+    if (context.status) res.status(context.status);
+    const styles = context.chunks.map(chunk => (
+      `<link data-chunk="${chunk}" href="${publicPath}${chunk}-${timestamp}.css" rel="stylesheet" />`
+    )).join('');
 
     res.send((
       `<!DOCTYPE html>
@@ -143,7 +146,7 @@ export default function factory(webpackConfig, options) {
           ${helmet ? helmet.title.toString() : ''}
           ${helmet ? helmet.meta.toString() : ''}
           <link
-            href="${publicPath}main.css"
+            href="${publicPath}main-${timestamp}.css"
             rel="stylesheet"
           />
           ${styles}
@@ -161,12 +164,12 @@ export default function factory(webpackConfig, options) {
             window.INJ="${INJ}"
           </script>
           <script
-            src="${publicPath}polyfills.js"
+            src="${publicPath}polyfills-${timestamp}.js"
             type="application/javascript"
           ></script>
           ${extraScripts ? extraScripts.join('') : ''}
           <script
-            src="${publicPath}main.js" 
+            src="${publicPath}main-${timestamp}.js" 
             type="application/javascript"
           ></script>
         </body>
