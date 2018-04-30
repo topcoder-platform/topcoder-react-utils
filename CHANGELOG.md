@@ -1,8 +1,11 @@
 # Topcoder React Utils Changelog
 
+### v0.3.6
+- Updated names pattern for static assets.
+
 ### v0.3.5
-- `cdnPublicPath` option added to the standard Webpack config for apps to support
-  assets loading via CDN.
+- ~~`cdnPublicPath` option added to the standard Webpack config for apps to support
+  assets loading via CDN.~~ *Removed as not useful.*
 
 ### v0.3.4
 - Small fixes in the client / server setup.

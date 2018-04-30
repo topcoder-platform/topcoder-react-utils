@@ -37,10 +37,6 @@ mutation of the config object.
   - Config factory handles the following fields in the options object:
     - **`babelEnv`** &mdash; *String* &mdash; Babel environment to use for
       the Babel compilation step;
-    - **`cdnPublicPath`** &mdash; *String* &mdash; Optional. If provided,
-      it will be used in the frontend bundle instead of `publicPath`, to direct
-      all asset request to CDN. The `publicPath` still will be used by the server
-      as the path to serve the assets for CDN requests;
     - **`context`** &mdash; *String* &mdash; Base URL for the resolution of
       relative config paths;
     - **`cssLocalIdent`** &mdash; *String* &mdash; Optional. The template for
