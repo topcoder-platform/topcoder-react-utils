@@ -1,5 +1,8 @@
 # Topcoder React Utils Changelog
 
+### v0.3.7
+- Adds `<AppChunk>` and `webpack.resolveWeak(..)`.
+
 ### v0.3.6
 - Updated names pattern for static assets.
 
