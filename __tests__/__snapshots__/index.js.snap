@@ -2,6 +2,7 @@
 
 exports[`Export at client side 1`] = `
 Object {
+  "AppChunk": [Function],
   "Avatar": [Function],
   "Button": [Function],
   "DevTools": [Function],
@@ -29,14 +30,15 @@ Object {
   },
   "server": null,
   "webpack": Object {
-    "default": undefined,
     "requireWeak": [Function],
+    "resolveWeak": [Function],
   },
 }
 `;
 
 exports[`Export at server side 1`] = `
 Object {
+  "AppChunk": [Function],
   "Avatar": [Function],
   "Button": [Function],
   "DevTools": [Function],
@@ -152,8 +154,8 @@ Object {
   },
   "server": [Function],
   "webpack": Object {
-    "default": undefined,
     "requireWeak": [Function],
+    "resolveWeak": [Function],
   },
 }
 `;
