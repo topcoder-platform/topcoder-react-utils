@@ -11,6 +11,16 @@ Object {
   "MetaTags": [Function],
   "NavLink": [Function],
   "ScalableRect": [Function],
+  "actions": Object {
+    "collection": Object {
+      "addItems": [Function],
+      "bookItems": [Function],
+      "clean": [Function],
+      "freeItems": [Function],
+      "loadItemDone": [Function],
+      "loadItemInit": [Function],
+    },
+  },
   "client": [Function],
   "config": undefined,
   "isomorphy": Object {
@@ -19,6 +29,9 @@ Object {
     "isDevBuild": [Function],
     "isProdBuild": [Function],
     "isServerSide": [Function],
+  },
+  "reducers": Object {
+    "collection": [Function],
   },
   "redux": Object {
     "combineReducers": [Function],
@@ -130,6 +143,16 @@ Object {
   "MetaTags": [Function],
   "NavLink": [Function],
   "ScalableRect": [Function],
+  "actions": Object {
+    "collection": Object {
+      "addItems": [Function],
+      "bookItems": [Function],
+      "clean": [Function],
+      "freeItems": [Function],
+      "loadItemDone": [Function],
+      "loadItemInit": [Function],
+    },
+  },
   "client": [Function],
   "config": Config {
     "SECRET": Object {
@@ -143,6 +166,9 @@ Object {
     "isDevBuild": [Function],
     "isProdBuild": [Function],
     "isServerSide": [Function],
+  },
+  "reducers": Object {
+    "collection": [Function],
   },
   "redux": Object {
     "combineReducers": [Function],
