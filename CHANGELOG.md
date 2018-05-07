@@ -1,5 +1,8 @@
 # Topcoder React Utils Changelog
 
+### v0.3.8
+- Fixes `webpack.resolveWeak(..)` for usage from within a host codebase.
+
 ### v0.3.7
 - Adds `<AppChunk>` and `webpack.resolveWeak(..)`.
 
