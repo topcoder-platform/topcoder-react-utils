@@ -20,7 +20,10 @@ config.plugins = config.plugins.concat([
 const moduleResolverPluginOps
   = config.plugins.find(x => x[0] === 'module-resolver')[1];
 
-moduleResolverPluginOps.transformFunctions = ['resolveWeak'];
+moduleResolverPluginOps.transformFunctions = [
+  'resolveWeak',
+  'webpack.resolveWeak',
+];
 
 switch (process.env.BABEL_ENV) {
   case 'development':
