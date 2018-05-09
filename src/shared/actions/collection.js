@@ -18,10 +18,11 @@ function addItems(index) {
 /**
  * Increments counters of item references.
  * @param {String|String[]} ids
+ * @param {Number} factor Optional.
  * @return {String[]}
  */
-function bookItems(ids) {
-  return _.isArray(ids) ? ids : [ids];
+function bookItems(ids, factor = 1) {
+  return { factor, ids: _.isArray(ids) ? ids : [ids] };
 }
 
 /**
@@ -35,10 +36,11 @@ function clean(timestamp) {
 /**
  * Decreases counters of item references.
  * @param {String|String[]} ids
+ * @param {Number} factor Optional.
  * @return {String[]}
  */
-function freeItems(ids) {
-  return _.isArray(ids) ? ids : [ids];
+function freeItems(ids, factor = 1) {
+  return { factor, ids: _.isArray(ids) ? ids : [ids] };
 }
 
 /**

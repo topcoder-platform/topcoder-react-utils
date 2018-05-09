@@ -40,10 +40,10 @@ function onAddItems(state, action) {
   return result;
 }
 
-function onBookItems(state, { payload }) {
+function onBookItems(state, { payload: { factor, ids } }) {
   const result = _.clone(state);
-  payload.forEach((id) => {
-    prepare(result, id).numRefs += 1;
+  ids.forEach((id) => {
+    prepare(result, id).numRefs += factor;
   });
   return result;
 }
@@ -51,7 +51,7 @@ function onBookItems(state, { payload }) {
 function onClean(state, { payload }) {
   const result = _.clone(state);
   _.forOwn(state, (item, id) => {
-    const slot = state(id);
+    const slot = state[id];
     if (slot.numRefs || slot.loadingOperationId
       || slot.timestamp > payload) return;
     delete result[id];
@@ -59,10 +59,10 @@ function onClean(state, { payload }) {
   return result;
 }
 
-function onFreeItems(state, { payload }) {
+function onFreeItems(state, { payload: { factor, ids } }) {
   const result = _.clone(state);
-  payload.forEach((id) => {
-    prepare(result, id).numRefs -= 1;
+  ids.forEach((id) => {
+    prepare(result, id).numRefs -= factor;
   });
   return result;
 }
