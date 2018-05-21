@@ -69,111 +69,115 @@ export default function factory(webpackConfig, options) {
     beforeRender: () => Promise.resolve({}),
   });
 
-  return async (req, res) => {
-    const [{
-      configToInject,
-      extraScripts,
-      store,
-    }, {
-      cipher,
-      iv,
-    }] = await Promise.all([
-      ops.beforeRender(req, sanitizedConfig),
-      prepareCipher(buildInfo.key),
-    ]);
+  return async (req, res, next) => {
+    try {
+      const [{
+        configToInject,
+        extraScripts,
+        store,
+      }, {
+        cipher,
+        iv,
+      }] = await Promise.all([
+        ops.beforeRender(req, sanitizedConfig),
+        prepareCipher(buildInfo.key),
+      ]);
 
-    /* Context for react-router and collection of data related to server-side
-     * rendering (this will be moved into separate place in future). */
-    const context = {
-      /* Array of chunk names, to use for stylesheet links injection. */
-      chunks: [],
+      /* Context for react-router and collection of data related to server-side
+      * rendering (this will be moved into separate place in future). */
+      const context = {
+        /* Array of chunk names, to use for stylesheet links injection. */
+        chunks: [],
 
-      /* Pre-rendered HTML markup for dynamic chunks. */
-      splits: {},
+        /* Pre-rendered HTML markup for dynamic chunks. */
+        splits: {},
 
-      store,
-    };
+        store,
+      };
 
-    let helmet;
+      let helmet;
 
-    /* Optional server-side rendering. */
-    let App = options.Application;
-    if (App) {
-      App = (
-        <StaticRouter
-          context={context}
-          location={req.url}
-        >
-          <App />
-        </StaticRouter>
-      );
+      /* Optional server-side rendering. */
+      let App = options.Application;
+      if (App) {
+        App = (
+          <StaticRouter
+            context={context}
+            location={req.url}
+          >
+            <App />
+          </StaticRouter>
+        );
 
-      if (store) App = <Provider store={store}>{App}</Provider>;
+        if (store) App = <Provider store={store}>{App}</Provider>;
 
-      App = ReactDOM.renderToString(App);
+        App = ReactDOM.renderToString(App);
 
-      /* This takes care about server-side rendering of page title and meta tags
-       * (still demands injection into HTML template, which happens below). */
-      helmet = Helmet.renderStatic();
+        /* This takes care about server-side rendering of page title and meta tags
+        * (still demands injection into HTML template, which happens below). */
+        helmet = Helmet.renderStatic();
+      }
+
+      /* Encrypts data to be injected into HTML.
+      * Keep in mind, that this encryption is no way secure: as the JS bundle
+      * contains decryption key and is able to decode it at the client side.
+      * Hovewer, for a number of reasons, encryption of injected data is still
+      * better than injection of a plain text. */
+      cipher.update(forge.util.createBuffer(JSON.stringify({
+        CONFIG: configToInject || sanitizedConfig,
+        ISTATE: store ? store.getState() : null,
+      }), 'utf8'));
+      cipher.finish();
+      const INJ = forge.util.encode64(`${iv}${cipher.output.data}`);
+
+      /* It is supposed to end with '/' symbol as path separator. */
+      const { publicPath } = webpackConfig.output;
+
+      const timestamp = moment(buildInfo.timestamp).valueOf();
+
+      if (context.status) res.status(context.status);
+      const styles = context.chunks.map(chunk => (
+        `<link data-chunk="${chunk}" href="${publicPath}${chunk}-${timestamp}.css" rel="stylesheet" />`
+      )).join('');
+
+      res.send((
+        `<!DOCTYPE html>
+        <html>
+          <head>
+            ${helmet ? helmet.title.toString() : ''}
+            ${helmet ? helmet.meta.toString() : ''}
+            <link
+              href="${publicPath}main-${timestamp}.css"
+              rel="stylesheet"
+            />
+            ${styles}
+            <link rel="shortcut icon" href="/favicon.ico" />
+            <meta charset="utf-8" />
+            <meta
+              content="width=device-width,initial-scale=1.0"
+              name="viewport"
+            />
+          </head>
+          <body>
+            <div id="react-view">${App || ''}</div>
+            <script id="inj" type="application/javascript">
+              window.SPLITS = ${serializeJs(context.splits, { isJSON: true })}
+              window.INJ="${INJ}"
+            </script>
+            <script
+              src="${publicPath}polyfills-${timestamp}.js"
+              type="application/javascript"
+            ></script>
+            ${extraScripts ? extraScripts.join('') : ''}
+            <script
+              src="${publicPath}main-${timestamp}.js"
+              type="application/javascript"
+            ></script>
+          </body>
+        </html>`
+      ));
+    } catch (error) {
+      next(error);
     }
-
-    /* Encrypts data to be injected into HTML.
-     * Keep in mind, that this encryption is no way secure: as the JS bundle
-     * contains decryption key and is able to decode it at the client side.
-     * Hovewer, for a number of reasons, encryption of injected data is still
-     * better than injection of a plain text. */
-    cipher.update(forge.util.createBuffer(JSON.stringify({
-      CONFIG: configToInject || sanitizedConfig,
-      ISTATE: store ? store.getState() : null,
-    }), 'utf8'));
-    cipher.finish();
-    const INJ = forge.util.encode64(`${iv}${cipher.output.data}`);
-
-    /* It is supposed to end with '/' symbol as path separator. */
-    const { publicPath } = webpackConfig.output;
-
-    const timestamp = moment(buildInfo.timestamp).valueOf();
-
-    if (context.status) res.status(context.status);
-    const styles = context.chunks.map(chunk => (
-      `<link data-chunk="${chunk}" href="${publicPath}${chunk}-${timestamp}.css" rel="stylesheet" />`
-    )).join('');
-
-    res.send((
-      `<!DOCTYPE html>
-      <html>
-        <head>
-          ${helmet ? helmet.title.toString() : ''}
-          ${helmet ? helmet.meta.toString() : ''}
-          <link
-            href="${publicPath}main-${timestamp}.css"
-            rel="stylesheet"
-          />
-          ${styles}
-          <link rel="shortcut icon" href="/favicon.ico" />
-          <meta charset="utf-8" />
-          <meta
-            content="width=device-width,initial-scale=1.0"
-            name="viewport"
-          />
-        </head>
-        <body>
-          <div id="react-view">${App || ''}</div>
-          <script id="inj" type="application/javascript">
-            window.SPLITS = ${serializeJs(context.splits, { isJSON: true })}
-            window.INJ="${INJ}"
-          </script>
-          <script
-            src="${publicPath}polyfills-${timestamp}.js"
-            type="application/javascript"
-          ></script>
-          ${extraScripts ? extraScripts.join('') : ''}
-          <script
-            src="${publicPath}main-${timestamp}.js" 
-            type="application/javascript"
-          ></script>
-        </body>
-      </html>`
-    ));
   };
 }
