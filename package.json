@@ -18,9 +18,9 @@
     "node-forge": "^0.7.5",
     "prop-types": "^15.6.1",
     "raf": "^3.4.0",
-    "react": "^16.3.1",
+    "react": "^16.3.2",
     "react-css-super-themr": "^2.2.0",
-    "react-dom": "^16.3.1",
+    "react-dom": "^16.3.2",
     "react-helmet": "^5.2.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
@@ -104,12 +104,12 @@
     "build": "npm run clean && ./node_modules/.bin/webpack --env=production --colors --display-optimization-bailout --profile --progress && BABEL_ENV=production babel src/server --out-dir dist/server && BABEL_ENV=production babel src/shared/utils/jest.jsx --out-file dist/shared/utils/jest.js && BABEL_ENV=production babel src/client/init.js --out-file dist/client/init.js",
     "build:dev": "npm run clean && (./node_modules/.bin/webpack --env=development --bail --colors --display-optimization-bailout --profile --progress --watch | BABEL_ENV=development babel src/server --out-dir dist/server --watch | BABEL_ENV=development babel src/shared/utils/jest.jsx --out-file dist/shared/utils/jest.js --watch | BABEL_ENV=development babel src/client/init.js --out-file dist/client/init.js --watch)",
     "clean": "rm -rf dist && mkdir -p dist/shared/utils && mkdir -p dist/client",
-    "jest": "jest --no-cache --maxWorkers=4 --config config/jest/default.js",
+    "jest": "NODE_CONFIG_ENV=test jest --no-cache --maxWorkers=4 --config config/jest/default.js",
     "lint": "npm run lint:js && npm run lint:scss",
     "lint:js": "eslint --ext .js,.jsx .",
     "lint:scss": "./node_modules/.bin/stylelint **/*.scss --syntax scss",
     "prepublishOnly": "npm run build",
     "test": "npm run lint && npm run jest"
   },
-  "version": "0.3.10"
+  "version": "0.3.11"
 }
