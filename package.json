@@ -8,6 +8,7 @@
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "body-parser": "^1.18.2",
+    "compression": "^1.7.2",
     "config": "^1.30.0",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.3",
@@ -66,6 +67,9 @@
     "file-loader": "^1.1.11",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^22.4.3",
+    "jsdoc-to-markdown": "^4.0.1",
+    "mkpath": "^1.0.0",
+    "mockdate": "^2.0.2",
     "node-sass": "^4.8.3",
     "nodelist-foreach-polyfill": "^1.2.0",
     "optimize-css-assets-webpack-plugin": "^3.2.0",
@@ -111,5 +115,5 @@
     "prepublishOnly": "npm run build",
     "test": "npm run lint && npm run jest"
   },
-  "version": "0.3.11"
+  "version": "0.3.12"
 }

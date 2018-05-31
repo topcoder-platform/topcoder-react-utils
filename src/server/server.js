@@ -4,6 +4,7 @@
 
 import _ from 'lodash';
 import bodyParser from 'body-parser';
+import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import express from 'express';
 import favicon from 'serve-favicon';
@@ -19,6 +20,7 @@ export default async function factory(webpackConfig, options) {
   const { publicPath } = webpackConfig.output;
 
   const server = express();
+  server.use(compression());
   server.use(helmet());
 
   if (options.favicon) {

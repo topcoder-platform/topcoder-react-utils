@@ -1,0 +1,293 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Generic Snapshot Testing Addition of items and booking 1`] = `
+Object {
+  "id1": Object {
+    "item": "Item1",
+    "loadingOperationId": "",
+    "numRefs": 0,
+    "timestamp": 2,
+  },
+  "id2": Object {
+    "item": "Item2",
+    "loadingOperationId": "",
+    "numRefs": 0,
+    "timestamp": 2,
+  },
+}
+`;
+
+exports[`Generic Snapshot Testing Addition of items and booking 2`] = `
+Object {
+  "id1": Object {
+    "item": "Item1",
+    "loadingOperationId": "",
+    "numRefs": 0,
+    "timestamp": 2,
+  },
+  "id2": Object {
+    "item": "Item2",
+    "loadingOperationId": "",
+    "numRefs": 0,
+    "timestamp": 2,
+  },
+  "id3": Object {
+    "item": null,
+    "loadingOperationId": "",
+    "numRefs": 1,
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Generic Snapshot Testing Addition of items and booking 3`] = `
+Object {
+  "id1": Object {
+    "item": "Item1",
+    "loadingOperationId": "",
+    "numRefs": 0,
+    "timestamp": 2,
+  },
+  "id2": Object {
+    "item": "Item2",
+    "loadingOperationId": "",
+    "numRefs": 0,
+    "timestamp": 2,
+  },
+  "id3": Object {
+    "item": "Item3",
+    "loadingOperationId": "",
+    "numRefs": 1,
+    "timestamp": 4,
+  },
+}
+`;
+
+exports[`Generic Snapshot Testing Addition of items and booking 4`] = `
+Object {
+  "id1": Object {
+    "item": "Item1",
+    "loadingOperationId": "",
+    "numRefs": 2,
+    "timestamp": 2,
+  },
+  "id2": Object {
+    "item": "Item2",
+    "loadingOperationId": "",
+    "numRefs": 2,
+    "timestamp": 2,
+  },
+  "id3": Object {
+    "item": "Item3",
+    "loadingOperationId": "",
+    "numRefs": 3,
+    "timestamp": 4,
+  },
+}
+`;
+
+exports[`Generic Snapshot Testing Loading of items 1`] = `
+Object {
+  "id1": Object {
+    "item": "Item1",
+    "loadingOperationId": "",
+    "numRefs": 2,
+    "timestamp": 2,
+  },
+  "id2": Object {
+    "item": "Item2",
+    "loadingOperationId": "",
+    "numRefs": 2,
+    "timestamp": 2,
+  },
+  "id3": Object {
+    "item": "Item3",
+    "loadingOperationId": "",
+    "numRefs": 3,
+    "timestamp": 4,
+  },
+  "id4": Object {
+    "item": null,
+    "loadingOperationId": "op1",
+    "numRefs": 0,
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Generic Snapshot Testing Loading of items 2`] = `
+Object {
+  "id1": Object {
+    "item": "Item1",
+    "loadingOperationId": "",
+    "numRefs": 2,
+    "timestamp": 2,
+  },
+  "id2": Object {
+    "item": "Item2",
+    "loadingOperationId": "",
+    "numRefs": 2,
+    "timestamp": 2,
+  },
+  "id3": Object {
+    "item": "Item3",
+    "loadingOperationId": "",
+    "numRefs": 3,
+    "timestamp": 4,
+  },
+  "id4": Object {
+    "item": null,
+    "loadingOperationId": "op1",
+    "numRefs": 0,
+    "timestamp": 0,
+  },
+  "id5": Object {
+    "item": null,
+    "loadingOperationId": "op2",
+    "numRefs": 1,
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Generic Snapshot Testing Loading of items 3`] = `
+Object {
+  "id1": Object {
+    "item": "Item1",
+    "loadingOperationId": "",
+    "numRefs": 2,
+    "timestamp": 2,
+  },
+  "id2": Object {
+    "item": "Item2",
+    "loadingOperationId": "",
+    "numRefs": 2,
+    "timestamp": 2,
+  },
+  "id3": Object {
+    "item": "Item3",
+    "loadingOperationId": "",
+    "numRefs": 3,
+    "timestamp": 4,
+  },
+  "id4": Object {
+    "item": "Item4",
+    "loadingOperationId": "",
+    "numRefs": 0,
+    "timestamp": 9,
+  },
+  "id5": Object {
+    "item": null,
+    "loadingOperationId": "op2",
+    "numRefs": 1,
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Generic Snapshot Testing Loading of items 4`] = `
+Object {
+  "id1": Object {
+    "item": "Item1",
+    "loadingOperationId": "",
+    "numRefs": 2,
+    "timestamp": 2,
+  },
+  "id2": Object {
+    "item": "Item2",
+    "loadingOperationId": "",
+    "numRefs": 2,
+    "timestamp": 2,
+  },
+  "id3": Object {
+    "item": "Item3",
+    "loadingOperationId": "",
+    "numRefs": 3,
+    "timestamp": 4,
+  },
+  "id4": Object {
+    "item": "Item4",
+    "loadingOperationId": "",
+    "numRefs": 0,
+    "timestamp": 9,
+  },
+  "id5": Object {
+    "item": null,
+    "loadingOperationId": "op3",
+    "numRefs": 1,
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Generic Snapshot Testing Loading of items 5`] = `
+Object {
+  "id1": Object {
+    "item": "Item1",
+    "loadingOperationId": "",
+    "numRefs": 2,
+    "timestamp": 2,
+  },
+  "id2": Object {
+    "item": "Item2",
+    "loadingOperationId": "",
+    "numRefs": 2,
+    "timestamp": 2,
+  },
+  "id3": Object {
+    "item": "Item3",
+    "loadingOperationId": "",
+    "numRefs": 3,
+    "timestamp": 4,
+  },
+  "id4": Object {
+    "item": "Item4",
+    "loadingOperationId": "",
+    "numRefs": 0,
+    "timestamp": 9,
+  },
+  "id5": Object {
+    "item": null,
+    "loadingOperationId": "op3",
+    "numRefs": 1,
+    "timestamp": 0,
+  },
+}
+`;
+
+exports[`Generic Snapshot Testing Loading of items 6`] = `
+Object {
+  "id1": Object {
+    "item": "Item1",
+    "loadingOperationId": "",
+    "numRefs": 2,
+    "timestamp": 2,
+  },
+  "id2": Object {
+    "item": "Item2",
+    "loadingOperationId": "",
+    "numRefs": 2,
+    "timestamp": 2,
+  },
+  "id3": Object {
+    "item": "Item3",
+    "loadingOperationId": "",
+    "numRefs": 3,
+    "timestamp": 4,
+  },
+  "id4": Object {
+    "item": "Item4",
+    "loadingOperationId": "",
+    "numRefs": 0,
+    "timestamp": 9,
+  },
+  "id5": Object {
+    "item": "Item5b",
+    "loadingOperationId": "",
+    "numRefs": 1,
+    "timestamp": 12,
+  },
+}
+`;
+
+exports[`Generic Snapshot Testing State initialization 1`] = `Object {}`;

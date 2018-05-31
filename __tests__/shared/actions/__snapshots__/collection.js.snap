@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`\`addItems\` payload creator 1`] = `
+Object {
+  "payload": Object {
+    "index": Object {
+      "id1": "Item 1",
+      "id2": "Item 2",
+    },
+    "timestamp": 1527275015000,
+  },
+  "type": "COLLECTION/ADD_ITEMS",
+}
+`;
+
+exports[`\`bookItems\` payload creator 1`] = `
+Object {
+  "payload": Object {
+    "factor": 1,
+    "ids": Array [
+      "id1",
+    ],
+  },
+  "type": "COLLECTION/BOOK_ITEMS",
+}
+`;
+
+exports[`\`bookItems\` payload creator 2`] = `
+Object {
+  "payload": Object {
+    "factor": 7,
+    "ids": Array [
+      "id1",
+    ],
+  },
+  "type": "COLLECTION/BOOK_ITEMS",
+}
+`;
+
+exports[`\`bookItems\` payload creator 3`] = `
+Object {
+  "payload": Object {
+    "factor": 1,
+    "ids": Array [
+      "id1",
+      "id2",
+      "id3",
+    ],
+  },
+  "type": "COLLECTION/BOOK_ITEMS",
+}
+`;
+
+exports[`\`clean\` payload creator 1`] = `
+Object {
+  "payload": 1.7976931348623157e+308,
+  "type": "COLLECTION/CLEAN",
+}
+`;
+
+exports[`\`clean\` payload creator 2`] = `
+Object {
+  "payload": 100,
+  "type": "COLLECTION/CLEAN",
+}
+`;
+
+exports[`\`freeItems\` payload creator 1`] = `
+Object {
+  "payload": Object {
+    "factor": 1,
+    "ids": Array [
+      "id1",
+    ],
+  },
+  "type": "COLLECTION/FREE_ITEMS",
+}
+`;
+
+exports[`\`freeItems\` payload creator 2`] = `
+Object {
+  "payload": Object {
+    "factor": 7,
+    "ids": Array [
+      "id1",
+    ],
+  },
+  "type": "COLLECTION/FREE_ITEMS",
+}
+`;
+
+exports[`\`freeItems\` payload creator 3`] = `
+Object {
+  "payload": Object {
+    "factor": 1,
+    "ids": Array [
+      "id1",
+      "id2",
+      "id3",
+    ],
+  },
+  "type": "COLLECTION/FREE_ITEMS",
+}
+`;
+
+exports[`\`loadItemDone\` payload creator 1`] = `
+Object {
+  "payload": Object {
+    "item": "item",
+    "itemId": "item-id",
+    "operationId": "operation-id",
+    "timestamp": 1527275015000,
+  },
+  "type": "COLLECTION/LOAD_ITEM_DONE",
+}
+`;
+
+exports[`\`loadItemInit\` payload creator 1`] = `
+Object {
+  "payload": Object {
+    "itemId": "item-id",
+    "operationId": "operation-id",
+  },
+  "type": "COLLECTION/LOAD_ITEM_INIT",
+}
+`;
+
+exports[`Exports expected actions 1`] = `
+Object {
+  "collection": Object {
+    "addItems": [Function],
+    "bookItems": [Function],
+    "clean": [Function],
+    "freeItems": [Function],
+    "loadItemDone": [Function],
+    "loadItemInit": [Function],
+  },
+}
+`;

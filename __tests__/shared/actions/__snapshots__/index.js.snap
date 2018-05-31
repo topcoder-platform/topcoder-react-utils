@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Exports expected actions 1`] = `
+Object {
+  "collection": Object {
+    "addItems": [Function],
+    "bookItems": [Function],
+    "clean": [Function],
+    "freeItems": [Function],
+    "loadItemDone": [Function],
+    "loadItemInit": [Function],
+  },
+}
+`;
