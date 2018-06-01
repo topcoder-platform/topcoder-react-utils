@@ -1,0 +1,145 @@
+#!/usr/bin/env node
+
+/* Auxiliary script that helps to install and upgrade Topcoder libraries
+ * published to NPM. */
+/* eslint-disable import/no-extraneous-dependencies, no-console  */
+
+const commandLineArgs = require('command-line-args');
+const commandLineUsage = require('command-line-usage');
+const fs = require('fs');
+const path = require('path');
+const { spawnSync } = require('child_process');
+
+/* Definition of command-line arguments. */
+const OPTIONS = [{
+  name: 'help',
+  alias: 'h',
+  description: 'Shows usage instructions',
+  type: Boolean,
+}, {
+  name: 'libraries',
+  defaultOption: true,
+  multiple: true,
+  type: String,
+}];
+
+/* Definition of help information. */
+const HELP = [{
+  content: 'Usage: {cyanBright topcoder-lib-setup [OPTION]... LIBRARY...}',
+}, {
+  header: 'Description',
+  content:
+    `Installs or upgrades Topcoder's ReactJS libraries released to NPM.
+    {cyanBright [OPTION]...} is the list of options (see below);
+    {cyanBright LIBRARY...} is the list of libraries to install/upgrade`,
+}, {
+  header: 'Options',
+  optionList: OPTIONS.filter(x => !x.defaultOption),
+}];
+
+/**
+ * Generates a string containing name and version of the package to be
+ * installed.
+ * @param {Array} entry Array with package name as the first element, and
+ *  corresponding version or URI given in a `package.json`.
+ * @return {String} Package name and version as a string that can be passed
+ *  into NPM's install command.
+ */
+function generateTargetPackage(entry) {
+  if (entry[1].match(/^[^]/)) return `${entry[0]}@${entry[1].slice(1)}`;
+  return `${entry[0]}@${entry[1]}`;
+}
+
+/**
+ * Adopts dev dependencies of the `donor` package into the `host` one.
+ * @param {Object} donorData Data from donor's `package.json`.
+ * @param {Object} hostData Data from host's `package.json`.
+ */
+function adoptDevDependencies(donorData) {
+  let deps = Object.entries(donorData.devDependencies || {});
+  deps = deps.map(generateTargetPackage);
+  spawnSync('npm', ['install', '--save-dev'].concat(deps), {
+    stdio: 'inherit',
+  });
+}
+
+/**
+ * Locates and loads `package.json` of the host package (assumed to be inside
+ * the current working directory).
+ * @return {Object} Data from `package.json` parsed into JSON.
+ */
+function getHostPackageJson() {
+  const url = path.resolve(process.cwd(), 'package.json');
+  return JSON.parse(fs.readFileSync(url));
+}
+
+/**
+ * Locates and loads `package.json` file of the specified package.
+ * @param {String} package Package name.
+ * @return {Object} Data from `package.json` parsed into JSON.
+ */
+function getPackageJson(packageName = 'topcoder-react-utils') {
+  let url = packageName === 'topcoder-react-utils' ? '..' : packageName;
+  url = path.dirname(require.resolve(url));
+  for (;;) {
+    const files = fs.readdirSync(url);
+    if (files.includes('package.json')) {
+      url = path.resolve(url, 'package.json');
+      break;
+    }
+    const up = path.resolve(url, '..');
+    if (url === up) throw new Error(`Cannot find the package ${packageName}`);
+    url = up;
+  }
+  return JSON.parse(fs.readFileSync(url));
+}
+
+/**
+ * Installs specified library.
+ * @param {String} library Library name.
+ */
+function install(library) {
+  let name = library;
+  if (name.indexOf('@') <= 0) name += '@latest';
+  spawnSync('npm', ['install', '--save', name], { stdio: 'inherit' });
+}
+
+/**
+ * Outputs help information to console.
+ */
+function showHelp() {
+  console.log(commandLineUsage(HELP));
+}
+
+/**
+ * Updates prod dependencies of `host` package that are also prod dependencies
+ * of `donor` to the same versions specified in the donor's `package.json`.
+ * @param {Object} donorData Data from donor's `package.json`.
+ * @param {Object} hostData Data from host's `package.json`.
+ */
+function updateProdDependencies(donorData, hostData) {
+  let deps = Object.entries(donorData.dependencies || {});
+  const hostDeps = hostData.dependencies || {};
+  deps = deps.filter(x => hostDeps[x[0]]);
+  deps = deps.map(generateTargetPackage);
+  spawnSync('npm', ['install', '--save'].concat(deps), { stdio: 'inherit' });
+}
+
+/* Entry point. */
+
+const options = commandLineArgs(OPTIONS);
+if (!options.libraries) {
+  options.libraries = ['topcoder-react-utils'];
+}
+
+if (options.help) showHelp();
+else {
+  const hostData = getHostPackageJson();
+  options.libraries.forEach((library) => {
+    install(library);
+    const libData = getPackageJson(library);
+    adoptDevDependencies(libData, hostData);
+    updateProdDependencies(libData, hostData);
+  });
+  spawnSync('npm', ['install'], { stdio: 'inherit' });
+}

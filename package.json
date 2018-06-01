@@ -55,6 +55,8 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "command-line-args": "^5.0.2",
+    "command-line-usage": "^5.0.5",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
@@ -115,5 +117,5 @@
     "prepublishOnly": "npm run build",
     "test": "npm run lint && npm run jest"
   },
-  "version": "0.4.0"
+  "version": "0.4.1"
 }
