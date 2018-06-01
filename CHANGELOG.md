@@ -1,6 +1,6 @@
 # Topcoder React Utils Changelog
 
-### v0.4.1
+### v0.4.2
 Adds `topcoder-lib-setup` script, which should help to update our ReactJS
 libraries in the host packages. Not mentioned in the docs as it still pending
 to be tested in prod.
