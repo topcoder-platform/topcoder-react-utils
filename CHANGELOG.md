@@ -1,5 +1,9 @@
 # Topcoder React Utils Changelog
 
+### v0.4.0
+- Updates many dependencies to the latest versions. Presumably, should not
+  introduce breaking changes, but, just in case, tagged as a minor update.
+
 ### v0.3.9
 - Adds `collection` actions and reducer.
 
