@@ -8,37 +8,34 @@ The [Topcoder](https://www.topcoder.com) collection of generic ReactJS
 configurations, components and utilities to be shared between all internal and
 external ReactJS projects developed by the Topcoder community.
 
-### Content
+## Content
 - [Installation](#installation)
-- [Configurations](#configurations)
-- [Components](#components)
-- [Utilities](#utilities)
+- [Reference](#reference)
+  - [Configurations](#configurations)
+  - [Components](#components)
+  - [NodeJS Scripts](#nodejs-scripts)
+  - [Utilities](#utilities)
 - [Development](#development)
 - [License](#license)
 
-### <a name="installation">Installation</a>
-Install this package as
+## Installation
+Install the package as
 ```bash
 $ npm install --save topcoder-react-utils
+$ ./node_modules/.bin/topcoder-lib-setup
 ```
-Import the global stylesheet into the root ReactJS component of your app:
+Then import the global stylesheet into the root ReactJS component of your app:
 ```js
 import 'topcoder-react-utils/dist/style.css';
 ```
 
-You are done if you only use components and utilities provided by this
-package. If you are to use configurations to build or test your code, you
-also need to install all development dependencies into your own package:
-```
-$ ./node_modules/.bin/adopt-dev-deps topcoder-react-utils
+To upgrade this library to the latest version just execute again
+```bash
+$ ./node_modules/.bin/topcoder-lib-setup
 ```
 
-Installed dev dependencies will be stored into your `package.json`, thus
-further invokations of `npm install` will automatically install them. You
-only need to call `adopt-dev-deps` again if you update
-`topcoder-react-utils` to a newer version.
-
-### <a name="configurations">Configurations</a>
+## Reference
+### Configurations
 - [**Babel Configurations**](docs/babel-config.md) &mdash; Standard
   configurations for [Babel](https://babeljs.io/);
 - [**ESLint Configurations**](docs/eslint-config.md) &mdash; Standard
@@ -50,7 +47,7 @@ only need to call `adopt-dev-deps` again if you update
 - [**Webpack Configurations**](docs/webpack-config.md) &mdash; Standard
   configurations for [Webpack](https://webpack.js.org/).
 
-### <a name="components">Components</a>
+### Components
 - [**`Avatar`**](docs/avatar.md) &mdash; The standard component for user avatars;
 - [**`Button`**](docs/button.md) &mdash; Handles buttons and button-like links
   (components that look like regular buttons, but behave as links) in the same
@@ -62,7 +59,11 @@ only need to call `adopt-dev-deps` again if you update
 - [**`ScalableRect`**](docs/scalable-rect.md) &mdash; Container that keeps
   the specified aspect ratio regardless the width you set.
 
-### <a name="utilities">Utilities</a>
+### NodeJS Scripts
+- [**topcoder-lib-setup**](docs/topcoder-lib-setup-script.md) &mdash; Helps to
+  install and upgrade **topcoder-react-utils** and other similar libraries.
+
+### Utilities
 - [**Client**](docs/client.md) &mdash; Client-side initialization code.
 - [**Config**](docs/config.md) &mdash; Isomorphic app config;
 - [**Global Styles**](docs/global-styles.md) &mdash; Global styles necessary for
@@ -81,7 +82,7 @@ only need to call `adopt-dev-deps` again if you update
 - [**Webpack**](docs/webpack-utils.md) &mdash; Various utils related to the
   Webpack bundling process.
 
-### <a name="development">Development</a>
+## Development
 For convenient development you can link this package into your host package:
 1.  Clone [`topcoder-react-utils`](https://github.com/topcoder-platform/topcoder-react-utils)
     to your machine, and checkout the branch you are going to work with;
@@ -118,5 +119,5 @@ any breaking changes into the codebase! Breaking changes should be done via
 `minor` or `major` update, and they should be documented in
 the [CHANGELOG](CHANGELOG.md).
 
-### <a name="license">License</a>
+## License
 Topcoder React Utils is [MIT Licensed](LICENSE.md)

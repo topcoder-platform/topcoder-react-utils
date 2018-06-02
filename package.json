@@ -1,6 +1,5 @@
 {
   "bin": {
-    "adopt-dev-deps": "./bin/adopt-dev-deps",
     "topcoder-lib-setup": "./bin/topcoder-lib-setup"
   },
   "bugs": {
@@ -9,6 +8,8 @@
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "body-parser": "^1.18.3",
+    "command-line-args": "^5.0.2",
+    "command-line-usage": "^5.0.5",
     "compression": "^1.7.2",
     "config": "^1.30.0",
     "cookie-parser": "^1.4.3",
@@ -41,7 +42,7 @@
   },
   "description": "Topcoder collection of generic ReactJS components and utils",
   "devDependencies": {
-    "autoprefixer": "^8.5.2",
+    "autoprefixer": "^8.6.0",
     "babel-cli": "^6.26.0",
     "babel-eslint": "^8.2.3",
     "babel-loader": "^7.1.4",
@@ -56,8 +57,6 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
-    "command-line-args": "^5.0.2",
-    "command-line-usage": "^5.0.5",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
@@ -66,7 +65,7 @@
     "eslint-plugin-jest": "^21.17.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.8.2",
-    "extract-css-chunks-webpack-plugin": "^2.0.18",
+    "extract-css-chunks-webpack-plugin": "^2.0.19",
     "file-loader": "^1.1.11",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^23.1.0",
@@ -82,7 +81,7 @@
     "react-test-renderer": "^16.4.0",
     "resolve-url-loader": "^2.3.0",
     "rimraf": "^2.6.2",
-    "sass-loader": "^7.0.1",
+    "sass-loader": "^7.0.2",
     "style-loader": "^0.21.0",
     "stylelint": "^9.2.1",
     "stylelint-config-standard": "^18.2.0",
@@ -110,13 +109,12 @@
   "scripts": {
     "build": "npm run clean && ./node_modules/.bin/webpack --env=production --colors --display-optimization-bailout --profile --progress && BABEL_ENV=production babel src/server --out-dir dist/server && BABEL_ENV=production babel src/shared/utils/jest.jsx --out-file dist/shared/utils/jest.js && BABEL_ENV=production babel src/client/init.js --out-file dist/client/init.js",
     "build:dev": "npm run clean && (./node_modules/.bin/webpack --env=development --bail --colors --display-optimization-bailout --profile --progress --watch | BABEL_ENV=development babel src/server --out-dir dist/server --watch | BABEL_ENV=development babel src/shared/utils/jest.jsx --out-file dist/shared/utils/jest.js --watch | BABEL_ENV=development babel src/client/init.js --out-file dist/client/init.js --watch)",
-    "clean": "rm -rf dist && mkdir -p dist/shared/utils && mkdir -p dist/client",
+    "clean": "./node_modules/.bin/rimraf dist && mkdir -p dist/shared/utils && mkdir -p dist/client",
     "jest": "NODE_CONFIG_ENV=test jest --no-cache --maxWorkers=4 --config config/jest/default.js",
     "lint": "npm run lint:js && npm run lint:scss",
     "lint:js": "eslint --ext .js,.jsx .",
     "lint:scss": "./node_modules/.bin/stylelint **/*.scss --syntax scss",
-    "prepublishOnly": "npm run build",
     "test": "npm run lint && npm run jest"
   },
-  "version": "0.4.2"
+  "version": "0.4.3"
 }
