@@ -1,6 +1,5 @@
 {
   "bin": {
-    "adopt-dev-deps": "./bin/adopt-dev-deps",
     "topcoder-lib-setup": "./bin/topcoder-lib-setup"
   },
   "bugs": {
@@ -9,6 +8,8 @@
   "dependencies": {
     "babel-runtime": "^6.26.0",
     "body-parser": "^1.18.3",
+    "command-line-args": "^5.0.2",
+    "command-line-usage": "^5.0.5",
     "compression": "^1.7.2",
     "config": "^1.30.0",
     "cookie-parser": "^1.4.3",
@@ -56,8 +57,6 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
-    "command-line-args": "^5.0.2",
-    "command-line-usage": "^5.0.5",
     "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",

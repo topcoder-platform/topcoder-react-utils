@@ -1,5 +1,9 @@
 # Topcoder React Utils Changelog
 
+### v0.4.3
+- Removes `adopt-dev-deps` script (use
+  [`topcoder-lib-setup`](docs/topcoder-lib-setup-script.md) instead).
+
 ### v0.4.2
 Adds `topcoder-lib-setup` script, which should help to update our ReactJS
 libraries in the host packages. Not mentioned in the docs as it still pending
