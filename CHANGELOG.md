@@ -1,5 +1,8 @@
 # Topcoder React Utils Changelog
 
+### v0.4.4
+PoC implementation of **item** actions and reducer.
+
 ### v0.4.3
 - Removes `adopt-dev-deps` script (use
   [`topcoder-lib-setup`](docs/topcoder-lib-setup-script.md) instead).

@@ -46,8 +46,8 @@ const HELP = [{
  *  into NPM's install command.
  */
 function generateTargetPackage(entry) {
-  if (entry[1].match(/^https?:\/\//)) return entry[1];
-  if (entry[1].match(/^[^~]/)) return `${entry[0]}@${entry[1].slice(1)}`;
+  if (entry[1].match(/^(git\+)?https?:\/\//)) return entry[1];
+  if (entry[1].match(/^[\^~]/)) return `${entry[0]}@${entry[1].slice(1)}`;
   return `${entry[0]}@${entry[1]}`;
 }
 

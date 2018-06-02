@@ -10,5 +10,12 @@ Object {
     "loadItemDone": [Function],
     "loadItemInit": [Function],
   },
+  "item": Object {
+    "dropData": [Function],
+    "loadDataDone": [Function],
+    "loadDataInit": [Function],
+    "setData": [Function],
+    "updateReferenceCounter": [Function],
+  },
 }
 `;

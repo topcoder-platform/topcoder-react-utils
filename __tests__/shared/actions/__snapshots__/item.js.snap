@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Module exports 1`] = `
+Object {
+  "item": Object {
+    "dropData": [Function],
+    "loadDataDone": [Function],
+    "loadDataInit": [Function],
+    "setData": [Function],
+    "updateReferenceCounter": [Function],
+  },
+}
+`;
+
+exports[`dropData 1`] = `
+Object {
+  "payload": 1.7976931348623157e+308,
+  "type": "ITEM/DROP_DATA",
+}
+`;
+
+exports[`dropData 2`] = `
+Object {
+  "payload": 12345,
+  "type": "ITEM/DROP_DATA",
+}
+`;
+
+exports[`getDataDone 1`] = `
+Object {
+  "payload": Object {
+    "data": "Dummy Data",
+    "loadingOperationId": "12345",
+    "timestamp": 1527961703000,
+  },
+  "type": "ITEM/LOAD_DATA_DONE",
+}
+`;
+
+exports[`getDataInit 1`] = `
+Object {
+  "payload": "12345",
+  "type": "ITEM/LOAD_DATA_INIT",
+}
+`;
+
+exports[`setData 1`] = `
+Object {
+  "payload": Object {
+    "data": "Dummy Data",
+    "timestamp": 1527961703000,
+  },
+  "type": "ITEM/SET_DATA",
+}
+`;
+
+exports[`updateReferenceCounter 1`] = `
+Object {
+  "payload": 123,
+  "type": "ITEM/UPDATE_REFERENCE_COUNTER",
+}
+`;
+
+exports[`updateReferenceCounter 2`] = `
+Object {
+  "payload": -123,
+  "type": "ITEM/UPDATE_REFERENCE_COUNTER",
+}
+`;

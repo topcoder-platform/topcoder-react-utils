@@ -20,6 +20,13 @@ Object {
       "loadItemDone": [Function],
       "loadItemInit": [Function],
     },
+    "item": Object {
+      "dropData": [Function],
+      "loadDataDone": [Function],
+      "loadDataInit": [Function],
+      "setData": [Function],
+      "updateReferenceCounter": [Function],
+    },
   },
   "client": [Function],
   "config": undefined,
@@ -32,6 +39,7 @@ Object {
   },
   "reducers": Object {
     "collection": [Function],
+    "item": [Function],
   },
   "redux": Object {
     "combineReducers": [Function],
@@ -162,6 +170,13 @@ Object {
       "loadItemDone": [Function],
       "loadItemInit": [Function],
     },
+    "item": Object {
+      "dropData": [Function],
+      "loadDataDone": [Function],
+      "loadDataInit": [Function],
+      "setData": [Function],
+      "updateReferenceCounter": [Function],
+    },
   },
   "client": [Function],
   "config": Config {
@@ -179,6 +194,7 @@ Object {
   },
   "reducers": Object {
     "collection": [Function],
+    "item": [Function],
   },
   "redux": Object {
     "combineReducers": [Function],
