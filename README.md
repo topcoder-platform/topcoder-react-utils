@@ -65,7 +65,7 @@ $ ./node_modules/.bin/topcoder-lib-setup
   install and upgrade **topcoder-react-utils** and other similar libraries.
 
 ### Redux Templates
-- [**item**](docs/redux-item.md) &mdash; An async piece of data in Redux store.
+- [**Item**](docs/redux-item.md) &mdash; An async piece of data in Redux store.
 
 ### Utilities
 - [**Client**](docs/client.md) &mdash; Client-side initialization code.
