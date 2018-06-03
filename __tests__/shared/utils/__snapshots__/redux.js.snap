@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Module exports 1`] = `
+Object {
+  "combineReducers": [Function],
+  "connect": [Function],
+  "createActions": [Function],
+  "handleActions": [Function],
+  "proxyAction": [Function],
+  "proxyReducer": [Function],
+  "resolveAction": [Function],
+  "resolveReducers": [Function],
+  "storeFactory": [Function],
+}
+`;

@@ -43,8 +43,11 @@ Object {
   },
   "redux": Object {
     "combineReducers": [Function],
+    "connect": [Function],
     "createActions": [Function],
     "handleActions": [Function],
+    "proxyAction": [Function],
+    "proxyReducer": [Function],
     "resolveAction": [Function],
     "resolveReducers": [Function],
     "storeFactory": [Function],
@@ -198,8 +201,11 @@ Object {
   },
   "redux": Object {
     "combineReducers": [Function],
+    "connect": [Function],
     "createActions": [Function],
     "handleActions": [Function],
+    "proxyAction": [Function],
+    "proxyReducer": [Function],
     "resolveAction": [Function],
     "resolveReducers": [Function],
     "storeFactory": [Function],

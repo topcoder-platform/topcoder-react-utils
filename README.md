@@ -14,6 +14,7 @@ external ReactJS projects developed by the Topcoder community.
   - [Configurations](#configurations)
   - [Components](#components)
   - [NodeJS Scripts](#nodejs-scripts)
+  - [Redux Templates](#redux-templates)
   - [Utilities](#utilities)
 - [Development](#development)
 - [License](#license)
@@ -62,6 +63,9 @@ $ ./node_modules/.bin/topcoder-lib-setup
 ### NodeJS Scripts
 - [**topcoder-lib-setup**](docs/topcoder-lib-setup-script.md) &mdash; Helps to
   install and upgrade **topcoder-react-utils** and other similar libraries.
+
+### Redux Templates
+- [**item**](docs/redux-item.md) &mdash; An async piece of data in Redux store.
 
 ### Utilities
 - [**Client**](docs/client.md) &mdash; Client-side initialization code.
