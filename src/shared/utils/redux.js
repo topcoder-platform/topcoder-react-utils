@@ -7,9 +7,11 @@ import DevTools from 'components/DevTools';
 import promiseMiddleware from 'redux-promise';
 import { applyMiddleware, compose, createStore } from 'redux';
 import { createActions, handleActions } from 'redux-actions';
+import { connect } from 'react-redux';
 import { isDevBuild } from './isomorphy';
 
 /* Auxiliary aliases. */
+module.exports.connect = connect;
 module.exports.createActions = createActions;
 module.exports.handleActions = handleActions;
 
@@ -42,6 +44,38 @@ export function combineReducers(...reducers) {
 
     return nextState;
   };
+}
+
+/**
+ * Helps to proxy actions. This function has two modes:
+ *
+ * 1. **When no `action` is given:** it re-generates payload creator used by
+ *    `actionCreator`; i.e. it returns a function that passes its arguments
+ *    to the given `actionCreator`, and then returns `payload` of the
+ *    created action.
+ *
+ * 2. **When `action` is given:** it returns a copy of `action` with its type
+ *    replaced by the type of `actionCreator`.
+ *
+ * @param {Function} actionCreator Creator of the proxied action. It is assumed
+ *  that it creates a Flux Standard Action.
+ * @param {Action} action Optional. Action to map.
+ * @return {Function|Action} Payload creator, or the mapped action.
+ */
+export function proxyAction(actionCreator, action) {
+  if (action) return { ...action, type: actionCreator.toString() };
+  return (...args) => actionCreator(...args).payload;
+}
+
+/**
+ * Wraps given reducer with a piece of code that changes the type of incoming
+ * action to the type of action created by the given `actionCreator`.
+ * @param {Function} reducer
+ * @param {Function} actionCreator
+ * @return {Reducer}
+ */
+export function proxyReducer(reducer, actionCreator) {
+  return (state, action) => reducer(state, proxyAction(actionCreator, action));
 }
 
 /**
