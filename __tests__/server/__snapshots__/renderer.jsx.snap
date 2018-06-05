@@ -8,6 +8,7 @@ exports[`Base rendering of HTML template 1`] = `
             
             <link
               href=\\"/test/public/path/main-1511941200000.css\\"
+              id=\\"tru-style\\"
               rel=\\"stylesheet\\"
             />
             
@@ -45,6 +46,7 @@ exports[`Config overriding for injection 1`] = `
             
             <link
               href=\\"/test/public/path/main-1511941200000.css\\"
+              id=\\"tru-style\\"
               rel=\\"stylesheet\\"
             />
             
@@ -82,6 +84,7 @@ exports[`Hemlet integration works 1`] = `
             <meta data-react-helmet=\\"true\\" property=\\"description\\" content=\\"Test Page Description\\"/>
             <link
               href=\\"/test/public/path/main-1511941200000.css\\"
+              id=\\"tru-style\\"
               rel=\\"stylesheet\\"
             />
             
@@ -119,6 +122,7 @@ exports[`Injection of additional JS scripts 1`] = `
             
             <link
               href=\\"/test/public/path/main-1511941200000.css\\"
+              id=\\"tru-style\\"
               rel=\\"stylesheet\\"
             />
             
@@ -156,9 +160,10 @@ exports[`Server-side rendering (SSR); injection of CSS chunks & Redux state 1`] 
             
             <link
               href=\\"/test/public/path/main-1511941200000.css\\"
+              id=\\"tru-style\\"
               rel=\\"stylesheet\\"
             />
-            <link data-chunk=\\"test-chunk-a\\" href=\\"/test/public/path/test-chunk-a-1511941200000.css\\" rel=\\"stylesheet\\" /><link data-chunk=\\"test-chunk-b\\" href=\\"/test/public/path/test-chunk-b-1511941200000.css\\" rel=\\"stylesheet\\" />
+            <link data-chunk=\\"test-chunk-a\\" id=\\"tru-style\\" href=\\"/test/public/path/test-chunk-a-1511941200000.css\\" rel=\\"stylesheet\\" /><link data-chunk=\\"test-chunk-b\\" id=\\"tru-style\\" href=\\"/test/public/path/test-chunk-b-1511941200000.css\\" rel=\\"stylesheet\\" />
             <link rel=\\"shortcut icon\\" href=\\"/favicon.ico\\" />
             <meta charset=\\"utf-8\\" />
             <meta
@@ -194,6 +199,7 @@ exports[`Setting of response HTTP status the server-side rendering 1`] = `
             
             <link
               href=\\"/test/public/path/main-1511941200000.css\\"
+              id=\\"tru-style\\"
               rel=\\"stylesheet\\"
             />
             
