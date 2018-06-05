@@ -57,7 +57,7 @@ Our solution for this problem comes in two pieces:
   - Update reference counter;
   - Remove stale data with no references to them.
 
-### Example
+### Tutorial
 
 Say, you want to add `myData` segment to your Redux store, using **item**
 actions / reducers. You want multiple ReactJS containers rely on this segment,
@@ -132,7 +132,7 @@ function create(initialState = itemReducer(undefined, '@@INIT')) {
     [a.getDone]: onGetDone,
     [a.updateReferenceCounter]:
       redux.proxyReducer(itemReducer, itemActions.updateReferenceCounter),
-  });
+  }, initialState);
 }
 
 /**
