@@ -137,7 +137,7 @@ export default function factory(webpackConfig, options) {
 
       if (context.status) res.status(context.status);
       const styles = context.chunks.map(chunk => (
-        `<link data-chunk="${chunk}" href="${publicPath}${chunk}-${timestamp}.css" rel="stylesheet" />`
+        `<link data-chunk="${chunk}" id="tru-style" href="${publicPath}${chunk}-${timestamp}.css" rel="stylesheet" />`
       )).join('');
 
       res.send((
@@ -148,6 +148,7 @@ export default function factory(webpackConfig, options) {
             ${helmet ? helmet.meta.toString() : ''}
             <link
               href="${publicPath}main-${timestamp}.css"
+              id="tru-style"
               rel="stylesheet"
             />
             ${styles}
