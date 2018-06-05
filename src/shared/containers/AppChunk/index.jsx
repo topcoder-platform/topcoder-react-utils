@@ -161,6 +161,7 @@ export default class SplitRoute extends React.Component {
               link = document.createElement('link');
               link.setAttribute('data-chunk', `${chunkName}`);
               link.setAttribute('href', `${PUBLIC_PATH}/${chunkName}-${timestamp}.css`);
+              link.setAttribute('id', 'tru-style');
               link.setAttribute('rel', 'stylesheet');
               const head = document.getElementsByTagName('head')[0];
               head.appendChild(link);

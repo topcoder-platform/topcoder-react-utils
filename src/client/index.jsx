@@ -53,12 +53,9 @@ export default async function Launch({
     const hotSuccess = hotReporter.success;
     hotReporter.success = () => {
       const stamp = shortId();
-      const links = document.querySelectorAll('link[rel=stylesheet]');
+      const links = document.querySelectorAll('link[rel=stylesheet][id="tru-style"]');
       for (let i = 0; i < links.length; i += 1) {
-        const link = links[i];
-        if (link.href.startsWith('/')) {
-          link.href = `${link.href.match(/[^?]*/)}?v=${stamp}`;
-        }
+        links[i].href = `${links[i].href.match(/[^?]*/)}?v=${stamp}`;
       }
       hotSuccess();
     };
