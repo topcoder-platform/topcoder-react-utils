@@ -1,5 +1,9 @@
 # Topcoder React Utils Changelog
 
+### v0.5.0
+All dependencies are force-updated to their latest versions. It might introduce
+breaking changes.
+
 ### v0.4.4
 PoC implementation of **item** actions and reducer.
 
