@@ -58,6 +58,12 @@ module.exports = function configFactory(ops) {
     mode: ops.mode,
     output: {
       filename: 'index.js',
+
+      // Workaround to fix umd build, restore webpack v3 behaviour
+      // https://github.com/webpack/webpack/issues/6677
+      // https://github.com/webpack/webpack/issues/6642
+      globalObject: "typeof self !== 'undefined' ? self : this",
+
       library: ops.library,
       path: path.resolve(__dirname, ops.context, 'dist'),
       libraryTarget: 'umd',
