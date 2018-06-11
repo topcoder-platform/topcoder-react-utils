@@ -56,6 +56,7 @@ mutation of the config object.
       It allows to re-create the Webpack config during a server launch without
       re-generation of the build info file created during a previous build
       (and thus bundled into the frontend bundle). Defaults to `false`.
+    - **`mode`** &ndash; *String* &ndash; [Webpack mode](https://webpack.js.org/concepts/mode/).
     - **`publicPath`** &mdash; *String* &mdash; Base URL for the output of
       the build assets;
 
@@ -169,6 +170,8 @@ mutation of the config object.
 
     - **`library`** &mdash; *String* &mdash; Name of the library to be build.
       It is important for proper resolution of the library assets.
+
+    - **`mode`** &ndash; *String* &ndash; [Webpack mode](https://webpack.js.org/concepts/mode/).
 
   - The generated config will opt to:
     - References to the font assets (EOF, OTF, SVG, TTF, WOFF, WOFF2 files from

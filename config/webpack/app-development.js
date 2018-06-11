@@ -32,6 +32,7 @@ module.exports = function configFactory(ops) {
     ...ops,
     babelEnv: 'development',
     cssLocalIdent: '[path][name]___[local]___[hash:base64:6]',
+    mode: 'development',
   }), {
     plugins: [
       new webpack.DefinePlugin({
@@ -43,7 +44,6 @@ module.exports = function configFactory(ops) {
       }),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoEmitOnErrorsPlugin(),
-      new webpack.NamedModulesPlugin(),
     ],
   });
   if (!_.isArray(res.entry.main)) {

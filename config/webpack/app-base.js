@@ -96,6 +96,7 @@ module.exports = function configFactory(ops) {
       __dirname: true,
       fs: 'empty',
     },
+    mode: o.mode,
     output: {
       chunkFilename: `[name]-${now.valueOf()}.js`,
       filename: `[name]-${now.valueOf()}.js`,
@@ -104,6 +105,7 @@ module.exports = function configFactory(ops) {
     },
     plugins: [
       new ExtractCssChunks({
+        chunkFilename: `[name]-${now.valueOf()}.js`,
         filename: `[name]-${now.valueOf()}.css`,
       }),
       new webpack.DefinePlugin({
@@ -155,9 +157,8 @@ module.exports = function configFactory(ops) {
       }, {
         /* Loads SCSS stylesheets. */
         test: /\.scss/,
-        use: ExtractCssChunks.extract({
-          fallback: 'style-loader',
-          use: [{
+        use: [
+          ExtractCssChunks.loader, {
             loader: 'css-loader',
             options: {
               localIdentName: o.cssLocalIdent,
@@ -173,16 +174,16 @@ module.exports = function configFactory(ops) {
             options: {
               sourceMap: true,
             },
-          }],
-        }),
+          },
+        ],
       }, {
         /* Loads CSS stylesheets. It is assumed that CSS stylesheets come only
         * from dependencies, as we use SCSS inside our own code. */
         test: /\.css$/,
-        use: ExtractCssChunks.extract({
-          fallback: 'style-loader',
-          use: ['css-loader'],
-        }),
+        use: [
+          ExtractCssChunks.loader,
+          'css-loader',
+        ],
       }],
     },
   };

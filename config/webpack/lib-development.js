@@ -2,9 +2,6 @@
  * Development Webpack configuration for ReactJS libraries.
  */
 
-const webpack = require('webpack');
-const webpackMerge = require('webpack-merge');
-
 const baseFactory = require('./lib-base');
 
 /**
@@ -23,14 +20,10 @@ const baseFactory = require('./lib-base');
  * @return {Object} Webpack configuration.
  */
 module.exports = function configFactory(ops) {
-  const res = webpackMerge.smart(baseFactory({
+  return baseFactory({
     ...ops,
     babelEnv: 'development',
     cssLocalIdent: '[path][name]___[local]___[hash:base64:6]',
-  }), {
-    plugins: [
-      new webpack.NamedModulesPlugin(),
-    ],
+    mode: 'development',
   });
-  return res;
 };
