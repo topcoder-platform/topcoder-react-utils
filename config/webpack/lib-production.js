@@ -24,6 +24,6 @@ module.exports = function configFactory(ops) {
     ...ops,
     babelEnv: 'production',
     cssLocalIdent: '[hash:base64:6]',
-    mode: 'production',
+    mode: 'development',
   });
 };
