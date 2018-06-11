@@ -55,6 +55,7 @@ module.exports = function configFactory(ops) {
       'topcoder-react-utils',
       'url-parse',
     ],
+    mode: ops.mode,
     output: {
       filename: 'index.js',
       library: ops.library,
@@ -107,9 +108,8 @@ module.exports = function configFactory(ops) {
         /* Loads SCSS stylesheets. */
         test: /\.scss/,
         exclude: /node_modules/,
-        use: ExtractCssChunks.extract({
-          fallback: 'style-loader',
-          use: [{
+        use: [
+          ExtractCssChunks.loader, {
             loader: 'css-loader',
             options: {
               importLoaders: 3,
@@ -128,16 +128,16 @@ module.exports = function configFactory(ops) {
             options: {
               sourceMap: true,
             },
-          }],
-        }),
+          },
+        ],
       }, {
         /* Loads CSS stylesheets. It is assumed that CSS stylesheets come only
         * from dependencies, as we use SCSS inside our own code. */
         test: /\.css$/,
-        use: ExtractCssChunks.extract({
-          fallback: 'style-loader',
-          use: ['css-loader'],
-        }),
+        use: [
+          ExtractCssChunks.loader,
+          'css-loader',
+        ],
       }],
     },
     resolve: {

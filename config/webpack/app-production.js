@@ -31,6 +31,7 @@ module.exports = function configFactory(ops) {
   return webpackMerge.smart(baseFactory({
     ...ops,
     babelEnv: 'production',
+    mode: 'production',
   }), {
     plugins: [
       new webpack.DefinePlugin({
@@ -49,14 +50,6 @@ module.exports = function configFactory(ops) {
           zindex: false,
         },
       }),
-
-      /* TODO: It tends to make problems with dynamically loaded chunks,
-      * I guess it may move some code between modules being in different
-      * chunks, thus breaking the code when they are loaded in different
-      * order. Should be further investigated. */
-      // new webpack.optimize.ModuleConcatenationPlugin(),
-
-      new webpack.optimize.UglifyJsPlugin(),
     ],
   });
 };
