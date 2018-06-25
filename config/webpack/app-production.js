@@ -28,7 +28,7 @@ const webpackMerge = require('webpack-merge');
  * @param {String} ops.publicPath Base URL for the output of the build assets.
  */
 module.exports = function configFactory(ops) {
-  return webpackMerge.smart(baseFactory({
+  const res = webpackMerge.smart(baseFactory({
     ...ops,
     babelEnv: 'production',
     mode: 'production',
@@ -52,4 +52,6 @@ module.exports = function configFactory(ops) {
       }),
     ],
   });
+  res.entry.polyfills.push('topcoder-react-utils/dist/prod/client/init');
+  return res;
 };

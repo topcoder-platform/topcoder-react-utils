@@ -101,21 +101,25 @@
     "React"
   ],
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "index.js",
   "name": "topcoder-react-utils",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/topcoder-platform/topcoder-react-utils.git"
   },
   "scripts": {
-    "build": "npm run clean && ./node_modules/.bin/webpack --env=production --colors --display-optimization-bailout --profile --progress && BABEL_ENV=production babel src/server --out-dir dist/server && BABEL_ENV=production babel src/shared/utils/jest.jsx --out-file dist/shared/utils/jest.js && BABEL_ENV=production babel src/client/init.js --out-file dist/client/init.js",
-    "build:dev": "npm run clean && (./node_modules/.bin/webpack --env=development --bail --colors --display-optimization-bailout --profile --progress --watch | BABEL_ENV=development babel src/server --out-dir dist/server --watch | BABEL_ENV=development babel src/shared/utils/jest.jsx --out-file dist/shared/utils/jest.js --watch | BABEL_ENV=development babel src/client/init.js --out-file dist/client/init.js --watch)",
-    "clean": "./node_modules/.bin/rimraf dist && mkdir -p dist/shared/utils && mkdir -p dist/client",
+    "build": "npm run clean && npm run build:dev && npm run build:prod",
+    "build:dev": "npm run mkDistDir:dev && ./node_modules/.bin/webpack --env=development --bail --colors --display-optimization-bailout --profile --progress && BABEL_ENV=development babel src/server --out-dir dist/dev/server && BABEL_ENV=development babel src/shared/utils/jest.jsx --out-file dist/dev/shared/utils/jest.js && BABEL_ENV=development babel src/client/init.js --out-file dist/dev/client/init.js",
+    "build:dev:watch": "npm run clean && npm run mkDistDir:dev && (./node_modules/.bin/webpack --env=development --bail --colors --display-optimization-bailout --profile --progress --watch | BABEL_ENV=development babel src/server --out-dir dist/dev/server --watch | BABEL_ENV=development babel src/shared/utils/jest.jsx --out-file dist/dev/shared/utils/jest.js --watch | BABEL_ENV=development babel src/client/init.js --out-file dist/dev/client/init.js --watch)",
+    "build:prod": "npm run mkDistDir:prod && ./node_modules/.bin/webpack --env=production --colors --display-optimization-bailout --profile --progress && BABEL_ENV=production babel src/server --out-dir dist/prod/server && BABEL_ENV=production babel src/shared/utils/jest.jsx --out-file dist/prod/shared/utils/jest.js && BABEL_ENV=production babel src/client/init.js --out-file dist/prod/client/init.js",
+    "clean": "./node_modules/.bin/rimraf dist",
     "jest": "NODE_CONFIG_ENV=test jest --no-cache --maxWorkers=4 --config config/jest/default.js",
     "lint": "npm run lint:js && npm run lint:scss",
     "lint:js": "eslint --ext .js,.jsx .",
     "lint:scss": "./node_modules/.bin/stylelint **/*.scss --syntax scss",
+    "mkDistDir:dev": "mkdir -p dist/dev/shared/utils && mkdir -p dist/dev/client",
+    "mkDistDir:prod": "mkdir -p dist/prod/shared/utils && mkdir -p dist/prod/client",
     "test": "npm run lint && npm run jest"
   },
-  "version": "0.5.3"
+  "version": "0.6.0"
 }

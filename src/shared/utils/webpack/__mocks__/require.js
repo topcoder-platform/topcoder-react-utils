@@ -5,4 +5,4 @@ const ROOT = path.resolve(__dirname, '../../../..');
 
 /* eslint-disable global-require, import/no-dynamic-require */
 module.exports = modulePath =>
-  require(modulePath.replace(/^topcoder-react-utils\/dist/, ROOT));
+  require(modulePath.replace(/^topcoder-react-utils\/dist\/dev/, ROOT));

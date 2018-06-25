@@ -67,9 +67,6 @@ module.exports = function configFactory(ops) {
       /* A random 32-bit key, that can be used for encryption. */
       key: forge.random.getBytesSync(32),
 
-      /* This will be equal to "development" or "production" */
-      mode: ops.babelEnv,
-
       /* Build timestamp. */
       timestamp: now.utc().toISOString(),
     };
@@ -83,10 +80,10 @@ module.exports = function configFactory(ops) {
   else if (!_.isArray(entry.polyfills)) {
     entry.polyfills = [entry.polyfills];
   }
+
   entry.polyfills = _.union(entry.polyfills, [
     'babel-polyfill',
     'nodelist-foreach-polyfill',
-    'topcoder-react-utils/dist/client/init',
   ]);
 
   return {

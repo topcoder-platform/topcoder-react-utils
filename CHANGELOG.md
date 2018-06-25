@@ -1,5 +1,28 @@
 # Topcoder React Utils Changelog
 
+### v0.6.0
+A better way to build the library: both dev and prod builds are created; and
+the proper version is selected depending on `NODE_ENV` value at the buildtime
+(client-side) or runtime (server-side) of the host code.
+
+**BREAKING CHANGE:** You should update the way you include style the global
+stylesheet into the host code, from:
+```jsx
+require('topcoder-react-utils/dist/style.css');
+```
+to
+```jsx
+/* eslint-disable global-require */
+if (process.env.NODE_ENV === 'production') {
+  require('topcoder-react-utils/dist/prod/style.css');
+} else {
+  require('topcoder-react-utils/dist/dev/style.css');
+}
+/* eslint-enable global-require */
+```
+This will include the proper version of compiled global styles into the host
+code.
+
 ### v0.5.0
 All dependencies are force-updated to their latest versions. It might introduce
 breaking changes.

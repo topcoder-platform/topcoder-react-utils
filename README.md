@@ -26,8 +26,14 @@ $ npm install --save topcoder-react-utils
 $ ./node_modules/.bin/topcoder-lib-setup
 ```
 Then import the global stylesheet into the root ReactJS component of your app:
-```js
-import 'topcoder-react-utils/dist/style.css';
+```jsx
+/* eslint-disable global-require */
+if (process.env.NODE_ENV === 'production') {
+  require('topcoder-react-utils/dist/prod/style.css');
+} else {
+  require('topcoder-react-utils/dist/dev/style.css');
+}
+/* eslint-enable global-require */
 ```
 
 To upgrade this library to the latest version just execute again
