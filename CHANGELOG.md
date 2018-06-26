@@ -26,6 +26,8 @@
 - Also most of NPM dependencies updated to their latest versions, which might
   demand some fixes in your code.
 
+- Adds optional `type` prop to [`<Button>`](docs/button.md)
+
 ### v0.5.0
 All dependencies are force-updated to their latest versions. It might introduce
 breaking changes.

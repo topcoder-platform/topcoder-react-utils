@@ -3,13 +3,20 @@
 import GenericLink from 'components/GenericLink';
 import PT from 'prop-types';
 import React from 'react';
-import { findInDomByClass, renderDom, simulate, snapshot } from 'utils/jest';
+import {
+  findInDomByClass,
+  renderDom,
+  simulate,
+  snapshot,
+} from 'utils/jest';
 
 function Link(props) {
+  const { className, onClick } = props;
   return (
     <button
-      onClick={props.onClick}
-      className={props.className}
+      onClick={onClick}
+      className={className}
+      type="button"
     >
       {JSON.stringify(props)}
     </button>

@@ -11,11 +11,13 @@ import React from 'react';
 
 export default class ContentWrapper extends React.Component {
   componentWillUnmount() {
-    this.props.parent.reset();
+    const { parent } = this.props;
+    parent.reset();
   }
 
   render() {
-    return this.props.content;
+    const { content } = this.props;
+    return content;
   }
 }
 

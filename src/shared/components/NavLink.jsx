@@ -14,4 +14,3 @@ import GenericLink from './GenericLink';
 export default function NavLink(props) {
   return <GenericLink {...props} routerLinkType={RrNavLink} />;
 }
-

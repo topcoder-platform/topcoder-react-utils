@@ -3,9 +3,9 @@
  */
 
 const _ = require('lodash');
-const baseFactory = require('./app-base');
 const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
+const baseFactory = require('./app-base');
 
 /**
  * Creates a new development Webpack config, and performs some auxiliary

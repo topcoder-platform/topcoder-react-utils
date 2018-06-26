@@ -109,7 +109,13 @@ export default function factory(webpackConfig, options) {
           </StaticRouter>
         );
 
-        if (store) App = <Provider store={store}>{App}</Provider>;
+        if (store) {
+          App = (
+            <Provider store={store}>
+              {App}
+            </Provider>
+          );
+        }
 
         App = ReactDOM.renderToString(App);
 

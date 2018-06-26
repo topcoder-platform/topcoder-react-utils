@@ -60,6 +60,8 @@ supposed to have the following fields:
 - **`to`** &mdash; *Object* or *String* &mdash; When specified, the button will
 be rendered as `<Link>` (if non-disabled), and it will point to the specified
 URL/location.
+- **`type`** &mdash; *String* &mdash; Optional. Button type. It will have
+  effect only when Button is rendered as `<button>`.
 
 ### <a name="examples">Examples</a>
 First of all, you want to define button theme, here is a good example to start from:

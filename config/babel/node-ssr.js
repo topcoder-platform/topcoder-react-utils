@@ -17,8 +17,9 @@ config.plugins = config.plugins.concat([
   ['css-modules-transform', cssModulesTransformPluginOps],
 ]);
 
-const moduleResolverPluginOps
-  = config.plugins.find(x => x[0] === 'module-resolver')[1];
+const moduleResolverPluginOps = config.plugins.find(
+  x => x[0] === 'module-resolver',
+)[1];
 
 moduleResolverPluginOps.transformFunctions = [
   'resolveWeak',
@@ -41,7 +42,7 @@ switch (process.env.BABEL_ENV) {
 
 module.exports = (apt, ops = {}) => {
   const baseAssetsOutputPath = ops.baseAssetsOutputPath || '';
-  transformAssetsPluginOptions.name
-    = `${baseAssetsOutputPath}/images/[hash].[ext]`;
+  transformAssetsPluginOptions.name = `${
+    baseAssetsOutputPath}/images/[hash].[ext]`;
   return config;
 };

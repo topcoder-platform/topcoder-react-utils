@@ -4,5 +4,5 @@
 
 import actions from 'actions';
 
-test('Exports expected actions', () =>
-  expect(actions).toMatchSnapshot());
+test('Exports expected actions',
+  () => expect(actions).toMatchSnapshot());

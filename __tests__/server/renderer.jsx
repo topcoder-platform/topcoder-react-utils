@@ -40,8 +40,9 @@ const TEST_WEBPACK_CONFIG = {
   },
 };
 
-const testBuildInfo =
-  JSON.parse(fs.readFileSync(`${TEST_CONTEXT}/.build-info`));
+const testBuildInfo = JSON.parse(
+  fs.readFileSync(`${TEST_CONTEXT}/.build-info`),
+);
 
 beforeAll(() => {
   Helmet.canUseDOM = false;
@@ -84,11 +85,11 @@ async function coreTest(webpackConfig, options) {
   }
 }
 
-test('Base rendering of HTML template', () =>
-  coreTest(TEST_WEBPACK_CONFIG, {}));
+test('Base rendering of HTML template',
+  () => coreTest(TEST_WEBPACK_CONFIG, {}));
 
-test('Config overriding for injection', () =>
-  coreTest(TEST_WEBPACK_CONFIG, {
+test('Config overriding for injection',
+  () => coreTest(TEST_WEBPACK_CONFIG, {
     beforeRender: async (res, sanitizedConfig) => {
       expect(res).toEqual(TEST_HTTP_REQUEST);
       expect(sanitizedConfig).toBeInstanceOf(Object);
@@ -102,22 +103,28 @@ test('Config overriding for injection', () =>
     },
   }));
 
-test('Hemlet integration works', () =>
-  coreTest(TEST_WEBPACK_CONFIG, {
+test('Hemlet integration works',
+  () => coreTest(TEST_WEBPACK_CONFIG, {
     Application: () => (
       <div>
-        <p>Hello World!</p>
+        <p>
+          Hello World!
+        </p>
         <Helmet>
-          <title>Test Page Title</title>
+          <title>
+            Test Page Title
+          </title>
           <meta property="description" content="Test Page Description" />
         </Helmet>
-        <p>Goodbye World!</p>
+        <p>
+          Goodbye World!
+        </p>
       </div>
     ),
   }));
 
-test('Injection of additional JS scripts', () =>
-  coreTest(TEST_WEBPACK_CONFIG, {
+test('Injection of additional JS scripts',
+  () => coreTest(TEST_WEBPACK_CONFIG, {
     beforeRender: async () => ({
       extraScripts: [
         '<script>Dummy JS Sript</script>',
@@ -126,14 +133,18 @@ test('Injection of additional JS scripts', () =>
     }),
   }));
 
-test('Server-side rendering (SSR); injection of CSS chunks & Redux state', () =>
-  coreTest(TEST_WEBPACK_CONFIG, {
+test('Server-side rendering (SSR); injection of CSS chunks & Redux state',
+  () => coreTest(TEST_WEBPACK_CONFIG, {
     Application: () => (
       <Route
         component={({ staticContext }) => {
           staticContext.chunks.push('test-chunk-a');
           staticContext.chunks.push('test-chunk-b');
-          return <div>Hello Wold!</div>;
+          return (
+            <div>
+              Hello Wold!
+            </div>
+          );
         }}
       />
     ),
@@ -148,7 +159,11 @@ test('Setting of response HTTP status the server-side rendering', () => {
       <Route
         component={({ staticContext }) => {
           staticContext.status = 404; // eslint-disable-line no-param-reassign
-          return <div>404 Error Test</div>;
+          return (
+            <div>
+              404 Error Test
+            </div>
+          );
         }}
       />
     ),

@@ -40,7 +40,8 @@ export default class SplitRoute extends React.Component {
     /* Marking chunk's stylesheet as unused.
      * This works properly only when styling does not depend on the ordering
      * of loaded stylesheets, which is how our CSS should be written. */
-    const link = document.querySelector(`link[data-chunk="${this.props.chunkName}"]`);
+    const { chunkName } = this.props;
+    const link = document.querySelector(`link[data-chunk="${chunkName}"]`);
     link.setAttribute('data-chunk-unused', unusedCssStamp += 1);
 
     /* Reset to the initial state. */
@@ -61,9 +62,11 @@ export default class SplitRoute extends React.Component {
 
     const timestamp = moment(buildTimestamp()).valueOf();
 
+    const { component } = this.state;
+
     return (
       <Route
-        component={this.state.component}
+        component={component}
         exact={exact}
         location={location}
         path={path}
@@ -144,7 +147,11 @@ export default class SplitRoute extends React.Component {
                * that all render options produce the same markup, thus helping
                * ReactJS to be efficient.
                */
-              res = <div>{renderPlaceholder(props)}</div>;
+              res = (
+                <div>
+                  {renderPlaceholder(props)}
+                </div>
+              );
             }
 
             /* The links to stylesheets are injected into document header using
@@ -152,8 +159,9 @@ export default class SplitRoute extends React.Component {
              * it gives a better control over reloading of the stylesheets and
              * helps to avoid some unnecessary flickering when the app loads a
              * page already pre-rendered at the server side. */
-            let link =
-              document.querySelector(`link[data-chunk="${chunkName}"]`);
+            let link = document.querySelector(
+              `link[data-chunk="${chunkName}"]`,
+            );
             if (link) {
               /* Marking the chunk being used again. */
               link.removeAttribute('data-chunk-unused');
@@ -209,23 +217,25 @@ export default class SplitRoute extends React.Component {
              * removing it from the state once it is unmounted, to ensure
              * that the next time the route is matched, its content will
              * be re-rendered from scratch. */
-            renderClientAsync(props).then((component) => {
-              if (renderUUID !== this.pendingRenderUUID) return;
-              this.pendingRenderUUID = null;
-              this.pendingRender = null;
-              this.pendingRenderProps = null;
-              this.setState({
-                component: () => (
-                  <div>
-                    <ContentWrapper
-                      chunkName={`${chunkName}`}
-                      content={component}
-                      parent={this}
-                    />
-                  </div>
-                ),
-              });
-            });
+            renderClientAsync(props).then(
+              (component2) => {
+                if (renderUUID !== this.pendingRenderUUID) return;
+                this.pendingRenderUUID = null;
+                this.pendingRender = null;
+                this.pendingRenderProps = null;
+                this.setState({
+                  component: () => (
+                    <div>
+                      <ContentWrapper
+                        chunkName={`${chunkName}`}
+                        content={component2}
+                        parent={this}
+                      />
+                    </div>
+                  ),
+                });
+              },
+            );
           }
 
           return res;

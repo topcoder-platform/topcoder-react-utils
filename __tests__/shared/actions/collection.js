@@ -13,8 +13,8 @@ afterAll(() => MockDate.reset());
 
 test('Exports expected actions', () => expect(actions).toMatchSnapshot());
 
-test('`addItems` payload creator', () =>
-  expect(a.addItems({ id1: 'Item 1', id2: 'Item 2' })).toMatchSnapshot());
+test('`addItems` payload creator',
+  () => expect(a.addItems({ id1: 'Item 1', id2: 'Item 2' })).toMatchSnapshot());
 
 test('`bookItems` payload creator', () => {
   expect(a.bookItems('id1')).toMatchSnapshot();
@@ -33,8 +33,9 @@ test('`freeItems` payload creator', () => {
   expect(a.freeItems(['id1', 'id2', 'id3'])).toMatchSnapshot();
 });
 
-test('`loadItemInit` payload creator', () =>
-  expect(a.loadItemInit('operation-id', 'item-id')).toMatchSnapshot());
+test('`loadItemInit` payload creator',
+  () => expect(a.loadItemInit('operation-id', 'item-id')).toMatchSnapshot());
 
-test('`loadItemDone` payload creator', () =>
-  expect(a.loadItemDone('operation-id', 'item-id', 'item')).toMatchSnapshot());
+test('`loadItemDone` payload creator', () => {
+  expect(a.loadItemDone('operation-id', 'item-id', 'item')).toMatchSnapshot();
+});

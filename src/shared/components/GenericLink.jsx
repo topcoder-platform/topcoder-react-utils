@@ -21,6 +21,7 @@ export default function GenericLink(props) {
     onClick,
     onMouseDown,
     openNewTab,
+    replace,
     routerLinkType,
     to,
   } = props;
@@ -51,7 +52,7 @@ export default function GenericLink(props) {
   /* Otherwise we render the link as React Router's Link or NavLink element. */
   return React.createElement(routerLinkType, {
     ...linkProps,
-    replace: props.replace,
+    replace,
     onClick: (e) => {
       /* If a custom onClick(..) handler was provided we execute it. */
       if (onClick) onClick(e);

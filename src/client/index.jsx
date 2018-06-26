@@ -16,8 +16,18 @@ import { BrowserRouter } from 'react-router-dom';
  * @param {Object} store Optional. Redux store.
  */
 function render(Application, store) {
-  let app = <BrowserRouter><Application /></BrowserRouter>;
-  if (store) app = <Provider store={store}>{app}</Provider>;
+  let app = (
+    <BrowserRouter>
+      <Application />
+    </BrowserRouter>
+  );
+  if (store) {
+    app = (
+      <Provider store={store}>
+        {app}
+      </Provider>
+    );
+  }
   ReactDom.hydrate(app, document.getElementById('react-view'));
 }
 
@@ -43,8 +53,8 @@ export default async function Launch({
   render(getApplication(), store);
 
   if (moduleHot && applicationModulePath) {
-    moduleHot.accept(applicationModulePath, () =>
-      render(getApplication(), store));
+    moduleHot.accept(applicationModulePath,
+      () => render(getApplication(), store));
 
     /* HMR of CSS code each time webpack hot middleware updates the code. */
     /* eslint-disable no-underscore-dangle */

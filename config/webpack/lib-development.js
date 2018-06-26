@@ -2,8 +2,8 @@
  * Development Webpack configuration for ReactJS libraries.
  */
 
-const baseFactory = require('./lib-base');
 const path = require('path');
+const baseFactory = require('./lib-base');
 
 /**
  * Creates a new Webpack config.
