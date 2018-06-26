@@ -28,6 +28,8 @@ const webpack = require('webpack');
  *
  * @param {String} ops.library Name of the library.
  *
+ * @param {String} ops.outputPath Output path.
+ *
  * @return {Object} Webpack config.
  */
 module.exports = function configFactory(ops) {
@@ -65,7 +67,7 @@ module.exports = function configFactory(ops) {
       globalObject: "typeof self !== 'undefined' ? self : this",
 
       library: ops.library,
-      path: path.resolve(__dirname, ops.context, 'dist'),
+      path: ops.outputPath,
       libraryTarget: 'umd',
     },
     plugins: [
@@ -159,4 +161,3 @@ module.exports = function configFactory(ops) {
     },
   };
 };
-

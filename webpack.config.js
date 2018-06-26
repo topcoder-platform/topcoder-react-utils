@@ -10,8 +10,9 @@ module.exports = function buildConfig(env) {
 
   /* The lib config is intended for use outside of this very package,
    * so we need some tweaks here to make it work for this package itself. */
-  const babelLoader =
-    config.module.rules.find(x => x.loader === 'babel-loader');
+  const babelLoader = config.module.rules.find(
+    x => x.loader === 'babel-loader',
+  );
   babelLoader.options.presets[0] = `${__dirname}/config/babel/webpack`;
 
   if (!config.module.noParse) config.module.noParse = [];

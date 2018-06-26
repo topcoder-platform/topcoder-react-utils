@@ -4,6 +4,7 @@ exports[`Matches snapshots in a minimalistic example 1`] = `
 <button
   className={null}
   onClick={[Function]}
+  type="button"
 >
   {"to":"SOME/TEST/URL","className":null,"onMouseDown":null,"replace":false,"children":"LINK"}
 </button>

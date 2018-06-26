@@ -2,6 +2,7 @@
  * Development Webpack configuration for ReactJS libraries.
  */
 
+const path = require('path');
 const baseFactory = require('./lib-base');
 
 /**
@@ -25,5 +26,6 @@ module.exports = function configFactory(ops) {
     babelEnv: 'production',
     cssLocalIdent: '[hash:base64:6]',
     mode: 'production',
+    outputPath: path.resolve(__dirname, ops.context, 'dist/prod'),
   });
 };

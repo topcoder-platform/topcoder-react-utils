@@ -22,14 +22,20 @@ export default function Button({
   size,
   theme,
   to,
+  type,
 }) {
   let className = theme.button;
   if (theme[size]) className += ` ${theme[size]}`;
   if (active && theme.active) className += ` ${theme.active}`;
   if (disabled) {
     if (theme.disabled) className += ` ${theme.disabled}`;
-    return <div className={className}>{children}</div>;
-  } else if (to) {
+    return (
+      <div className={className}>
+        {children}
+      </div>
+    );
+  }
+  if (to) {
     if (theme.link) className += ` ${theme.link}`;
     return (
       /* NOTE: This ESLint rule enforces us to use <a> and <button> properly
@@ -56,13 +62,19 @@ export default function Button({
   }
   if (theme.regular) className += ` ${theme.regular}`;
   return (
+    /* The rule is temporary disabled, as its current implementation bans
+     * dynamic button types with no valid reason:
+     * https://github.com/yannickcr/eslint-plugin-react/issues/1555 */
+    /* eslint-disable react/button-has-type */
     <button
       className={className}
       onClick={onClick}
       onMouseDown={onMouseDown}
+      type={type}
     >
       {children}
     </button>
+    /* eslint-enable react/button-has-type */
   );
 }
 
@@ -77,6 +89,7 @@ Button.defaultProps = {
   replace: false,
   size: null,
   to: null,
+  type: 'button',
 };
 
 Button.propTypes = {
@@ -96,4 +109,5 @@ Button.propTypes = {
     regular: PT.string,
   }).isRequired,
   to: PT.oneOfType([PT.object, PT.string]),
+  type: PT.oneOf(['button', 'reset', 'submit']),
 };

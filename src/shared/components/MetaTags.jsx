@@ -28,7 +28,9 @@ function MetaTags({
   return (
     <Helmet>
       {/* General tags. */}
-      <title>{title}</title>
+      <title>
+        {title}
+      </title>
       <meta property="description" content={description} />
 
       {/* Twitter cards. */}

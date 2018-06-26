@@ -9,6 +9,7 @@ afterEach(() => {
   delete window.TRU_BUILD_INFO;
   delete window.TRU_FRONT_END;
   delete process.env.BABEL_ENV;
+  process.env.NODE_ENV = 'test';
 });
 
 beforeEach(() => jest.resetModules());
@@ -25,27 +26,27 @@ test('Server-side detection', () => {
 });
 
 test('Dev mode detection - client side', () => {
-  window.TRU_BUILD_INFO = { mode: 'development' };
+  process.env.NODE_ENV = 'development';
   window.TRU_FRONT_END = true;
   expect(m().isDevBuild()).toBe(true);
   expect(m().isProdBuild()).toBe(false);
 });
 
 test('Dev mode detection - server side', () => {
-  global.TRU_BUILD_INFO = { mode: 'development' };
+  process.env.NODE_ENV = 'development';
   expect(m().isDevBuild()).toBe(true);
   expect(m().isProdBuild()).toBe(false);
 });
 
 test('Prod mode - client side', () => {
-  window.TRU_BUILD_INFO = { mode: 'production' };
+  process.env.NODE_ENV = 'production';
   window.TRU_FRONT_END = true;
   expect(m().isDevBuild()).toBe(false);
   expect(m().isProdBuild()).toBe(true);
 });
 
 test('Prod mode - server side', () => {
-  global.TRU_BUILD_INFO = { mode: 'production' };
+  process.env.NODE_ENV = 'production';
   expect(m().isDevBuild()).toBe(false);
   expect(m().isProdBuild()).toBe(true);
 });

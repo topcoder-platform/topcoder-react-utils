@@ -5,6 +5,7 @@ exports[`Matches snapshots when active 1`] = `
   className="BUTTON_CLASS ACTIVE_CLASS REGULAR_CLASS"
   onClick={[Function]}
   onMouseDown={null}
+  type="button"
 >
   BUTTON
 </button>
@@ -15,6 +16,7 @@ exports[`Matches snapshots when active 2`] = `
   className="BUTTON_CLASS ACTIVE_CLASS"
   onClick={[Function]}
   onMouseDown={null}
+  type="button"
 >
   BUTTON
 </button>

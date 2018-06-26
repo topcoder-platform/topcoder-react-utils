@@ -13,10 +13,12 @@ import * as utils from 'utils';
 
 import 'styles/global.scss';
 
+import { isProdBuild } from 'utils/isomorphy';
 import { requireWeak } from 'utils/webpack';
 
-const server = utils.isomorphy.isServerSide() ?
-  requireWeak('topcoder-react-utils/dist/server') : null;
+let serverUrl = isProdBuild() ? 'prod' : 'dev';
+serverUrl = `topcoder-react-utils/dist/${serverUrl}/server`;
+const server = utils.isomorphy.isServerSide() ? requireWeak(serverUrl) : null;
 
 module.exports = {
   actions,

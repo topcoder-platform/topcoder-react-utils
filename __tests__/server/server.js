@@ -13,8 +13,8 @@ jest.mock('webpack', () => {
   return mock;
 });
 
-jest.mock('webpack-hot-middleware', () =>
-  jest.fn(() => (req, res, next) => next()));
+jest.mock('webpack-hot-middleware',
+  () => jest.fn(() => (req, res, next) => next()));
 
 const TEST_CONTEXT = `${__dirname}/test_data`;
 

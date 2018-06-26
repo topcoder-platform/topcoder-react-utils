@@ -54,7 +54,8 @@ class Wrapper extends React.Component {
   componentDidMount() {}
 
   render() {
-    return this.props.children;
+    const { children } = this.props;
+    return children;
   }
 }
 
@@ -68,7 +69,11 @@ Wrapper.propTypes = {
  * @return {Object} Rendered DOM.
  */
 export function renderDom(component) {
-  return TU.renderIntoDocument(<Wrapper>{component}</Wrapper>);
+  return TU.renderIntoDocument((
+    <Wrapper>
+      {component}
+    </Wrapper>
+  ));
 }
 
 /**
