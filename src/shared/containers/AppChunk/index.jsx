@@ -6,7 +6,7 @@
  * https://github.com/topcoder-platform/community-app/blob/develop/docs/code-splitting.md
  */
 
-/* global document, PUBLIC_PATH, window */
+/* global document, window */
 
 import _ from 'lodash';
 import moment from 'moment';
@@ -59,6 +59,8 @@ export default class SplitRoute extends React.Component {
       renderServer,
       strict,
     } = this.props;
+
+    const PUBLIC_PATH = global.TRU_BUILD_INFO.publicPath;
 
     const timestamp = moment(buildTimestamp()).valueOf();
 
