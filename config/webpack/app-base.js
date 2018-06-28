@@ -67,6 +67,9 @@ module.exports = function configFactory(ops) {
       /* A random 32-bit key, that can be used for encryption. */
       key: forge.random.getBytesSync(32),
 
+      /* Public path used during build. */
+      publicPath: o.publicPath,
+
       /* Build timestamp. */
       timestamp: now.utc().toISOString(),
     };
