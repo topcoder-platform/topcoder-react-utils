@@ -1,3 +1,5 @@
+import 'styles/global.scss';
+
 import actions from 'actions';
 import AppChunk from 'containers/AppChunk';
 import Avatar from 'components/Avatar';
@@ -10,8 +12,6 @@ import NavLink from 'components/NavLink';
 import reducers from 'reducers';
 import ScalableRect from 'components/ScalableRect';
 import * as utils from 'utils';
-
-import 'styles/global.scss';
 
 import { isProdBuild } from 'utils/isomorphy';
 import { requireWeak } from 'utils/webpack';
