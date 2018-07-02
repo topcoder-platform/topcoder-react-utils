@@ -97,13 +97,6 @@ module.exports = function configFactory(ops) {
       fs: 'empty',
     },
     mode: o.mode,
-    /* TODO: We have to disable these optimizations, otherwise they will break
-     * our code-splitting functionality. Once the code-splitting setup is fixed,
-     * these optimizations can be enabled again. */
-    optimization: {
-      removeEmptyChunks: false,
-      splitChunks: false,
-    },
     output: {
       chunkFilename: `[name]-${now.valueOf()}.js`,
       filename: `[name]-${now.valueOf()}.js`,
