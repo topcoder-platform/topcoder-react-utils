@@ -6,11 +6,12 @@
 
 const _ = require('lodash');
 const autoprefixer = require('autoprefixer');
-const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const forge = require('node-forge');
 const fs = require('fs');
 const moment = require('moment');
 const path = require('path');
+const { StatsWriterPlugin } = require('webpack-stats-plugin');
 const webpack = require('webpack');
 
 /**
@@ -104,12 +105,15 @@ module.exports = function configFactory(ops) {
       publicPath: `${o.publicPath}/`,
     },
     plugins: [
-      new ExtractCssChunks({
+      new MiniCssExtractPlugin({
         chunkFilename: `[name]-${now.valueOf()}.css`,
         filename: `[name]-${now.valueOf()}.css`,
       }),
       new webpack.DefinePlugin({
         BUILD_INFO: JSON.stringify(buildInfo),
+      }),
+      new StatsWriterPlugin({
+        filename: '__stats__.json',
       }),
     ],
     resolve: {
@@ -158,7 +162,7 @@ module.exports = function configFactory(ops) {
         /* Loads SCSS stylesheets. */
         test: /\.scss/,
         use: [
-          ExtractCssChunks.loader, {
+          MiniCssExtractPlugin.loader, {
             loader: 'css-loader',
             options: {
               localIdentName: o.cssLocalIdent,
@@ -181,10 +185,16 @@ module.exports = function configFactory(ops) {
         * from dependencies, as we use SCSS inside our own code. */
         test: /\.css$/,
         use: [
-          ExtractCssChunks.loader,
+          MiniCssExtractPlugin.loader,
           'css-loader',
         ],
       }],
+    },
+    optimization: {
+      /* TODO: Dynamic chunk splitting does not play along with server-side
+       * rendering of split chunks. Probably there is a way to achieve that,
+       * but it is not a priority now. */
+      splitChunks: false,
     },
   };
 };

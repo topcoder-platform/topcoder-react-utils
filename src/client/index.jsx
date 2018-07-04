@@ -57,17 +57,13 @@ export default async function Launch({
       () => render(getApplication(), store));
 
     /* HMR of CSS code each time webpack hot middleware updates the code. */
-    /* eslint-disable no-underscore-dangle */
-    const hotReporter = window.__webpack_hot_middleware_reporter__;
-    /* eslint-enable no-underscore-dangle */
-    const hotSuccess = hotReporter.success;
-    hotReporter.success = () => {
+    moduleHot.addStatusHandler((status) => {
+      if (status !== 'ready') return;
       const stamp = shortId();
       const links = document.querySelectorAll('link[rel=stylesheet][id="tru-style"]');
       for (let i = 0; i < links.length; i += 1) {
         links[i].href = `${links[i].href.match(/[^?]*/)}?v=${stamp}`;
       }
-      hotSuccess();
-    };
+    });
   }
 }

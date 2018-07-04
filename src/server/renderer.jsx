@@ -25,11 +25,29 @@ const sanitizedConfig = _.omit(config, 'SECRET');
  * At the moment, that file contains build timestamp and a random 32-bit key,
  * suitable for cryptographical use.
  * @param {String} context Webpack context path used during the build.
- * @return {Promise} Resolves to the build-time information.
+ * @return {Object} Resolves to the build-time information.
  */
 function getBuildInfo(context) {
   const url = path.resolve(context, '.build-info');
   return JSON.parse(fs.readFileSync(url));
+}
+
+/**
+ * Attempts to read from the disk Webpack stats generated during the build.
+ * It will not work for development builds, where these stats should be captured
+ * via compilator callback.
+ * @param {String} buildDir
+ * @return {Object} Resolves to the stats, or null, if cannot be read.
+ */
+function getWebpackStats(buildDir) {
+  const url = path.resolve(buildDir, '__stats__.json');
+  let res;
+  try {
+    res = JSON.parse(fs.readFileSync(url));
+  } catch (err) {
+    res = null;
+  }
+  return res;
 }
 
 /**
@@ -64,6 +82,8 @@ export default function factory(webpackConfig, options) {
   const buildInfo = getBuildInfo(webpackConfig.context);
 
   global.TRU_BUILD_INFO = buildInfo;
+
+  const WEBPACK_STATS = getWebpackStats(webpackConfig.output.path);
 
   const ops = _.defaults(_.clone(options), {
     beforeRender: () => Promise.resolve({}),
@@ -139,12 +159,26 @@ export default function factory(webpackConfig, options) {
       /* It is supposed to end with '/' symbol as path separator. */
       const { publicPath } = webpackConfig.output;
 
+      let assetsByChunkName;
+      const { webpackStats } = res.locals;
+      if (webpackStats) {
+        ({ assetsByChunkName } = webpackStats.toJson());
+      } else ({ assetsByChunkName } = WEBPACK_STATS);
+
       const timestamp = moment(buildInfo.timestamp).valueOf();
 
       if (context.status) res.status(context.status);
-      const styles = context.chunks.map(chunk => (
-        `<link data-chunk="${chunk}" id="tru-style" href="${publicPath}${chunk}-${timestamp}.css" rel="stylesheet" />`
-      )).join('');
+      const styles = [];
+      context.chunks.forEach((chunk) => {
+        let assets = assetsByChunkName[chunk];
+        if (!_.isArray(assets)) assets = [assets];
+        assets = assets.filter(asset => asset.endsWith('.css'));
+        assets.forEach((asset) => {
+          styles.push((
+            `<link href="${publicPath}${asset}" id="tru-style" rel="stylesheet" />`
+          ));
+        });
+      });
 
       res.send((
         `<!DOCTYPE html>
@@ -157,7 +191,7 @@ export default function factory(webpackConfig, options) {
               id="tru-style"
               rel="stylesheet"
             />
-            ${styles}
+            ${styles.join('')}
             <link rel="shortcut icon" href="/favicon.ico" />
             <meta charset="utf-8" />
             <meta
