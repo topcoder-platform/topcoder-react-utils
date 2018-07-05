@@ -163,7 +163,8 @@ export default function factory(webpackConfig, options) {
       const { webpackStats } = res.locals;
       if (webpackStats) {
         ({ assetsByChunkName } = webpackStats.toJson());
-      } else ({ assetsByChunkName } = WEBPACK_STATS);
+      } else if (WEBPACK_STATS) ({ assetsByChunkName } = WEBPACK_STATS);
+      else assetsByChunkName = {};
 
       const timestamp = moment(buildInfo.timestamp).valueOf();
 
@@ -171,11 +172,12 @@ export default function factory(webpackConfig, options) {
       const styles = [];
       context.chunks.forEach((chunk) => {
         let assets = assetsByChunkName[chunk];
+        if (!assets) return;
         if (!_.isArray(assets)) assets = [assets];
         assets = assets.filter(asset => asset.endsWith('.css'));
         assets.forEach((asset) => {
           styles.push((
-            `<link href="${publicPath}${asset}" id="tru-style" rel="stylesheet" />`
+            `<link data-chunk="${chunk}" id="tru-style" href="${publicPath}${asset}" rel="stylesheet" />`
           ));
         });
       });
