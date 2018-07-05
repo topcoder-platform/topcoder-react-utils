@@ -5,7 +5,7 @@
  */
 
 const autoprefixer = require('autoprefixer');
-const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
@@ -37,14 +37,15 @@ module.exports = function configFactory(ops) {
     context: ops.context,
     entry: ops.entry,
     externals: [
-      'babel-runtime',
+      /babel-runtime/,
       'lodash',
       'moment',
       'prop-types',
       'react',
       'react-css-super-themr',
-      'react-dom',
+      /react-dom/,
       'react-helmet',
+      /react-hot-loader/,
       'react-redux',
       'react-router-dom',
       'redux',
@@ -77,7 +78,7 @@ module.exports = function configFactory(ops) {
           NODE_ENV: JSON.stringify(ops.babelEnv),
         },
       }),
-      new ExtractCssChunks({
+      new MiniCssExtractPlugin({
         filename: 'style.css',
       }),
     ],
@@ -117,7 +118,7 @@ module.exports = function configFactory(ops) {
         test: /\.scss/,
         exclude: /node_modules/,
         use: [
-          ExtractCssChunks.loader, {
+          MiniCssExtractPlugin.loader, {
             loader: 'css-loader',
             options: {
               importLoaders: 3,
@@ -143,7 +144,7 @@ module.exports = function configFactory(ops) {
         * from dependencies, as we use SCSS inside our own code. */
         test: /\.css$/,
         use: [
-          ExtractCssChunks.loader,
+          MiniCssExtractPlugin.loader,
           'css-loader',
         ],
       }],

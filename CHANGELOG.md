@@ -1,5 +1,8 @@
 # Topcoder React Utils Changelog
 
+### v0.7.0
+Fixes various sins left in the previous version.
+
 ### v0.6.0
 - A better way to build the library: both dev and prod builds are created; and
   the proper version is selected depending on `NODE_ENV` value at the buildtime
