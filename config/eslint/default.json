@@ -9,6 +9,7 @@
       "components": [],
       "specialLink": ["hrefLeft", "hrefRight"],
       "aspects": ["invalidHref", "noHref", "preferButton"]
-    }]
+    }],
+    "react/jsx-one-expression-per-line": false
   }
 }

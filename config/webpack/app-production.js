@@ -40,7 +40,6 @@ module.exports = function configFactory(ops) {
           NODE_ENV: JSON.stringify('production'),
         },
       }),
-
       new OptimizeCssAssetsPlugin({
         cssProcessorOptions: {
           /* Due to the way our styles are organized, these dangerous

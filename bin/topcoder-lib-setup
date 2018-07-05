@@ -17,6 +17,10 @@ const OPTIONS = [{
   description: 'Shows usage instructions',
   type: Boolean,
 }, {
+  name: 'just-fix-deps',
+  description: 'Skips installation of libraries, just fixes dependencies',
+  type: Boolean,
+}, {
   name: 'libraries',
   defaultOption: true,
   multiple: true,
@@ -46,7 +50,7 @@ const HELP = [{
  *  into NPM's install command.
  */
 function generateTargetPackage(entry) {
-  if (entry[1].match(/^(git\+)?https?:\/\//)) return entry[1];
+  if (entry[1].match(/^(git\+)?(file|https)?:\/\//)) return entry[1];
   if (entry[1].match(/^[\^~]/)) return `${entry[0]}@${entry[1].slice(1)}`;
   return `${entry[0]}@${entry[1]}`;
 }
@@ -137,7 +141,7 @@ if (options.help) showHelp();
 else {
   const hostData = getHostPackageJson();
   options.libraries.forEach((library) => {
-    install(library);
+    if (!options['just-fix-deps']) install(library);
     const libData = getPackageJson(library);
     adoptDevDependencies(libData, hostData);
     updateProdDependencies(libData, hostData);
