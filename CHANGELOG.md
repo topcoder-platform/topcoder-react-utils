@@ -1,5 +1,8 @@
 # Topcoder React Utils Changelog
 
+### v0.7.2
+Fix of `<Link>` and `<NavLink>` logic.
+
 ### v0.7.0
 Fixes various sins left in the previous version.
 
