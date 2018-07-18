@@ -2,7 +2,7 @@
   "extends": "stylelint-config-standard",
   "rules": {
     "at-rule-no-unknown": [true, {
-      "ignoreAtRules": ["content", "extend", "for", "include", "mixin"]
+      "ignoreAtRules": ["content", "each", "extend", "for", "include", "mixin"]
     }],
     "selector-pseudo-class-no-unknown": [true, {
       "ignorePseudoClasses": ["global"]
