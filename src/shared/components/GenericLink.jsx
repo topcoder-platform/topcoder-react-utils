@@ -11,7 +11,6 @@
 import _ from 'lodash';
 import PT from 'prop-types';
 import React from 'react';
-import Url from 'url-parse';
 
 export default function GenericLink(props) {
   const {
@@ -26,11 +25,12 @@ export default function GenericLink(props) {
     to,
   } = props;
 
-  const url = new Url(to);
-
-  /* Renders the link as <a> element if either opted explicitely, or the link
-   * should open a new tab, or it is an anchor reference. */
-  if (enforceA || openNewTab || to.startsWith('#') || url.host) {
+  /* Renders Link as <a> element if:
+   * - It is opted explicitely by `enforceA` prop;
+   * - It should be opened in a new tab;
+   * - It is an absolte URL (starts with http:// or https://);
+   * - It is anchor link (starts with #). */
+  if (enforceA || openNewTab || to.match(/^(#|https?:\/\/)/)) {
     return (
       <a
         className={className}
@@ -59,6 +59,8 @@ export default function GenericLink(props) {
     onClick: (e) => {
       /* If a custom onClick(..) handler was provided we execute it. */
       if (onClick) onClick(e);
+
+      /* The link to the current page will scroll to the top of the page. */
       window.scroll(0, 0);
     },
   }, children);

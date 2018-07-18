@@ -18,16 +18,14 @@ external or internal), and also when you have to frequently change the actual
 link addresses, as it often happens during active development / prototyping.
 
 Our `<Link>` and `<NavLink>` are rendered as simple `<a>` elements when:
-1. Explicitly opted by the `enforceA` property;
-2. The link should be opened in a new tab (`openNewTab` property);
-3. The link points to an anchor (starts with `#` symbol).
+1. The link is absolute, i.e. starts with `http://` or `https://`;
+2. The link points to an anchor, i.e. starts with `#` symbol;
+3. The link should be opened in a new tab (`openNewTab` property);
+4. Explicitly opted by the `enforceA` property;
 
 Otherwise, `<Link>` and `<NavLink>` are rendered as the corresponding React
-Router's components. If the URL provided via `to` property points to a different
-domain, it is treated as an external link and transition is handled assigning it
-to the `document.location`, otherwise transition is handled by the React Router.
-In case an extrenal link shares the same domain with the application, you can
-use `enforceA` property to handle such case.
+Router's components. Additionally in this case, the links to the current page,
+when clicked, scroll the page to the top.
 
 Both `<Link>` and `<NavLink>` support all properties of the underlying React
 Router's components, along with some additional props:

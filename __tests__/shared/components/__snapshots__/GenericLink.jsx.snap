@@ -1,37 +1,76 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Matches snapshots in a minimalistic example 1`] = `
-<button
-  className={null}
-  onClick={[Function]}
-  type="button"
->
-  {"to":"SOME/TEST/URL","className":null,"onMouseDown":null,"replace":false,"children":"LINK"}
-</button>
-`;
-
-exports[`Matches snapshots when rendered as <a> element 1`] = `
+exports[`Absolute link, starting with http:// 1`] = `
 <a
   className={null}
-  href="SOME/TEST/URL"
+  href="http://www.domain.com/test"
   onClick={null}
   onMouseDown={null}
   rel="noopener noreferrer"
   target=""
 >
-  LINK
+  ABSOLUTE LINK
 </a>
 `;
 
-exports[`Matches snapshots when rendered as <a> element 2`] = `
+exports[`Absolute link, starting with https:// 1`] = `
 <a
   className={null}
-  href="SOME/TEST/URL"
+  href="https://www.domain.com/test"
+  onClick={[Function]}
+  onMouseDown={null}
+  rel="noopener noreferrer"
+  target=""
+>
+  ABSOLUTE LINK
+</a>
+`;
+
+exports[`Anchor link 1`] = `
+<a
+  className={null}
+  href="#anchor"
+  onClick={null}
+  onMouseDown={null}
+  rel="noopener noreferrer"
+  target=""
+>
+  ANCHOR LINK
+</a>
+`;
+
+exports[`Relative link 1`] = `
+<button
+  className={null}
+  onClick={[Function]}
+  type="button"
+>
+  {"to":"http/relative/link","className":null,"onMouseDown":null,"replace":false,"children":"RELATIVE LINK"}
+</button>
+`;
+
+exports[`Relative link, with \`enforceA\` 1`] = `
+<a
+  className={null}
+  href="/relative/link"
+  onClick={null}
+  onMouseDown={null}
+  rel="noopener noreferrer"
+  target=""
+>
+  RELATIVE LINK
+</a>
+`;
+
+exports[`Relative link, with \`openNewTab\` 1`] = `
+<a
+  className={null}
+  href="relative/link"
   onClick={null}
   onMouseDown={null}
   rel="noopener noreferrer"
   target="_blank"
 >
-  LINK
+  RELATIVE LINL
 </a>
 `;
