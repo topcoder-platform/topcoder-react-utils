@@ -6,7 +6,7 @@
  * - User explicitely opts to use <a>.
  */
 
-/* global document, window */
+/* global window */
 
 import _ from 'lodash';
 import PT from 'prop-types';
@@ -25,9 +25,12 @@ export default function GenericLink(props) {
     routerLinkType,
     to,
   } = props;
+
+  const url = new Url(to);
+
   /* Renders the link as <a> element if either opted explicitely, or the link
    * should open a new tab, or it is an anchor reference. */
-  if (enforceA || openNewTab || to.startsWith('#')) {
+  if (enforceA || openNewTab || to.startsWith('#') || url.host) {
     return (
       <a
         className={className}
@@ -56,17 +59,7 @@ export default function GenericLink(props) {
     onClick: (e) => {
       /* If a custom onClick(..) handler was provided we execute it. */
       if (onClick) onClick(e);
-
-      /* If the URL leads to a different domain we make transition using JS,
-        * preventing event processing by React Router. */
-      const url = new Url(to);
-      if (url.origin !== document.location.origin) {
-        document.location.assign(to);
-        e.preventDefault();
-
-      /* Scroll to the top-left corner of the page, just in case the link
-        * references the same page we are already in. */
-      } else window.scroll(0, 0);
+      window.scroll(0, 0);
     },
   }, children);
 }
