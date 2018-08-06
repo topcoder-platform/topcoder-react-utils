@@ -12,6 +12,7 @@ module.exports = {
   testPathIgnorePatterns: [
     '/node_modules/',
   ],
+  testURL: 'http://localhost',
   transformIgnorePatterns: [
     '/node_modules/(?!topcoder-react-utils)',
   ],
