@@ -184,10 +184,12 @@ export default function factory(webpackConfig, options) {
 
       res.send((
         `<!DOCTYPE html>
-        <html>
+        <html lang="en">
           <head>
             ${helmet ? helmet.title.toString() : ''}
             ${helmet ? helmet.meta.toString() : ''}
+            <meta name="theme-color" content="#FFFFFF"/>
+            <link rel="manifest" href="${publicPath}manifest.json">
             <link
               href="${publicPath}main-${timestamp}.css"
               id="tru-style"
