@@ -13,6 +13,7 @@ const moment = require('moment');
 const path = require('path');
 const { StatsWriterPlugin } = require('webpack-stats-plugin');
 const webpack = require('webpack');
+const WorkboxPlugin = require('workbox-webpack-plugin');
 
 /**
  * Creates a new Webpack config object, and performs some auxiliary operations
@@ -39,6 +40,11 @@ const webpack = require('webpack');
  *  include some polyfills we consider obligatory. If a string or an array is
  *  passed in, it is assigned to the "main" entry point, and the "polyfills"
  *  entry point will be added to it.
+ *
+ * @param {Boolean|Object} ops.generateServiceWorker When the value is truly,
+ *  webpack-workbox-plugin is added to the config to generate a service worker.
+ *  If an object is passed into this param, it is used as options for the worker
+ *  generation.
  *
  * @param {Boolean} ops.keepBuildInfo Optional. If `true` and a build info file
  *  from a previous build is found, the factory will use that rather than
@@ -73,6 +79,9 @@ module.exports = function configFactory(ops) {
 
       /* Build timestamp. */
       timestamp: now.utc().toISOString(),
+
+      /* `true` if client-side code should setup a service worker. */
+      useServiceWorker: Boolean(o.generateServiceWorker),
     };
     fs.writeFileSync(buildInfoUrl, JSON.stringify(buildInfo));
   }
@@ -90,6 +99,29 @@ module.exports = function configFactory(ops) {
     'nodelist-foreach-polyfill',
   ]);
 
+  const plugins = [
+    new MiniCssExtractPlugin({
+      chunkFilename: `[name]-${now.valueOf()}.css`,
+      filename: `[name]-${now.valueOf()}.css`,
+    }),
+    new webpack.DefinePlugin({
+      BUILD_INFO: JSON.stringify(buildInfo),
+    }),
+    new StatsWriterPlugin({
+      filename: '__stats__.json',
+    }),
+  ];
+
+  let swOps = o.generateServiceWorker;
+  if (swOps) {
+    if (!_.isObject(swOps)) swOps = {};
+    plugins.push(new WorkboxPlugin.GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true,
+      ...swOps,
+    }));
+  }
+
   return {
     context: o.context,
     entry,
@@ -104,18 +136,7 @@ module.exports = function configFactory(ops) {
       path: path.resolve(__dirname, o.context, 'build'),
       publicPath: `${o.publicPath}/`,
     },
-    plugins: [
-      new MiniCssExtractPlugin({
-        chunkFilename: `[name]-${now.valueOf()}.css`,
-        filename: `[name]-${now.valueOf()}.css`,
-      }),
-      new webpack.DefinePlugin({
-        BUILD_INFO: JSON.stringify(buildInfo),
-      }),
-      new StatsWriterPlugin({
-        filename: '__stats__.json',
-      }),
-    ],
+    plugins,
     resolve: {
       alias: {
         /* Aliases to JS an JSX files are handled by Babel. */
@@ -137,7 +158,7 @@ module.exports = function configFactory(ops) {
         ],
         loader: 'file-loader',
         options: {
-          outputPath: '/fonts/',
+          outputPath: 'fonts/',
           publicPath: `${o.publicPath}/fonts`,
         },
       }, {
@@ -155,7 +176,7 @@ module.exports = function configFactory(ops) {
         test: /\.(gif|jpe?g|png)$/,
         loader: 'file-loader',
         options: {
-          outputPath: '/images/',
+          outputPath: 'images/',
           publicPath: `${o.publicPath}/images`,
         },
       }, {

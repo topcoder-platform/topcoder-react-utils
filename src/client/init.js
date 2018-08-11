@@ -13,6 +13,25 @@ window.TRU_FRONT_END = true;
 const block = document.querySelector('script[id="inj"]');
 document.getElementsByTagName('body')[0].removeChild(block);
 
+/* TODO: A proper logger should be moved to `topcoder-react-utils`. */
+/* eslint-disable no-console */
+const { useServiceWorker } = window.TRU_BUILD_INFO;
+if (useServiceWorker) {
+  const { navigator } = window;
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', async () => {
+      try {
+        const reg = await navigator
+          .serviceWorker.register('/service-worker.js');
+        console.log('SW registered:', reg);
+      } catch (err) {
+        console.log('SW registration failed:', err);
+      }
+    });
+  }
+}
+/* eslint-enable no-console */
+
 /* Decodes data injected at the server side. */
 const { key } = window.TRU_BUILD_INFO;
 let data = forge.util.decode64(window.INJ);

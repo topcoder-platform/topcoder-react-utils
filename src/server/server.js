@@ -44,6 +44,12 @@ export default async function factory(webpackConfig, options) {
     }),
   }));
 
+  /* Ensures no caching for the service worker script. */
+  server.use(`${publicPath}service-worker.js`, (req, res, next) => {
+    res.header('Cache-Control', 'no-cache');
+    next();
+  });
+
   /* Setup of Hot Module Reloading for development environment.
    * These dependencies are not used, nor installed for production use,
    * hence we should violate some import-related lint rules. */
