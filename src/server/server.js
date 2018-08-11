@@ -27,6 +27,8 @@ export default async function factory(webpackConfig, options) {
     server.use(favicon(options.favicon));
   }
 
+  server.use('/robots.txt', (req, res) => res.send('User-agent: *\nDisallow:'));
+
   server.use(bodyParser.json({ limit: '300kb' }));
   server.use(bodyParser.urlencoded({ extended: false }));
   server.use(cookieParser());

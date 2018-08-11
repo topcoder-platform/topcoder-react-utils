@@ -184,7 +184,7 @@ export default function factory(webpackConfig, options) {
 
       res.send((
         `<!DOCTYPE html>
-        <html>
+        <html lang="en">
           <head>
             ${helmet ? helmet.title.toString() : ''}
             ${helmet ? helmet.meta.toString() : ''}
