@@ -30,7 +30,7 @@ export default function GenericLink(props) {
    * - It should be opened in a new tab;
    * - It is an absolte URL (starts with http:// or https://);
    * - It is anchor link (starts with #). */
-  if (enforceA || openNewTab || to.match(/^(#|https?:\/\/)/)) {
+  if (enforceA || openNewTab || to.match(/^(#|(https?|mailto):\/\/)/)) {
     return (
       <a
         className={className}
