@@ -1,6 +1,8 @@
 # Topcoder React Utils Changelog
 
 ### v0.8.1
+- Adds `https` option to the [standard server factory](docs/server.md),
+  which makes it easy to run the app on HTTPS instead of HTTP.
 - Adds `workbox` option to the Wepback configuration factory for app
   ([**`config/webpack/app-base`**](docs/webpack-config.md#configuration-details)).
 

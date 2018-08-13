@@ -4,6 +4,7 @@
 
 import _ from 'lodash';
 import http from 'http';
+import https from 'https';
 
 /* Polyfill required by ReactJS. */
 import 'raf/polyfill';
@@ -34,6 +35,11 @@ function normalizePort(value) {
  *  - logger {Object} - Optional. The logger to use. By default, the console
  *    is used (which is not a good decision performancewise, but it will be
  *    changed soon);
+ *  - https {Object} - Optional. If given, HTTPS server will be started with
+ *    the specified settings. HTTP server that hanles HTTP > HTTPS redirection
+ *    will be also started at the specified port. Expected fields:
+ *    - cert {String} - SSL Certificate;
+ *    - key {String} - SSL key;
  *  - beforeRender {Function} - The hook into server-side rendering. It will get
  *    incoming request as the argument and it should return a promise that will
  *    resolve to the object with the following fields all optional:
@@ -49,7 +55,7 @@ function normalizePort(value) {
  *    default to 3000 otherwise.
  * @return {Promise} Resolves to the result object has two fields:
  *  - express {Object} - ExpressJS server;
- *  - http {Object} - NodeJS HTTP server.
+ *  - httpServer {Object} - NodeJS HTTP(S) server.
  */
 export default async function launch(webpackConfig, options) {
   /* Options normalization. */
@@ -61,9 +67,16 @@ export default async function launch(webpackConfig, options) {
 
   /* Creates servers, resolves and sets the port. */
   const expressServer = await serverFactory(webpackConfig, ops);
-  const httpServer = http.createServer(expressServer);
 
-  /* Sets error handler for HTTP server. */
+  let httpServer;
+  if (ops.https) {
+    httpServer = https.createServer({
+      cert: ops.https.cert,
+      key: ops.https.key,
+    }, expressServer);
+  } else httpServer = http.createServer(expressServer);
+
+  /* Sets error handler for HTTP(S) server. */
   httpServer.on('error', (error) => {
     if (error.syscall !== 'listen') throw error;
     const bind = _.isString(ops.port) ? `Pipe ${ops.port}` : `Port ${ops.port}`;
@@ -83,7 +96,7 @@ export default async function launch(webpackConfig, options) {
     }
   });
 
-  /* Listening event handler for HTTP server. */
+  /* Listening event handler for HTTP(S) server. */
   httpServer.on('listening', () => {
     const addr = httpServer.address();
     const bind = _.isString(addr) ? `pipe ${addr}` : `port ${addr.port}`;
