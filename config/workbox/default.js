@@ -4,9 +4,9 @@
 
 /* global self, workbox */
 
-workbox.slipWaiting();
+workbox.skipWaiting();
 workbox.clientsClaim();
 
 /* eslint-disable no-restricted-globals, no-underscore-dangle */
-workbox.precaching.precacheAndRoute(self.__precachingManifest);
+workbox.precaching.precacheAndRoute(self.__precacheManifest);
 /* eslint-enable no-restricted-globals, no-underscore-dangle */

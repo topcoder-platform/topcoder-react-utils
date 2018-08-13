@@ -80,7 +80,7 @@ module.exports = function configFactory(ops) {
       timestamp: now.utc().toISOString(),
 
       /* `true` if client-side code should setup a service worker. */
-      useServiceWorker: Boolean(o.generateServiceWorker),
+      useServiceWorker: Boolean(o.workbox),
     };
     fs.writeFileSync(buildInfoUrl, JSON.stringify(buildInfo));
   }
