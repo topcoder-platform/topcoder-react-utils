@@ -1,5 +1,9 @@
 # Topcoder React Utils Changelog
 
+### v0.8.1
+- Adds `workbox` option to the Wepback configuration factory for app
+  ([**`config/webpack/app-base`**](docs/webpack-config.md#configuration-details)).
+
 ### v0.7.2
 Fix of `<Link>` and `<NavLink>` logic.
 

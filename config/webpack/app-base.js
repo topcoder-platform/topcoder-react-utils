@@ -41,10 +41,9 @@ const WorkboxPlugin = require('workbox-webpack-plugin');
  *  passed in, it is assigned to the "main" entry point, and the "polyfills"
  *  entry point will be added to it.
  *
- * @param {Boolean|Object} ops.generateServiceWorker When the value is truly,
- *  webpack-workbox-plugin is added to the config to generate a service worker.
- *  If an object is passed into this param, it is used as options for the worker
- *  generation.
+ * @param {Boolean|Object} ops.workbox Adds InjectManifest plugin from Workbox,
+ *  with given options, if the argument is Object, or default ones, if it is any
+ *  other truly value.
  *
  * @param {Boolean} ops.keepBuildInfo Optional. If `true` and a build info file
  *  from a previous build is found, the factory will use that rather than
@@ -112,13 +111,14 @@ module.exports = function configFactory(ops) {
     }),
   ];
 
-  let swOps = o.generateServiceWorker;
-  if (swOps) {
-    if (!_.isObject(swOps)) swOps = {};
-    plugins.push(new WorkboxPlugin.GenerateSW({
-      clientsClaim: true,
-      skipWaiting: true,
-      ...swOps,
+  /* Adds InjectManifest plugin from WorkBox, if opted to. */
+  if (o.workbox) {
+    if (!_.isObject(o.workbox)) o.workbox = {};
+    plugins.push(new WorkboxPlugin.InjectManifest({
+      importWorkboxFrom: 'local',
+      swSrc: path.resolve(__dirname, '../workbox/default.js'),
+      ...o.workbox,
+      swDest: '__service-worker.js',
     }));
   }
 

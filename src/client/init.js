@@ -22,7 +22,7 @@ if (useServiceWorker) {
     window.addEventListener('load', async () => {
       try {
         const reg = await navigator
-          .serviceWorker.register('/service-worker.js');
+          .serviceWorker.register('/__service-worker.js');
         console.log('SW registered:', reg);
       } catch (err) {
         console.log('SW registration failed:', err);
