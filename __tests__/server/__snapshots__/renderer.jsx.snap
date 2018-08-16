@@ -2,10 +2,12 @@
 
 exports[`Base rendering of HTML template 1`] = `
 "<!DOCTYPE html>
-        <html>
+        <html lang=\\"en\\">
           <head>
             
             
+            <meta name=\\"theme-color\\" content=\\"#FFFFFF\\"/>
+            <link rel=\\"manifest\\" href=\\"/test/public/path/manifest.json\\">
             <link
               href=\\"/test/public/path/main-1511941200000.css\\"
               id=\\"tru-style\\"
@@ -40,10 +42,12 @@ exports[`Base rendering of HTML template 1`] = `
 
 exports[`Config overriding for injection 1`] = `
 "<!DOCTYPE html>
-        <html>
+        <html lang=\\"en\\">
           <head>
             
             
+            <meta name=\\"theme-color\\" content=\\"#FFFFFF\\"/>
+            <link rel=\\"manifest\\" href=\\"/test/public/path/manifest.json\\">
             <link
               href=\\"/test/public/path/main-1511941200000.css\\"
               id=\\"tru-style\\"
@@ -78,10 +82,12 @@ exports[`Config overriding for injection 1`] = `
 
 exports[`Hemlet integration works 1`] = `
 "<!DOCTYPE html>
-        <html>
+        <html lang=\\"en\\">
           <head>
             <title data-react-helmet=\\"true\\">Test Page Title</title>
             <meta data-react-helmet=\\"true\\" property=\\"description\\" content=\\"Test Page Description\\"/>
+            <meta name=\\"theme-color\\" content=\\"#FFFFFF\\"/>
+            <link rel=\\"manifest\\" href=\\"/test/public/path/manifest.json\\">
             <link
               href=\\"/test/public/path/main-1511941200000.css\\"
               id=\\"tru-style\\"
@@ -116,10 +122,12 @@ exports[`Hemlet integration works 1`] = `
 
 exports[`Injection of additional JS scripts 1`] = `
 "<!DOCTYPE html>
-        <html>
+        <html lang=\\"en\\">
           <head>
             
             
+            <meta name=\\"theme-color\\" content=\\"#FFFFFF\\"/>
+            <link rel=\\"manifest\\" href=\\"/test/public/path/manifest.json\\">
             <link
               href=\\"/test/public/path/main-1511941200000.css\\"
               id=\\"tru-style\\"
@@ -154,10 +162,12 @@ exports[`Injection of additional JS scripts 1`] = `
 
 exports[`Server-side rendering (SSR); injection of CSS chunks & Redux state 1`] = `
 "<!DOCTYPE html>
-        <html>
+        <html lang=\\"en\\">
           <head>
             <title data-react-helmet=\\"true\\"></title>
             
+            <meta name=\\"theme-color\\" content=\\"#FFFFFF\\"/>
+            <link rel=\\"manifest\\" href=\\"/test/public/path/manifest.json\\">
             <link
               href=\\"/test/public/path/main-1511941200000.css\\"
               id=\\"tru-style\\"
@@ -193,10 +203,12 @@ exports[`Server-side rendering (SSR); injection of CSS chunks & Redux state 1`] 
 exports[`Setting of response HTTP status the server-side rendering 1`] = `
 "HTTP STATUS: 404
 <!DOCTYPE html>
-        <html>
+        <html lang=\\"en\\">
           <head>
             <title data-react-helmet=\\"true\\"></title>
             
+            <meta name=\\"theme-color\\" content=\\"#FFFFFF\\"/>
+            <link rel=\\"manifest\\" href=\\"/test/public/path/manifest.json\\">
             <link
               href=\\"/test/public/path/main-1511941200000.css\\"
               id=\\"tru-style\\"
