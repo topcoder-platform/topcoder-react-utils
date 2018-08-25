@@ -6,6 +6,7 @@ exports[`Base rendering of HTML template 1`] = `
           <head>
             
             
+            
             <link
               href=\\"/test/public/path/main-1511941200000.css\\"
               id=\\"tru-style\\"
@@ -20,6 +21,7 @@ exports[`Base rendering of HTML template 1`] = `
             />
           </head>
           <body>
+            
             <div id=\\"react-view\\"></div>
             <script id=\\"inj\\" type=\\"application/javascript\\">
               window.SPLITS = {}
@@ -44,6 +46,7 @@ exports[`Config overriding for injection 1`] = `
           <head>
             
             
+            
             <link
               href=\\"/test/public/path/main-1511941200000.css\\"
               id=\\"tru-style\\"
@@ -58,6 +61,7 @@ exports[`Config overriding for injection 1`] = `
             />
           </head>
           <body>
+            
             <div id=\\"react-view\\"></div>
             <script id=\\"inj\\" type=\\"application/javascript\\">
               window.SPLITS = {}
@@ -80,6 +84,7 @@ exports[`Hemlet integration works 1`] = `
 "<!DOCTYPE html>
         <html lang=\\"en\\">
           <head>
+            
             <title data-react-helmet=\\"true\\">Test Page Title</title>
             <meta data-react-helmet=\\"true\\" property=\\"description\\" content=\\"Test Page Description\\"/>
             <link
@@ -96,6 +101,7 @@ exports[`Hemlet integration works 1`] = `
             />
           </head>
           <body>
+            
             <div id=\\"react-view\\"><div data-reactroot=\\"\\"><p>Hello World!</p><p>Goodbye World!</p></div></div>
             <script id=\\"inj\\" type=\\"application/javascript\\">
               window.SPLITS = {}
@@ -118,6 +124,7 @@ exports[`Injection of additional JS scripts 1`] = `
 "<!DOCTYPE html>
         <html lang=\\"en\\">
           <head>
+            <script>1-st script after opening <head></script><script>2-nd script after opening <head></script>
             
             
             <link
@@ -134,6 +141,7 @@ exports[`Injection of additional JS scripts 1`] = `
             />
           </head>
           <body>
+            <script>1-st script after opening <body></script><script>2-nd script after opening <body></script>
             <div id=\\"react-view\\"></div>
             <script id=\\"inj\\" type=\\"application/javascript\\">
               window.SPLITS = {}
@@ -143,7 +151,7 @@ exports[`Injection of additional JS scripts 1`] = `
               src=\\"/test/public/path/polyfills-1511941200000.js\\"
               type=\\"application/javascript\\"
             ></script>
-            <script>Dummy JS Sript</script><script>Another Dummy JS Script</script>
+            <script>Dummy JS Sript</script><script>Another Dummy JS Script</script><script>Yet another Dummy JS Script</script>
             <script
               src=\\"/test/public/path/main-1511941200000.js\\"
               type=\\"application/javascript\\"
@@ -156,6 +164,7 @@ exports[`Server-side rendering (SSR); injection of CSS chunks & Redux state 1`] 
 "<!DOCTYPE html>
         <html lang=\\"en\\">
           <head>
+            
             <title data-react-helmet=\\"true\\"></title>
             
             <link
@@ -172,6 +181,7 @@ exports[`Server-side rendering (SSR); injection of CSS chunks & Redux state 1`] 
             />
           </head>
           <body>
+            
             <div id=\\"react-view\\"><div data-reactroot=\\"\\">Hello Wold!</div></div>
             <script id=\\"inj\\" type=\\"application/javascript\\">
               window.SPLITS = {}
@@ -195,6 +205,7 @@ exports[`Setting of response HTTP status the server-side rendering 1`] = `
 <!DOCTYPE html>
         <html lang=\\"en\\">
           <head>
+            
             <title data-react-helmet=\\"true\\"></title>
             
             <link
@@ -211,6 +222,7 @@ exports[`Setting of response HTTP status the server-side rendering 1`] = `
             />
           </head>
           <body>
+            
             <div id=\\"react-view\\"><div data-reactroot=\\"\\">404 Error Test</div></div>
             <script id=\\"inj\\" type=\\"application/javascript\\">
               window.SPLITS = {}

@@ -60,8 +60,22 @@ props:
     object
     to be injected into the page. If omitted, the one proposed by the server
     will be used.
-  - **`extraScripts`** &mdash; *String[]* &mdash; Additional script tags to be
-    injected into the page.
+  - **`extraScripts`** &mdash; *Object[]* | *String[]* &mdash; Additional script
+    tags to be injected into the page. Each script given as a string will be
+    injected in the end of document's `<body>`, but immediately before the main
+    application bundle. Each script given as object should have two fields:
+    `code` specifies the actual code to inject, and `location` which specifies
+    location, where the script should be injected. Possible locations are
+    given in the `server.SCRIPT_LOCATIONS` object:
+    - `server.SCRIPT_LOCATIONS.BODY_OPEN` - right after the openning `<body>`
+      tag;
+    - `server.SCRIPT_LOCATIONS.DEFAULT` - default locations described above;
+    - `server.SCRIPT_LOCATIONS.HEAD_OPEN` - right after the openning `<head>`
+      tag;
+
+    When a few scripts have the same location, they all are injected into that
+    location in the order they are given in the `extraScripts` array.
+
   - **`store`** &mdash; *Object* &mdash; Redux store which state will be
     injected into HTML template as the initial state of the app.
 

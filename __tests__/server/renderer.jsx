@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import factory from 'server/renderer';
+import factory, { SCRIPT_LOCATIONS } from 'server/renderer';
 import fs from 'fs';
 import React from 'react';
 
@@ -142,7 +142,22 @@ test('Injection of additional JS scripts',
     beforeRender: async () => ({
       extraScripts: [
         '<script>Dummy JS Sript</script>',
-        '<script>Another Dummy JS Script</script>',
+        '<script>Another Dummy JS Script</script>', {
+          code: '<script>Yet another Dummy JS Script</script>',
+          location: SCRIPT_LOCATIONS.DEFAULT,
+        }, {
+          code: '<script>1-st script after opening <head></script>',
+          location: SCRIPT_LOCATIONS.HEAD_OPEN,
+        }, {
+          code: '<script>1-st script after opening <body></script>',
+          location: SCRIPT_LOCATIONS.BODY_OPEN,
+        }, {
+          code: '<script>2-nd script after opening <body></script>',
+          location: SCRIPT_LOCATIONS.BODY_OPEN,
+        }, {
+          code: '<script>2-nd script after opening <head></script>',
+          location: SCRIPT_LOCATIONS.HEAD_OPEN,
+        },
       ],
     }),
   }));

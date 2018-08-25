@@ -10,6 +10,7 @@ import https from 'https';
 import 'raf/polyfill';
 
 import serverFactory from './server';
+import { SCRIPT_LOCATIONS } from './renderer';
 
 /**
  * Normalizes a port into a number, string, or false.
@@ -57,7 +58,7 @@ function normalizePort(value) {
  *  - express {Object} - ExpressJS server;
  *  - httpServer {Object} - NodeJS HTTP(S) server.
  */
-export default async function launch(webpackConfig, options) {
+async function launch(webpackConfig, options) {
   /* Options normalization. */
   const ops = options ? _.clone(options) : {};
   ops.port = normalizePort(ops.port || process.env.PORT || 3000);
@@ -111,3 +112,7 @@ export default async function launch(webpackConfig, options) {
     httpServer,
   };
 }
+
+launch.SCRIPT_LOCATIONS = SCRIPT_LOCATIONS;
+
+export default launch;
