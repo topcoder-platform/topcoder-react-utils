@@ -122,5 +122,5 @@
     "mkDistDir:prod": "mkdir -p dist/prod/shared/utils && mkdir -p dist/prod/client",
     "test": "npm run lint && npm run jest"
   },
-  "version": "0.8.0"
+  "version": "0.8.1"
 }
