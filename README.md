@@ -17,6 +17,8 @@ external ReactJS projects developed by the Topcoder community.
   - [Redux Templates](#redux-templates)
   - [Utilities](#utilities)
 - [Development](#development)
+  - [Local Testing of Library Updates within a Host Project](#local-testing-of-library-updates-within-a-host-project)
+  - [Library Releases to NPM](#library-releases-to-npm)
 - [License](#license)
 
 ## Installation
@@ -93,41 +95,75 @@ $ ./node_modules/.bin/topcoder-lib-setup
   Webpack bundling process.
 
 ## Development
-For convenient development you can link this package into your host package:
-1.  Clone [`topcoder-react-utils`](https://github.com/topcoder-platform/topcoder-react-utils)
-    to your machine, and checkout the branch you are going to work with;
-2.  Inside `topcoder-react-utils` folder:
-    - Install dependencies with `$ npm install`;
-    - Locate `node_modules/extract-css-chunks-webpack-plugin/index.js` and
-      inside the `isChunk(..)` function (line #358) add `return true;` statement,
-      so that this function always returns *true*. This step is necessary at
-      the moment, because the check `chunk instanceof Chunk` check inside this
-      function does not work as expected when Webpack config is spread across
-      multiple inter-linked packages.
-    - Run the dev build `$ npm run build:dev`. It will compile the package, and
-      also will watch for the file changes to automatically re-compile it as
-      necessary.
-3.  Inside the host package execute
-    `$ npm link PATH_TO_TOPCODER_REACT_UTILS_FOLDER`. It will create a symlink
-    from `HOST_PACKAGE/node_modules/topcoder-react-utils` to your local copy of
-    the `topcoder-react-utils` package, so that any changes you do there become
-    automatically available to the host package.
 
-CI/CD is set up with CircleCI 2.0 for this repo. A commit to any branch, beside
-`master` will trigger testing of the commited code (it will run `$ npm test` and
-ensures that it does not fail). A commit to the protected `master` branch (only
-organization members and repo admins can commit to `master`) will trigger the
-testing, and, if successful, release of the updated package to the NPM registry.
+Whenever you are to do any changes in the library, keep in mind the following:
 
-For successful release to NPM you should bump the package version in the
-`package.json`. To do it conveniently you can use `$ npm version UPDATE_TYPE`
-command, where `UPDATE_TYPE` stays for one of `patch`/`minor`/`major` to bump up
-`2`, `1`, or `0` in a sample version number `v0.1.2`. This command will update
-`package.json` and `package-lock.json`, and create a new commit and tag in the
-checked-out Git branch. Mind that `patch` updates should not introduce
-any breaking changes into the codebase! Breaking changes should be done via
-`minor` or `major` update, and they should be documented in
-the [CHANGELOG](CHANGELOG.md).
+- Different projects rely on this library, the tooling it provides should be as
+  generic and flexible as possible. When you change existing components, do your
+  best to keep backward compatibility of the updated components, any changes
+  that demand updates in the projects relying on the library, must be
+  documented in the [changelog](CHANGELOG.md).
+
+- Rely on unit tests to verify your changes, and prevent regression. Update
+  existing unit tests to keep up with your changes, and add new unit tests
+  when necessary.
+
+- For the final testing of your updates within a host project relying on this
+  lib, see the next section.
+
+- The library use semantic versioning. In case your changes demand any changes
+  in the project relying on the library, you should release it as a minor
+  library update (more severe comparing to patch update). Consider to use
+  a new branch, called after the minor version, and to not merge your changes
+  into the main **develop** / **master** branches until everybody is prepared
+  for that.
+
+### Local Testing of Library Updates within a Host Project
+
+To locally test how your library updates work within a host project relying on
+the lib (without releasing them to NPM), do the following:
+
+1.  In the library root execute `$ npm run build` to build the library, using
+    the current code;
+
+2.  In the library root execute `$ npm pack .` it will pack the library into the
+    tarball file `topcoder-react-utils-x.y.z.tgz`, where **x.y.z** is the
+    library version specified in `package.json`.
+
+3.  In the host project execute
+    `$ npm install --save PATH/TO/topcoder-react-utils-x.y.z.tgz` to install
+    the local version of library build and packed at the previous steps. For
+    all practical purposes, the installation will be performed the same way,
+    as when the library is publised to NPM and installed from there.
+
+4.  In case your update of **topcoder-react-utils** alters dependency versions,
+    and you need to ensure the same dependency versions installed in the host
+    project, execute `$ ./node_modules/.bin/topcoder-lib-setup --just-fix-deps`
+    in the host project's root.
+
+5.  Once you are done with the testing do not forget to ensure that the proper
+    NPM version of **topcoder-react-utils** is saved back to the project's
+    `package.json` file.
+
+### Library Releases to NPM
+
+Continious Integration and Delivery (CI/CD) is set up for this repository with
+CircleCI 2.0. Commits to all branches trigger testing of the code with
+`$ npm test` (it runs linters and unit tests), and also build the library.
+CI/CD flow is interrupted in case of any problems.
+
+To release updated library version to NPM do the following:
+
+- Bump library version in `package.json` and `package-lock.json` by
+  `$ npm version UPDATE_TYPE --no-git-tag` command, where `UPDATE_TYPE` should
+  be one of `patch` / `minor` / `major` to update current version `x.y.z`
+  to `x.y.(z+1)` / `x.(y+1).0` / `(x+1).0.0`. The `--no-git-tag` flag prevents
+  automatic creation of the Git tag with the same name as the version.
+
+- Tag the commit to be released with the git tag like `v0.1.2`, where `0.1.2` is
+  the new version set in the previous step.
+
+- Commit the tag to GitHub repository.
 
 ## License
 Topcoder React Utils is [MIT Licensed](LICENSE.md)
