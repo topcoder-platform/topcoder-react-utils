@@ -4,11 +4,13 @@ exports[`Export at client side 1`] = `
 Object {
   "AppChunk": [Function],
   "Avatar": [Function],
+  "BaseModal": [Function],
   "Button": [Function],
   "DevTools": [Function],
   "JU": null,
   "Link": [Function],
   "MetaTags": [Function],
+  "Modal": [Function],
   "NavLink": [Function],
   "ScalableRect": [Function],
   "actions": Object {
@@ -64,6 +66,7 @@ exports[`Export at server side 1`] = `
 Object {
   "AppChunk": [Function],
   "Avatar": [Function],
+  "BaseModal": [Function],
   "Button": [Function],
   "DevTools": [Function],
   "JU": Object {
@@ -162,6 +165,7 @@ Object {
   },
   "Link": [Function],
   "MetaTags": [Function],
+  "Modal": [Function],
   "NavLink": [Function],
   "ScalableRect": [Function],
   "actions": Object {

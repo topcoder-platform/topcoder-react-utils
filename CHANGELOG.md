@@ -1,5 +1,8 @@
 # Topcoder React Utils Changelog
 
+### v0.7.7
+- Adds [**`Modal`**](docs/modal.md) component.
+
 ### v0.7.2
 Fix of `<Link>` and `<NavLink>` logic.
 
