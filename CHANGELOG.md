@@ -1,5 +1,8 @@
 # Topcoder React Utils Changelog
 
+### v0.8.2
+- Adds [**`Modal`**](docs/modal.md) component.
+
 ### v0.8.1
 - Adds `https` option to the [standard server factory](docs/server.md),
   which makes it easy to run the app on HTTPS instead of HTTP.
