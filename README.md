@@ -43,53 +43,54 @@ $ ./node_modules/.bin/topcoder-lib-setup
 
 ## Reference
 ### Configurations
-- [**Babel Configurations**](docs/babel-config.md) &mdash; Standard
+- [**Babel Configurations**](docs/babel-config.md) &ndash; Standard
   configurations for [Babel](https://babeljs.io/);
-- [**ESLint Configurations**](docs/eslint-config.md) &mdash; Standard
+- [**ESLint Configurations**](docs/eslint-config.md) &ndash; Standard
   configurations for [ESLint](https://eslint.org/);
-- [**Jest Configurations**](docs/jest-config.md) &mdash; Standard configurations
+- [**Jest Configurations**](docs/jest-config.md) &ndash; Standard configurations
   for [Jest](https://facebook.github.io/jest/);
-- [**Stylelint Configurations**](docs/stylelint-config.md) &mdash; Standard
+- [**Stylelint Configurations**](docs/stylelint-config.md) &ndash; Standard
   configurations for [Stylelint](https://stylelint.io)
-- [**Webpack Configurations**](docs/webpack-config.md) &mdash; Standard
+- [**Webpack Configurations**](docs/webpack-config.md) &ndash; Standard
   configurations for [Webpack](https://webpack.js.org/).
 
 ### Components
-- [**`Avatar`**](docs/avatar.md) &mdash; The standard component for user avatars;
-- [**`Button`**](docs/button.md) &mdash; Handles buttons and button-like links
+- [**`Avatar`**](docs/avatar.md) &ndash; The standard component for user avatars;
+- [**`Button`**](docs/button.md) &ndash; Handles buttons and button-like links
   (components that look like regular buttons, but behave as links) in the same
   uniform manner;
-- [**`Link` and `NavLink`**](docs/link-and-navlink.md) &mdash; Auxiliary wrappers
+- [**`Link` and `NavLink`**](docs/link-and-navlink.md) &ndash; Auxiliary wrappers
   around [React Router](https://github.com/ReactTraining/react-router)'s `<Link>`
   and `<NavLink>` components; they help to handle external and internal links in
   the same uniform manner;
-- [**`ScalableRect`**](docs/scalable-rect.md) &mdash; Container that keeps
+- [**`Modal`**](docs/modal.md) &ndash; Themeable modal component;
+- [**`ScalableRect`**](docs/scalable-rect.md) &ndash; Container that keeps
   the specified aspect ratio regardless the width you set.
 
 ### NodeJS Scripts
-- [**topcoder-lib-setup**](docs/topcoder-lib-setup-script.md) &mdash; Helps to
+- [**topcoder-lib-setup**](docs/topcoder-lib-setup-script.md) &ndash; Helps to
   install and upgrade **topcoder-react-utils** and other similar libraries.
 
 ### Redux Templates
-- [**Item**](docs/redux-item.md) &mdash; An async piece of data in Redux store.
+- [**Item**](docs/redux-item.md) &ndash; An async piece of data in Redux store.
 
 ### Utilities
-- [**Client**](docs/client.md) &mdash; Client-side initialization code.
-- [**Config**](docs/config.md) &mdash; Isomorphic app config;
-- [**Global Styles**](docs/global-styles.md) &mdash; Global styles necessary for
+- [**Client**](docs/client.md) &ndash; Client-side initialization code.
+- [**Config**](docs/config.md) &ndash; Isomorphic app config;
+- [**Global Styles**](docs/global-styles.md) &ndash; Global styles necessary for
   a generic application;
-- [**Isomorphy**](docs/isomorphy-utils.md) &mdash; Collection of helpers to deal
+- [**Isomorphy**](docs/isomorphy-utils.md) &ndash; Collection of helpers to deal
   with isomorphic aspects of the code;
-- [**Jest utils**](docs/jest-utils.md) &mdash; Collection of helpers to be used
+- [**Jest utils**](docs/jest-utils.md) &ndash; Collection of helpers to be used
   in Jest tests code;
-- [**Redux utils**](docs/redux-utils.md) &mdash; *TO BE DOCUMENTED*
-- [**SCSS Mixins**](docs/scss-mixins.md) &mdash; Collection of useful style
+- [**Redux utils**](docs/redux-utils.md) &ndash; *TO BE DOCUMENTED*
+- [**SCSS Mixins**](docs/scss-mixins.md) &ndash; Collection of useful style
   mixins;
-- [**Server**](docs/server.md) &mdash; Easy creation and launch of web-server
+- [**Server**](docs/server.md) &ndash; Easy creation and launch of web-server
   with standard configuration, that serves a ReactJS application with or without
   server-side rendering, supports development tools (Hop Module Reloading), and
   can be further configured for the needs of specific projects.
-- [**Webpack**](docs/webpack-utils.md) &mdash; Various utils related to the
+- [**Webpack**](docs/webpack-utils.md) &ndash; Various utils related to the
   Webpack bundling process.
 
 ## Development
