@@ -3,10 +3,13 @@
     "../config/babel/node-ssr"
   ],
   "plugins": [
-    ["module-resolver", {
-      "alias": {
-        "topcoder-react-utils/dist": "./src"
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "topcoder-react-utils/dist": "./src"
+        }
       }
-    }]
+    ]
   ]
 }

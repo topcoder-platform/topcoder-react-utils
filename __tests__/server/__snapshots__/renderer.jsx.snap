@@ -182,7 +182,7 @@ exports[`Server-side rendering (SSR); injection of CSS chunks & Redux state 1`] 
           </head>
           <body>
             
-            <div id=\\"react-view\\"><div data-reactroot=\\"\\">Hello Wold!</div></div>
+            <div id=\\"react-view\\"><div>Hello Wold!</div></div>
             <script id=\\"inj\\" type=\\"application/javascript\\">
               window.SPLITS = {}
               window.INJ=\\"MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDGF1OkTQprU3+cINSXQietFqgqagolJ5j9NlQutv03F1TZonSyrmykHqLzmKxXS0DLPyBqGDNu0Yb+sEvg3s2Nv7ZYfzgAL5LpxryHNGWLiWYlCFgBW1NkdubXDUzuNfddcSwOHmA68IbAvuQnY81RZWKcs/M+w/CFPnw0PiVYASg==\\"

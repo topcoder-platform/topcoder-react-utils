@@ -1,5 +1,7 @@
 /* Babel preset for the Webpack build. */
 
+const _ = require('lodash');
+
 const reactCssModulesPluginOps = {
   filetypes: {
     '.scss': {
@@ -10,9 +12,8 @@ const reactCssModulesPluginOps = {
 
 const config = {
   presets: [
-    'env',
-    'react',
-    'stage-2',
+    '@babel/env',
+    '@babel/react',
   ],
   plugins: [
     ['module-resolver', {
@@ -22,21 +23,25 @@ const config = {
         './src',
       ],
     }],
+    '@babel/syntax-dynamic-import',
     'inline-react-svg',
-    'transform-runtime',
+    '@babel/transform-runtime',
     ['react-css-modules', reactCssModulesPluginOps],
   ],
 };
 
-switch (process.env.BABEL_ENV) {
-  case 'development':
-    reactCssModulesPluginOps.generateScopedName = '[path][name]___[local]___[hash:base64:6]';
-    config.plugins.push('react-hot-loader/babel');
-    break;
-  case 'production':
-    reactCssModulesPluginOps.generateScopedName = '[hash:base64:6]';
-    break;
-  default:
+function getPreset(babel) {
+  switch (babel.getEnv()) {
+    case 'development':
+      reactCssModulesPluginOps.generateScopedName = '[path][name]___[local]___[hash:base64:6]';
+      config.plugins.push('react-hot-loader/babel');
+      break;
+    case 'production':
+      reactCssModulesPluginOps.generateScopedName = '[hash:base64:6]';
+      break;
+    default:
+  }
+  return _.cloneDeep(config);
 }
 
-module.exports = config;
+module.exports = getPreset;

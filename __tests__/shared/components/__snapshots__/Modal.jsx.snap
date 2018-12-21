@@ -5,13 +5,13 @@ exports[`Snapshot match 1`] = `
   className="MOCK_PORTAL"
 >
   <div
-    className="style__container___1SoeQ"
+    className="src-shared-components-Modal-style___container___1SoeQl"
     onWheel={[Function]}
   >
     CONTENT
   </div>
   <button
-    className="style__overlay___X12tn"
+    className="src-shared-components-Modal-style___overlay___X12tn9"
     onClick={[Function]}
     type="button"
   />
