@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Base test 1`] = `
+Config {
+  "SECRET": Object {
+    "dummySecretKey": "Dummy Secret Value",
+  },
+  "dummyKey": "Dummy Value",
+}
+`;

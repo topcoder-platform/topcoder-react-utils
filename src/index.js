@@ -21,7 +21,7 @@ let serverUrl = isProdBuild() ? 'prod' : 'dev';
 serverUrl = `topcoder-react-utils/dist/${serverUrl}/server`;
 const server = utils.isomorphy.isServerSide() ? requireWeak(serverUrl) : null;
 
-module.exports = {
+export {
   actions,
   AppChunk,
   Avatar,
@@ -36,5 +36,6 @@ module.exports = {
   ScalableRect,
   reducers,
   server,
-  ...utils,
 };
+
+export * from 'utils';

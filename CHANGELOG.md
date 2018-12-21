@@ -3,7 +3,8 @@
 ### V0.9.0
 - NodeJS updated to the latest LTS version (10.14.2);
 - NPM dependencies updated to the latest versions. In particular:
-  - Babel updated from v6 to v7.
+  - Babel updated from v6 to v7;
+  - Misc related fixes.
 
 ### v0.8.2
 - Adds [**`Modal`**](docs/modal.md) component.
