@@ -5,6 +5,8 @@
 - NPM dependencies updated to the latest versions. In particular:
   - Babel updated from v6 to v7;
   - Misc related fixes.
+- Support of `npm link` for lib development;
+- `disabled` prop for `<Link>` and `<NavLink>`;
 
 ### v0.8.2
 - Adds [**`Modal`**](docs/modal.md) component.

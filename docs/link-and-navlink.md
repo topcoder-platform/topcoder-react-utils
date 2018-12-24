@@ -35,6 +35,7 @@ Router's components, along with some additional props:
 inside the link;
 - **`className`** &mdash; *String* &mdash; Optional. Class(es) to apply to the
 rendered link;
+- **`disabled`** &mdash; *Boolean* &mdash; Optional. Disables the link;
 - **`enforceA`** &mdash; *Boolean* &mdash; Optional. If *true* enforces
 rendering of the link as a simple `<a>` element;
 - **`onClick`** &mdash; *Function* &mdash; Optional. An event handler to trigger
@@ -56,6 +57,7 @@ additional ones, coming from React Router:
 the rendered link when it is active;
 - **`activeStyle`** &mdash; *String* &mdash; Optional. Styles to apply to the
 rendered link when it is active;
+- **`disabled`** &mdash; *Boolean* &mdash; Optional. Disables the link;
 - **`exact`** &mdash; *Boolean* &mdash; Optional. When *true*, the active
 class/style will only be applied if the location is matched exactly;
 - **`isActive`** &mdash; *Function* &mdash; Optional. A function to add extra
