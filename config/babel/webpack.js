@@ -2,14 +2,6 @@
 
 const _ = require('lodash');
 
-const reactCssModulesPluginOps = {
-  filetypes: {
-    '.scss': {
-      syntax: 'postcss-scss',
-    },
-  },
-};
-
 const config = {
   presets: [
     '@babel/env',
@@ -26,22 +18,35 @@ const config = {
     '@babel/syntax-dynamic-import',
     'inline-react-svg',
     '@babel/transform-runtime',
-    ['react-css-modules', reactCssModulesPluginOps],
+    ['react-css-modules', {
+      filetypes: {
+        '.scss': {
+          syntax: 'postcss-scss',
+        },
+      },
+    }],
   ],
 };
 
 function getPreset(babel) {
+  const res = _.cloneDeep(config);
+
+  const reactCssModulePluginOptions = res.plugins.find(
+    ([name]) => name === 'react-css-modules',
+  )[1];
+
   switch (babel.getEnv()) {
     case 'development':
-      reactCssModulesPluginOps.generateScopedName = '[path][name]___[local]___[hash:base64:6]';
-      config.plugins.push('react-hot-loader/babel');
+      reactCssModulePluginOptions
+        .generateScopedName = '[path][name]___[local]___[hash:base64:6]';
+      res.plugins.push('react-hot-loader/babel');
       break;
     case 'production':
-      reactCssModulesPluginOps.generateScopedName = '[hash:base64:6]';
+      reactCssModulePluginOptions.generateScopedName = '[hash:base64:6]';
       break;
     default:
   }
-  return _.cloneDeep(config);
+  return res;
 }
 
 module.exports = getPreset;
