@@ -59,9 +59,6 @@ module.exports = function configFactory(ops) {
       'url-parse',
     ],
     mode: ops.mode,
-    node: {
-      __dirname: false,
-    },
     output: {
       filename: 'index.js',
 

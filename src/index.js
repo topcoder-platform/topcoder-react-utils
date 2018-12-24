@@ -18,7 +18,8 @@ import * as utils from 'utils';
 
 import { requireWeak } from 'utils/webpack';
 
-const serverUrl = path.resolve(__dirname, './server');
+const serverUrl = module.webpackPolyfill ? './server'
+  : path.resolve(__dirname, './server');
 const server = utils.isomorphy.isServerSide() ? requireWeak(serverUrl) : null;
 
 export {

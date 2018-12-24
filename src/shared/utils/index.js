@@ -5,7 +5,9 @@ import * as isomorphy from './isomorphy';
 import * as redux from './redux';
 import * as webpack from './webpack';
 
-const juUrl = path.resolve(__dirname, './jest');
+const juUrl = module.webpackPolyfill ? './shared/utils/jest'
+  : path.resolve(__dirname, './jest');
+
 const JU = isomorphy.isServerSide() ? webpack.requireWeak(juUrl) : null;
 
 export {
