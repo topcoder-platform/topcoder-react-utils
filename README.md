@@ -122,29 +122,11 @@ Whenever you are to do any changes in the library, keep in mind the following:
 ### Local Testing of Library Updates within a Host Project
 
 To locally test how your library updates work within a host project relying on
-the lib (without releasing them to NPM), do the following:
-
-1.  In the library root execute `$ npm run build` to build the library, using
-    the current code;
-
-2.  In the library root execute `$ npm pack .` it will pack the library into the
-    tarball file `topcoder-react-utils-x.y.z.tgz`, where **x.y.z** is the
-    library version specified in `package.json`.
-
-3.  In the host project execute
-    `$ npm install --save PATH/TO/topcoder-react-utils-x.y.z.tgz` to install
-    the local version of library build and packed at the previous steps. For
-    all practical purposes, the installation will be performed the same way,
-    as when the library is publised to NPM and installed from there.
-
-4.  In case your update of **topcoder-react-utils** alters dependency versions,
-    and you need to ensure the same dependency versions installed in the host
-    project, execute `$ ./node_modules/.bin/topcoder-lib-setup --just-fix-deps`
-    in the host project's root.
-
-5.  Once you are done with the testing do not forget to ensure that the proper
-    NPM version of **topcoder-react-utils** is saved back to the project's
-    `package.json` file.
+the lib (without releasing them to NPM), use
+[`npm link`](https://docs.npmjs.com/cli/link.html) to link local copy of the lib
+into the host project, then run `npm run build:dev:watch` in the library root to
+automatically re-build the lib when you change it, and use the host project to
+see the final effect of changes you make.
 
 ### Library Releases to NPM
 
