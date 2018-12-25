@@ -12,10 +12,13 @@ import _ from 'lodash';
 import PT from 'prop-types';
 import React from 'react';
 
+import './style.scss';
+
 export default function GenericLink(props) {
   const {
     children,
     className,
+    disabled,
     enforceA,
     onClick,
     onMouseDown,
@@ -30,14 +33,16 @@ export default function GenericLink(props) {
    * - It should be opened in a new tab;
    * - It is an absolte URL (starts with http:// or https://);
    * - It is anchor link (starts with #). */
-  if (enforceA || openNewTab || to.match(/^(#|https?:\/\/)/)) {
+  if (disabled || enforceA || openNewTab || to.match(/^(#|(https?|mailto):)/)) {
     return (
       <a
         className={className}
+        disabled={disabled}
         href={to}
-        onClick={onClick}
-        onMouseDown={onMouseDown}
+        onClick={disabled ? e => e.preventDefault() : onClick}
+        onMouseDown={disabled ? e => e.preventDefault() : onMouseDown}
         rel="noopener noreferrer"
+        styleName="link"
         target={openNewTab ? '_blank' : ''}
       >
         {children}
@@ -69,6 +74,7 @@ export default function GenericLink(props) {
 GenericLink.defaultProps = {
   children: null,
   className: null,
+  disabled: false,
   enforceA: false,
   onClick: null,
   onMouseDown: null,
@@ -80,6 +86,7 @@ GenericLink.defaultProps = {
 GenericLink.propTypes = {
   children: PT.node,
   className: PT.string,
+  disabled: PT.bool,
   enforceA: PT.bool,
   onClick: PT.func,
   onMouseDown: PT.func,

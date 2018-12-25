@@ -1,5 +1,24 @@
 # Topcoder React Utils Changelog
 
+### v0.9.0
+- NodeJS updated to the latest LTS version (10.14.2);
+- NPM dependencies updated to the latest versions. In particular:
+  - Babel updated from v6 to v7;
+  - Misc related fixes.
+- Support of `npm link` for lib development;
+- `disabled` prop for `<Link>` and `<NavLink>`;
+- Default theme for `<Button>`;
+- `box-sizing`: `border-box` for all HTML elements by default.
+
+### v0.8.2
+- Adds [**`Modal`**](docs/modal.md) component.
+
+### v0.8.1
+- Adds `https` option to the [standard server factory](docs/server.md),
+  which makes it easy to run the app on HTTPS instead of HTTP.
+- Adds `workbox` option to the Wepback configuration factory for app
+  ([**`config/webpack/app-base`**](docs/webpack-config.md#configuration-details)).
+
 ### v0.7.7
 - Adds [**`Modal`**](docs/modal.md) component.
 

@@ -6,3 +6,7 @@ html,
 body {
   text-rendering: geometricPrecision;
 }
+
+* {
+  box-sizing: border-box;
+}

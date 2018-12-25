@@ -18,6 +18,12 @@ import { StaticRouter } from 'react-router-dom';
 
 const sanitizedConfig = _.omit(config, 'SECRET');
 
+export const SCRIPT_LOCATIONS = {
+  BODY_OPEN: 'BODY_OPEN',
+  DEFAULT: 'DEFAULT',
+  HEAD_OPEN: 'HEAD_OPEN',
+};
+
 /**
  * Reads build-time information about the app. This information is generated
  * by our standard Webpack config for apps, and it is written into
@@ -182,10 +188,32 @@ export default function factory(webpackConfig, options) {
         });
       });
 
+      let bodyOpenExtraScripts;
+      let defaultExtraScripts;
+      let headOpenExtraScripts;
+      if (extraScripts) {
+        bodyOpenExtraScripts = extraScripts
+          .filter(script => _.isObject(script)
+            && script.location === SCRIPT_LOCATIONS.BODY_OPEN)
+          .map(script => script.code)
+          .join('');
+        defaultExtraScripts = extraScripts
+          .filter(script => _.isString(script)
+            || script.location === SCRIPT_LOCATIONS.DEFAULT)
+          .map(script => (_.isString(script) ? script : script.code))
+          .join('');
+        headOpenExtraScripts = extraScripts
+          .filter(script => _.isObject(script)
+            && script.location === SCRIPT_LOCATIONS.HEAD_OPEN)
+          .map(script => script.code)
+          .join('');
+      }
+
       res.send((
         `<!DOCTYPE html>
         <html lang="en">
           <head>
+            ${headOpenExtraScripts || ''}
             ${helmet ? helmet.title.toString() : ''}
             ${helmet ? helmet.meta.toString() : ''}
             <meta name="theme-color" content="#FFFFFF"/>
@@ -204,6 +232,7 @@ export default function factory(webpackConfig, options) {
             />
           </head>
           <body>
+            ${bodyOpenExtraScripts || ''}
             <div id="react-view">${App || ''}</div>
             <script id="inj" type="application/javascript">
               window.SPLITS = ${serializeJs(context.splits, { isJSON: true })}
@@ -213,7 +242,7 @@ export default function factory(webpackConfig, options) {
               src="${publicPath}polyfills-${timestamp}.js"
               type="application/javascript"
             ></script>
-            ${extraScripts ? extraScripts.join('') : ''}
+            ${defaultExtraScripts || ''}
             <script
               src="${publicPath}main-${timestamp}.js"
               type="application/javascript"

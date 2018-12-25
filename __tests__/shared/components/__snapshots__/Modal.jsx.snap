@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot match 1`] = `
+<div
+  className="MOCK_PORTAL"
+>
+  <div
+    className="src-shared-components-Modal-style___container___1SoeQl"
+    onWheel={[Function]}
+  >
+    CONTENT
+  </div>
+  <button
+    className="src-shared-components-Modal-style___overlay___X12tn9"
+    onClick={[Function]}
+    type="button"
+  />
+</div>
+`;

@@ -50,7 +50,6 @@ module.exports = function configFactory(ops) {
     res.entry.main = [res.entry.main];
   }
   res.entry.main = [
-    'react-hot-loader/patch',
     'webpack-hot-middleware/client?reload=true',
   ].concat(res.entry.main);
   res.entry.polyfills.push('topcoder-react-utils/dist/dev/client/init');

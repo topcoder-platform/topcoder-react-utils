@@ -8,7 +8,9 @@
 import PT from 'prop-types';
 import React from 'react';
 
-import Link from './Link';
+import Link from 'components/Link';
+
+import defaultTheme from './style.scss';
 
 export default function Button({
   active,
@@ -88,6 +90,7 @@ Button.defaultProps = {
   openNewTab: false,
   replace: false,
   size: null,
+  theme: defaultTheme,
   to: null,
   type: 'button',
 };
@@ -107,7 +110,7 @@ Button.propTypes = {
     disabled: PT.string,
     link: PT.string,
     regular: PT.string,
-  }).isRequired,
+  }),
   to: PT.oneOfType([PT.object, PT.string]),
   type: PT.oneOf(['button', 'reset', 'submit']),
 };

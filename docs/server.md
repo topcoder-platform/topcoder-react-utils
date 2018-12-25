@@ -47,14 +47,6 @@ props:
 - **`Application`** &mdash; *Component* &mdash; Optional. The root ReactJS
   component of the app. If provided, server will perform server-side rendering,
   and it will inject the rendered markup into the HTML template it serves.
-- **`devMode`** &mdash; *Boolean* &mdash; Optional. Specifies, whether the
-  server should be launched in the development mode.
-- **`favicon`** &mdash; *String* &mdash; Optional. Path to the favicon to be
-  served by the server.
-- **`logger`** &mdash; *Object* &mdash; Optional. The logger to be used for
-  logging. Defaults to `console`, otherwise it is expected to provide the same
-  interface. Note that `console` is not efficient for production use, because
-  it is not async in NodeJS.
 - **`beforeRender`** &mdash; *Function(req, config)* &mdash; Optional. The hook to be
   executed right before the generation of HTML template of the page.
 
@@ -68,10 +60,42 @@ props:
     object
     to be injected into the page. If omitted, the one proposed by the server
     will be used.
-  - **`extraScripts`** &mdash; *String[]* &mdash; Additional script tags to be
-    injected into the page.
+  - **`extraScripts`** &mdash; *Object[]* | *String[]* &mdash; Additional script
+    tags to be injected into the page. Each script given as a string will be
+    injected in the end of document's `<body>`, but immediately before the main
+    application bundle. Each script given as object should have two fields:
+    `code` specifies the actual code to inject, and `location` which specifies
+    location, where the script should be injected. Possible locations are
+    given in the `server.SCRIPT_LOCATIONS` object:
+    - `server.SCRIPT_LOCATIONS.BODY_OPEN` - right after the openning `<body>`
+      tag;
+    - `server.SCRIPT_LOCATIONS.DEFAULT` - default locations described above;
+    - `server.SCRIPT_LOCATIONS.HEAD_OPEN` - right after the openning `<head>`
+      tag;
+
+    When a few scripts have the same location, they all are injected into that
+    location in the order they are given in the `extraScripts` array.
+
   - **`store`** &mdash; *Object* &mdash; Redux store which state will be
     injected into HTML template as the initial state of the app.
+
+- **`devMode`** &mdash; *Boolean* &mdash; Optional. Specifies, whether the
+  server should be launched in the development mode.
+- **`favicon`** &mdash; *String* &mdash; Optional. Path to the favicon to be
+  served by the server.
+- **`https`** &ndash; *Object* &ndash; Optional. Should be an object with two
+  string fields:
+  - **`cert`** &ndash; *String* &ndash; SSL sertificate;
+  - **`key`** &ndash; *String* &ndash; SSL key.
+
+  For this to work on *localhost* you'll have to create and properly install
+  a self-signed SSL certificate on your system. Instructions in this article
+  should help: [How to get HTTPS working on your local development environment in 5 minutes](https://medium.freecodecamp.org/how-to-get-https-working-on-your-local-development-environment-in-5-minutes-7af615770eec)
+
+- **`logger`** &mdash; *Object* &mdash; Optional. The logger to be used for
+  logging. Defaults to `console`, otherwise it is expected to provide the same
+  interface. Note that `console` is not efficient for production use, because
+  it is not async in NodeJS.
 - **`onExpressJsSetup`** &mdash; *Function* &mdash; Custom setup of ExpressJS
   server. Express server instance will be passed in as the only argument to this
   function.

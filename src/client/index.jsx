@@ -2,7 +2,7 @@
  * Initialization of client-side code.
  */
 
-/* global document window */
+/* global document, window */
 
 import React from 'react';
 import ReactDom from 'react-dom';

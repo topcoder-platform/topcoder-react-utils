@@ -37,7 +37,7 @@ module.exports = function configFactory(ops) {
     context: ops.context,
     entry: ops.entry,
     externals: [
-      /babel-runtime/,
+      /@babel\/runtime/,
       'lodash',
       'moment',
       'prop-types',
@@ -110,7 +110,7 @@ module.exports = function configFactory(ops) {
         loader: 'babel-loader',
         options: {
           babelrc: false,
-          forceEnv: ops.babelEnv,
+          envName: ops.babelEnv,
           presets: ['topcoder-react-utils/config/babel/webpack'],
         },
       }, {

@@ -1,3 +1,5 @@
+import path from 'path';
+
 import 'styles/global.scss';
 
 import actions from 'actions';
@@ -14,14 +16,13 @@ import reducers from 'reducers';
 import ScalableRect from 'components/ScalableRect';
 import * as utils from 'utils';
 
-import { isProdBuild } from 'utils/isomorphy';
 import { requireWeak } from 'utils/webpack';
 
-let serverUrl = isProdBuild() ? 'prod' : 'dev';
-serverUrl = `topcoder-react-utils/dist/${serverUrl}/server`;
+const serverUrl = module.webpackPolyfill ? './server'
+  : path.resolve(__dirname, './server');
 const server = utils.isomorphy.isServerSide() ? requireWeak(serverUrl) : null;
 
-module.exports = {
+export {
   actions,
   AppChunk,
   Avatar,
@@ -36,5 +37,6 @@ module.exports = {
   ScalableRect,
   reducers,
   server,
-  ...utils,
 };
+
+export * from 'utils';

@@ -27,6 +27,8 @@ export default async function factory(webpackConfig, options) {
     server.use(favicon(options.favicon));
   }
 
+  server.use('/robots.txt', (req, res) => res.send('User-agent: *\nDisallow:'));
+
   server.use(bodyParser.json({ limit: '300kb' }));
   server.use(bodyParser.urlencoded({ extended: false }));
   server.use(cookieParser());
@@ -44,13 +46,11 @@ export default async function factory(webpackConfig, options) {
     }),
   }));
 
-  const exludeSW = middleware => (req, res, next) => {
-    if (req.url.indexOf('/sw.js') > -1) {
-      next();
-      return;
-    }
-    middleware(req, res, next);
-  };
+  /* Ensures no caching for the service worker script. */
+  server.use(`${publicPath}service-worker.js`, (req, res, next) => {
+    res.header('Cache-Control', 'no-cache');
+    next();
+  });
 
   /* Setup of Hot Module Reloading for development environment.
    * These dependencies are not used, nor installed for production use,
@@ -64,18 +64,18 @@ export default async function factory(webpackConfig, options) {
     const webpackHotMiddleware = require('webpack-hot-middleware');
     const compiler = webpack(webpackConfig);
     compiler.apply(new webpack.ProgressPlugin());
-    server.use(exludeSW(webpackDevMiddleware(compiler, {
+    server.use(webpackDevMiddleware(compiler, {
       name: 'main.js',
       publicPath,
       serverSideRender: true,
-    })));
-    server.use(exludeSW(webpackHotMiddleware(compiler)));
+    }));
+    server.use(webpackHotMiddleware(compiler));
   }
   /* eslint-enable global-require */
   /* eslint-enable import/no-extraneous-dependencies */
   /* eslint-enable import/no-unresolved */
 
-  server.use(publicPath, exludeSW(express.static(webpackConfig.output.path)));
+  server.use(publicPath, express.static(webpackConfig.output.path));
 
   if (options.onExpressJsSetup) {
     await options.onExpressJsSetup(server);

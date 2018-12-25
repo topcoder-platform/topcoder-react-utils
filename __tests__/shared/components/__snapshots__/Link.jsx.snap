@@ -3,6 +3,7 @@
 exports[`Matches snapshots 1`] = `
 <GenericLink
   className={null}
+  disabled={false}
   enforceA={false}
   onClick={null}
   onMouseDown={null}
