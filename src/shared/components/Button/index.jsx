@@ -25,6 +25,7 @@ export default function Button({
   theme,
   to,
   type,
+  style,
 }) {
   let className = theme.button;
   if (theme[size]) className += ` ${theme[size]}`;
@@ -32,7 +33,7 @@ export default function Button({
   if (disabled) {
     if (theme.disabled) className += ` ${theme.disabled}`;
     return (
-      <div className={className}>
+      <div className={className} style={style}>
         {children}
       </div>
     );
@@ -57,6 +58,7 @@ export default function Button({
         openNewTab={openNewTab}
         replace={replace}
         to={to}
+        style={style}
       >
         {children}
       </Link>
@@ -73,6 +75,7 @@ export default function Button({
       onClick={onClick}
       onMouseDown={onMouseDown}
       type={type}
+      style={style}
     >
       {children}
     </button>
@@ -93,6 +96,7 @@ Button.defaultProps = {
   theme: defaultTheme,
   to: null,
   type: 'button',
+  style: {},
 };
 
 Button.propTypes = {
@@ -113,4 +117,5 @@ Button.propTypes = {
   }),
   to: PT.oneOfType([PT.object, PT.string]),
   type: PT.oneOf(['button', 'reset', 'submit']),
+  style: PT.shape(),
 };

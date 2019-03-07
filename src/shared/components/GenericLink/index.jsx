@@ -26,6 +26,7 @@ export default function GenericLink(props) {
     replace,
     routerLinkType,
     to,
+    style,
   } = props;
 
   /* Renders Link as <a> element if:
@@ -44,6 +45,7 @@ export default function GenericLink(props) {
         rel="noopener noreferrer"
         styleName="link"
         target={openNewTab ? '_blank' : ''}
+        style={style}
       >
         {children}
       </a>
@@ -81,6 +83,7 @@ GenericLink.defaultProps = {
   openNewTab: false,
   replace: false,
   to: '',
+  style: {},
 };
 
 GenericLink.propTypes = {
@@ -94,4 +97,5 @@ GenericLink.propTypes = {
   replace: PT.bool,
   routerLinkType: PT.func.isRequired,
   to: PT.oneOfType([PT.object, PT.string]),
+  style: PT.shape(),
 };

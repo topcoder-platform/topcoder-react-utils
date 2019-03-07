@@ -5,6 +5,7 @@ exports[`Matches snapshots when active 1`] = `
   className="BUTTON_CLASS ACTIVE_CLASS REGULAR_CLASS"
   onClick={[Function]}
   onMouseDown={null}
+  style={Object {}}
   type="button"
 >
   BUTTON
@@ -16,6 +17,7 @@ exports[`Matches snapshots when active 2`] = `
   className="BUTTON_CLASS ACTIVE_CLASS"
   onClick={[Function]}
   onMouseDown={null}
+  style={Object {}}
   type="button"
 >
   BUTTON
@@ -25,6 +27,7 @@ exports[`Matches snapshots when active 2`] = `
 exports[`Matches snapshots when disabled 1`] = `
 <div
   className="BUTTON_CLASS XL_CLASS DISABLED_CLASS"
+  style={Object {}}
 >
   BUTTON
 </div>
@@ -33,6 +36,7 @@ exports[`Matches snapshots when disabled 1`] = `
 exports[`Matches snapshots when disabled 2`] = `
 <div
   className="BUTTON_CLASS XL_CLASS"
+  style={Object {}}
 >
   BUTTON
 </div>
@@ -46,6 +50,7 @@ exports[`Matches snapshots when rendered as link 1`] = `
   onMouseDown={null}
   openNewTab={false}
   replace={false}
+  style={Object {}}
   to="/SOME/TEST/URL"
 >
   BUTTON
@@ -60,6 +65,7 @@ exports[`Matches snapshots when rendered as link 2`] = `
   onMouseDown={null}
   openNewTab={false}
   replace={false}
+  style={Object {}}
   to="/SOME/TEST/URL"
 >
   BUTTON

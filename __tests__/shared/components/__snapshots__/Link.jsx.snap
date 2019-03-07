@@ -10,6 +10,7 @@ exports[`Matches snapshots 1`] = `
   openNewTab={false}
   replace={false}
   routerLinkType={[Function]}
+  style={Object {}}
   to=""
 />
 `;
