@@ -30,7 +30,7 @@ export default function Button({
   if (disabled) {
     if (theme.disabled) className += ` ${theme.disabled}`;
     return (
-      <div className={className}>
+      <div tabIndex={0} aria-label={`disabled`} className={className}>
         {children}
       </div>
     );
