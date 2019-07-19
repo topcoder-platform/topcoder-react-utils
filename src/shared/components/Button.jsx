@@ -71,6 +71,8 @@ export default function Button({
       onClick={onClick}
       onMouseDown={onMouseDown}
       type={type}
+      tabIndex={0}
+      aria-label={`${children}`}
     >
       {children}
     </button>
