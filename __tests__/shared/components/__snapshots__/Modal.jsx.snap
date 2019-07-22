@@ -11,6 +11,7 @@ exports[`Snapshot match 1`] = `
     CONTENT
   </div>
   <button
+    aria-label="Close Dialog"
     className="style__overlay___X12tn"
     onClick={[Function]}
     type="button"
