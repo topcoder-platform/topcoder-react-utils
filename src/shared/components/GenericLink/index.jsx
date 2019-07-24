@@ -22,6 +22,7 @@ export default function GenericLink(props) {
     enforceA,
     onClick,
     onMouseDown,
+    onKeyDown,
     openNewTab,
     replace,
     routerLinkType,
@@ -42,6 +43,7 @@ export default function GenericLink(props) {
         href={to}
         onClick={disabled ? e => e.preventDefault() : onClick}
         onMouseDown={disabled ? e => e.preventDefault() : onMouseDown}
+        onKeyDown={disabled ? e => e.preventDefault() : onKeyDown}
         rel="noopener noreferrer"
         styleName="link"
         target={openNewTab ? '_blank' : ''}
