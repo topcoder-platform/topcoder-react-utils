@@ -60,7 +60,7 @@ export default async function Launch({
     moduleHot.addStatusHandler((status) => {
       if (status !== 'ready') return;
       const stamp = shortId();
-      const links = document.querySelectorAll('link[rel=stylesheet][id="tru-style"]');
+      const links = document.querySelectorAll('link[rel=stylesheet][id^="tru-style"]');
       for (let i = 0; i < links.length; i += 1) {
         links[i].href = `${links[i].href.match(/[^?]*/)}?v=${stamp}`;
       }
