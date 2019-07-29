@@ -71,6 +71,7 @@ export default function Button({
       onClick={onClick}
       onMouseDown={onMouseDown}
       type={type}
+      role="button"
     >
       {children}
     </button>
