@@ -71,6 +71,7 @@ export default function Button({
       onClick={onClick}
       onMouseDown={onMouseDown}
       type={type}
+      tabIndex="0"
     >
       {children}
     </button>
