@@ -81,6 +81,7 @@ Object {
       "animationEnd": [Function],
       "animationIteration": [Function],
       "animationStart": [Function],
+      "auxClick": [Function],
       "beforeInput": [Function],
       "blur": [Function],
       "canPlay": [Function],

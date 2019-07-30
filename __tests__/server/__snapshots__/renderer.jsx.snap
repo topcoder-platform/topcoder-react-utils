@@ -163,7 +163,7 @@ exports[`Server-side rendering (SSR); injection of CSS chunks & Redux state 1`] 
               id=\\"tru-style\\"
               rel=\\"stylesheet\\"
             />
-            <link data-chunk=\\"test-chunk-a\\" id=\\"tru-style\\" href=\\"/test/public/path/test-chunk-a-1511941200000.css\\" rel=\\"stylesheet\\" /><link data-chunk=\\"test-chunk-b\\" id=\\"tru-style\\" href=\\"/test/public/path/test-chunk-b-1511941200000.css\\" rel=\\"stylesheet\\" />
+            <link data-chunk=\\"test-chunk-a\\" id=\\"tru-style-test-chunk-a\\" href=\\"/test/public/path/test-chunk-a-1511941200000.css\\" rel=\\"stylesheet\\" /><link data-chunk=\\"test-chunk-b\\" id=\\"tru-style-test-chunk-b\\" href=\\"/test/public/path/test-chunk-b-1511941200000.css\\" rel=\\"stylesheet\\" />
             <link rel=\\"shortcut icon\\" href=\\"/favicon.ico\\" />
             <meta charset=\\"utf-8\\" />
             <meta

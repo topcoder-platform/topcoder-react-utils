@@ -107,6 +107,7 @@ Button.propTypes = {
     disabled: PT.string,
     link: PT.string,
     regular: PT.string,
+    active: PT.bool,
   }).isRequired,
   to: PT.oneOfType([PT.object, PT.string]),
   type: PT.oneOf(['button', 'reset', 'submit']),
