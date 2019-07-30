@@ -30,7 +30,7 @@ export default function Button({
   if (disabled) {
     if (theme.disabled) className += ` ${theme.disabled}`;
     return (
-      <div className={className}>
+      <div role="button" className={className}>
         {children}
       </div>
     );
