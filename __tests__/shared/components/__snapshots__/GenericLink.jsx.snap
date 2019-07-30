@@ -5,6 +5,7 @@ exports[`Absolute link, starting with http:// 1`] = `
   className={null}
   href="http://www.domain.com/test"
   onClick={null}
+  onKeyDown={null}
   onMouseDown={null}
   rel="noopener noreferrer"
   target=""
@@ -18,6 +19,7 @@ exports[`Absolute link, starting with https:// 1`] = `
   className={null}
   href="https://www.domain.com/test"
   onClick={[Function]}
+  onKeyDown={null}
   onMouseDown={null}
   rel="noopener noreferrer"
   target=""
@@ -31,6 +33,7 @@ exports[`Anchor link 1`] = `
   className={null}
   href="#anchor"
   onClick={null}
+  onKeyDown={null}
   onMouseDown={null}
   rel="noopener noreferrer"
   target=""
@@ -45,7 +48,7 @@ exports[`Relative link 1`] = `
   onClick={[Function]}
   type="button"
 >
-  {"to":"http/relative/link","className":null,"onMouseDown":null,"replace":false,"children":"RELATIVE LINK"}
+  {"to":"http/relative/link","className":null,"onMouseDown":null,"onKeyDown":null,"replace":false,"children":"RELATIVE LINK"}
 </button>
 `;
 
@@ -54,6 +57,7 @@ exports[`Relative link, with \`enforceA\` 1`] = `
   className={null}
   href="/relative/link"
   onClick={null}
+  onKeyDown={null}
   onMouseDown={null}
   rel="noopener noreferrer"
   target=""
@@ -67,6 +71,7 @@ exports[`Relative link, with \`openNewTab\` 1`] = `
   className={null}
   href="relative/link"
   onClick={null}
+  onKeyDown={null}
   onMouseDown={null}
   rel="noopener noreferrer"
   target="_blank"
