@@ -177,7 +177,7 @@ export default function factory(webpackConfig, options) {
         assets = assets.filter(asset => asset.endsWith('.css'));
         assets.forEach((asset) => {
           styles.push((
-            `<link data-chunk="${chunk}" id="tru-style" href="${publicPath}${asset}" rel="stylesheet" />`
+            `<link data-chunk="${chunk}" id="tru-style-${chunk.replace('/', '-')}" href="${publicPath}${asset}" rel="stylesheet" />`
           ));
         });
       });
