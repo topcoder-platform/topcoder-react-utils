@@ -54,6 +54,7 @@ class Modal extends React.Component {
             onClick={() => onCancel()}
             className={theme.overlay}
             type="button"
+            aria-label="Close Dialog"
           />
         </React.Fragment>
       ),
