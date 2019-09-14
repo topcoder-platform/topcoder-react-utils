@@ -17,8 +17,7 @@ module.exports = () => {
     plugins: [
       require('@babel/plugin-syntax-dynamic-import'),
       require('@babel/plugin-syntax-import-meta'),
-      [require('@babel/plugin-proposal-decorators'), { legacy: true }],
-      [require('@babel/plugin-proposal-class-properties'), { loose: false }],
+      [require('@babel/plugin-proposal-class-properties')],
       require('@babel/plugin-proposal-json-strings'),
       [
         'module-resolver',
