@@ -1,7 +1,9 @@
 /* Babel preset for NodeJS build with support of server-side JSX rendering. */
 
 const _ = require('lodash');
-const config = _.cloneDeep(require('./webpack'));
+const babelConfig = require('./webpack');
+
+const config = babelConfig();
 
 const cssModulesTransformPluginOps = {
   extensions: ['.css', '.scss'],
@@ -12,7 +14,6 @@ const transformAssetsPluginOptions = {
 };
 
 config.plugins = config.plugins.concat([
-  'dynamic-import-node',
   ['transform-assets', transformAssetsPluginOptions],
   ['css-modules-transform', cssModulesTransformPluginOps],
 ]);

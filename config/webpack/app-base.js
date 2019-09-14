@@ -86,7 +86,7 @@ module.exports = function configFactory(ops) {
   }
 
   entry.polyfills = _.union(entry.polyfills, [
-    'babel-polyfill',
+    '@babel/polyfill',
     'nodelist-foreach-polyfill',
   ]);
 
@@ -147,7 +147,7 @@ module.exports = function configFactory(ops) {
         loader: 'babel-loader',
         options: {
           babelrc: false,
-          forceEnv: o.babelEnv,
+          envName: o.babelEnv,
           presets: ['topcoder-react-utils/config/babel/webpack'],
         },
       }, {

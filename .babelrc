@@ -1,5 +1,0 @@
-{
-  "presets": [
-    "./config/babel/node-ssr"
-  ]
-}

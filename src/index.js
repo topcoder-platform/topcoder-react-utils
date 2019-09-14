@@ -14,14 +14,14 @@ import reducers from 'reducers';
 import ScalableRect from 'components/ScalableRect';
 import * as utils from 'utils';
 
-import { isProdBuild } from 'utils/isomorphy';
+import { isProdBuild, isServerSide } from 'utils/isomorphy';
 import { requireWeak } from 'utils/webpack';
 
 let serverUrl = isProdBuild() ? 'prod' : 'dev';
-serverUrl = `topcoder-react-utils/dist/${serverUrl}/server`;
-const server = utils.isomorphy.isServerSide() ? requireWeak(serverUrl) : null;
+serverUrl = './server';
+const server = isServerSide() ? requireWeak(serverUrl) : null;
 
-module.exports = {
+export default {
   actions,
   AppChunk,
   Avatar,
