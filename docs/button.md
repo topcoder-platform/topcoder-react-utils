@@ -31,7 +31,7 @@ as `<Link>`, this prop enforces it to be rendered as a simple `<a>` element
 - **`onClick`** &mdash; *Function* &mdash; Optional. *onClick* event handler;
 - **`onMouseDown`** &mdash; *Function* &mdash; Optional. *onMouseDown* event
 handler;
-- **`opneNewTab`** &mdash; *Boolean* &mdash; Optional. When the button is
+- **`openNewTab`** &mdash; *Boolean* &mdash; Optional. When the button is
 rendered as `<Link>`, this property tells to open the link in a new tab;
 - **`replace`** &mdash; *Boolean* &mdash; Optional. When the button is rendered
 as `<Link>`, and the URL is internal, this property tells that the new route
