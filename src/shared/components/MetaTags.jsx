@@ -31,7 +31,7 @@ function MetaTags({
       <title>
         {title}
       </title>
-      <meta property="description" content={description} />
+      <meta name="description" content={description} />
 
       {/* Twitter cards. */}
       <meta name="twitter:card" content="summary_large_image" />
