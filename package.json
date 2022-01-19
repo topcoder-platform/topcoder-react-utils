@@ -14,7 +14,7 @@
     "config": "^1.30.0",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.3",
-    "helmet": "^3.12.1",
+    "helmet": "^3.23.3",
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
     "morgan": "^1.9.0",
