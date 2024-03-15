@@ -158,7 +158,7 @@ export default function factory(webpackConfig, options) {
 
       /* It is supposed to end with '/' symbol as path separator. */
       const { publicPath, crossOriginLoading } = webpackConfig.output;
-      const crossorigin = crossOriginLoading ? `crossorigin="${crossOriginLoading}"` : "";
+      const crossorigin = crossOriginLoading ? `crossorigin="${crossOriginLoading}"` : '';
 
       let assetsByChunkName;
       const { webpackStats } = res.locals;
