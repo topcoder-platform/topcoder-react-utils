@@ -1,0 +1,246 @@
+/* Global styles. */
+
+/* Eric Meyer's "Reset CSS" 2.0 */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+html,
+body {
+  text-rendering: geometricPrecision;
+}
+/* Collection of standard mixins, being used all around. */
+
+/* Auxiliary mixins for fonts inclusion. */
+
+/**
+ * Includes a font, provided as a set of alternative files in EOT, WOFF, TTF,
+ * SVG formats into the app.
+ * $font-name {String}
+ * $font-weight {Number}
+ * $font-style {String}
+ * $font-url {String} Path to the font file, without the filename itself.
+ * $font-file {String} Font filename, without extension (should be the same for
+ *  each version of the font in different formats.
+ */
+
+/**
+ * Includes a font, provided in the TTF format only.
+ * $font-name {String}
+ * $font-weight {Number}
+ * $font-style {String}
+ * $font-url {String}
+ */
+
+/**
+ * Mixins for different layout sizes: xs, sm, md, lg.
+ * Breaking points are defined in _variables.scss
+ * The range mixins A-to-B all means "for the sizes from A to B, both
+ * inclusive", in particular it means that mixin A-to-lg is equivalent to
+ * all sizes from A (inclusive) and larger.
+ *
+ * NOTE: For convenience, these mixins are sorted not alphabetically, but,
+ * first, by increase of the first size; second, by increase of the second size.
+ */
+
+/* Break points. */
+
+/* XS */
+
+/* XS */
+
+/* MD */
+
+/* LG */
+
+/* XL */
+
+body.scrolling-disabled-by-modal {
+  overflow: hidden;
+}
+
+.src-shared-components-Modal-style___overlay___X12tn9 {
+  background: #ebebeb;
+  border: none;
+  height: 100%;
+  left: 0;
+  opacity: 0.8;
+  outline: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 998;
+}
+
+.src-shared-components-Modal-style___container___1SoeQl {
+  background: #fff;
+  box-shadow: 0 0 14px 1px rgba(38, 38, 40, 0.15);
+  border-radius: 4;
+  max-height: 95vh;
+  max-width: 1024px;
+  overflow: hidden;
+  padding: 40;
+  width: 480px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 999;
+}
+
+@media (max-width: 1280px) {
+  .src-shared-components-Modal-style___container___1SoeQl {
+    max-width: 95vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .src-shared-components-Modal-style___container___1SoeQl {
+    padding: 40px 10px;
+  }
+}
+.src-shared-components-ScalableRect-style___container___3YhfNf {
+  position: relative;
+  width: 100%;
+}
+
+.src-shared-components-ScalableRect-style___wrapper___3qZoWe {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
