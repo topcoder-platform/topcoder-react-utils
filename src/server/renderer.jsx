@@ -157,7 +157,8 @@ export default function factory(webpackConfig, options) {
       const INJ = forge.util.encode64(`${iv}${cipher.output.data}`);
 
       /* It is supposed to end with '/' symbol as path separator. */
-      const { publicPath } = webpackConfig.output;
+      const { publicPath, crossOriginLoading } = webpackConfig.output;
+      const crossorigin = crossOriginLoading ? `crossorigin="${crossOriginLoading}"` : "";
 
       let assetsByChunkName;
       const { webpackStats } = res.locals;
@@ -177,7 +178,7 @@ export default function factory(webpackConfig, options) {
         assets = assets.filter(asset => asset.endsWith('.css'));
         assets.forEach((asset) => {
           styles.push((
-            `<link data-chunk="${chunk}" id="tru-style" href="${publicPath}${asset}" rel="stylesheet" />`
+            `<link data-chunk="${chunk}" id="tru-style" href="${publicPath}${asset}" ${crossorigin} rel="stylesheet" />`
           ));
         });
       });
@@ -192,6 +193,7 @@ export default function factory(webpackConfig, options) {
             <link rel="manifest" href="${publicPath}manifest.json">
             <link
               href="${publicPath}main-${timestamp}.css"
+              ${crossorigin}
               id="tru-style"
               rel="stylesheet"
             />
@@ -211,11 +213,13 @@ export default function factory(webpackConfig, options) {
             </script>
             <script
               src="${publicPath}polyfills-${timestamp}.js"
+              ${crossorigin}
               type="application/javascript"
             ></script>
             ${extraScripts ? extraScripts.join('') : ''}
             <script
               src="${publicPath}main-${timestamp}.js"
+              ${crossorigin}
               type="application/javascript"
             ></script>
           </body>
