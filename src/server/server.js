@@ -44,6 +44,14 @@ export default async function factory(webpackConfig, options) {
     }),
   }));
 
+  const exludeSW = middleware => (req, res, next) => {
+    if (req.url.indexOf('/sw.js') > -1) {
+      next();
+      return;
+    }
+    middleware(req, res, next);
+  };
+
   /* Setup of Hot Module Reloading for development environment.
    * These dependencies are not used, nor installed for production use,
    * hence we should violate some import-related lint rules. */
@@ -56,18 +64,19 @@ export default async function factory(webpackConfig, options) {
     const webpackHotMiddleware = require('webpack-hot-middleware');
     const compiler = webpack(webpackConfig);
     compiler.apply(new webpack.ProgressPlugin());
-    server.use(webpackDevMiddleware(compiler, {
+    server.use(exludeSW(webpackDevMiddleware(compiler, {
       name: 'main.js',
       publicPath,
       serverSideRender: true,
-    }));
-    server.use(webpackHotMiddleware(compiler));
+    })));
+    server.use(exludeSW(webpackHotMiddleware(compiler)));
   }
   /* eslint-enable global-require */
   /* eslint-enable import/no-extraneous-dependencies */
   /* eslint-enable import/no-unresolved */
 
-  server.use(publicPath, express.static(webpackConfig.output.path));
+  server.use(publicPath, exludeSW(express.static(webpackConfig.output.path)));
+
   if (options.onExpressJsSetup) {
     await options.onExpressJsSetup(server);
   }

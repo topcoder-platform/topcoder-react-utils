@@ -73,6 +73,10 @@ module.exports = function configFactory(ops) {
 
       /* Build timestamp. */
       timestamp: now.utc().toISOString(),
+
+      ...(o.crossOriginLoading ? {
+        crossOriginLoading: o.crossOriginLoading,
+      } : {}),
     };
     fs.writeFileSync(buildInfoUrl, JSON.stringify(buildInfo));
   }
@@ -103,6 +107,9 @@ module.exports = function configFactory(ops) {
       filename: `[name]-${now.valueOf()}.js`,
       path: path.resolve(__dirname, o.context, 'build'),
       publicPath: `${o.publicPath}/`,
+      ...(o.crossOriginLoading ? {
+        crossOriginLoading: o.crossOriginLoading,
+      } : {}),
     },
     plugins: [
       new MiniCssExtractPlugin({

@@ -61,6 +61,7 @@ export default class SplitRoute extends React.Component {
     } = this.props;
 
     const PUBLIC_PATH = global.TRU_BUILD_INFO.publicPath;
+    const CROSS_ORIGIN_LOADING = global.TRU_BUILD_INFO.crossOriginLoading;
 
     const timestamp = moment(buildTimestamp()).valueOf();
 
@@ -171,6 +172,9 @@ export default class SplitRoute extends React.Component {
               link = document.createElement('link');
               link.setAttribute('data-chunk', chunkName);
               link.setAttribute('href', `${PUBLIC_PATH}/${chunkName}-${timestamp}.css`);
+              if (CROSS_ORIGIN_LOADING) {
+                link.setAttribute('crossorigin', CROSS_ORIGIN_LOADING);
+              }
               link.setAttribute('id', 'tru-style');
               link.setAttribute('rel', 'stylesheet');
               const head = document.getElementsByTagName('head')[0];
