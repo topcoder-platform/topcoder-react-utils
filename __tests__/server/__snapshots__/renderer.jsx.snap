@@ -2,12 +2,15 @@
 
 exports[`Base rendering of HTML template 1`] = `
 "<!DOCTYPE html>
-        <html>
+        <html lang=\\"en\\">
           <head>
             
             
+            <meta name=\\"theme-color\\" content=\\"#FFFFFF\\"/>
+            <link rel=\\"manifest\\" href=\\"/test/public/path/manifest.json\\">
             <link
               href=\\"/test/public/path/main-1511941200000.css\\"
+              
               id=\\"tru-style\\"
               rel=\\"stylesheet\\"
             />
@@ -27,11 +30,13 @@ exports[`Base rendering of HTML template 1`] = `
             </script>
             <script
               src=\\"/test/public/path/polyfills-1511941200000.js\\"
+              
               type=\\"application/javascript\\"
             ></script>
             
             <script
               src=\\"/test/public/path/main-1511941200000.js\\"
+              
               type=\\"application/javascript\\"
             ></script>
           </body>
@@ -40,12 +45,15 @@ exports[`Base rendering of HTML template 1`] = `
 
 exports[`Config overriding for injection 1`] = `
 "<!DOCTYPE html>
-        <html>
+        <html lang=\\"en\\">
           <head>
             
             
+            <meta name=\\"theme-color\\" content=\\"#FFFFFF\\"/>
+            <link rel=\\"manifest\\" href=\\"/test/public/path/manifest.json\\">
             <link
               href=\\"/test/public/path/main-1511941200000.css\\"
+              
               id=\\"tru-style\\"
               rel=\\"stylesheet\\"
             />
@@ -65,11 +73,13 @@ exports[`Config overriding for injection 1`] = `
             </script>
             <script
               src=\\"/test/public/path/polyfills-1511941200000.js\\"
+              
               type=\\"application/javascript\\"
             ></script>
             
             <script
               src=\\"/test/public/path/main-1511941200000.js\\"
+              
               type=\\"application/javascript\\"
             ></script>
           </body>
@@ -78,12 +88,15 @@ exports[`Config overriding for injection 1`] = `
 
 exports[`Hemlet integration works 1`] = `
 "<!DOCTYPE html>
-        <html>
+        <html lang=\\"en\\">
           <head>
             <title data-react-helmet=\\"true\\">Test Page Title</title>
             <meta data-react-helmet=\\"true\\" property=\\"description\\" content=\\"Test Page Description\\"/>
+            <meta name=\\"theme-color\\" content=\\"#FFFFFF\\"/>
+            <link rel=\\"manifest\\" href=\\"/test/public/path/manifest.json\\">
             <link
               href=\\"/test/public/path/main-1511941200000.css\\"
+              
               id=\\"tru-style\\"
               rel=\\"stylesheet\\"
             />
@@ -103,11 +116,13 @@ exports[`Hemlet integration works 1`] = `
             </script>
             <script
               src=\\"/test/public/path/polyfills-1511941200000.js\\"
+              
               type=\\"application/javascript\\"
             ></script>
             
             <script
               src=\\"/test/public/path/main-1511941200000.js\\"
+              
               type=\\"application/javascript\\"
             ></script>
           </body>
@@ -116,12 +131,15 @@ exports[`Hemlet integration works 1`] = `
 
 exports[`Injection of additional JS scripts 1`] = `
 "<!DOCTYPE html>
-        <html>
+        <html lang=\\"en\\">
           <head>
             
             
+            <meta name=\\"theme-color\\" content=\\"#FFFFFF\\"/>
+            <link rel=\\"manifest\\" href=\\"/test/public/path/manifest.json\\">
             <link
               href=\\"/test/public/path/main-1511941200000.css\\"
+              
               id=\\"tru-style\\"
               rel=\\"stylesheet\\"
             />
@@ -141,11 +159,13 @@ exports[`Injection of additional JS scripts 1`] = `
             </script>
             <script
               src=\\"/test/public/path/polyfills-1511941200000.js\\"
+              
               type=\\"application/javascript\\"
             ></script>
             <script>Dummy JS Sript</script><script>Another Dummy JS Script</script>
             <script
               src=\\"/test/public/path/main-1511941200000.js\\"
+              
               type=\\"application/javascript\\"
             ></script>
           </body>
@@ -154,16 +174,19 @@ exports[`Injection of additional JS scripts 1`] = `
 
 exports[`Server-side rendering (SSR); injection of CSS chunks & Redux state 1`] = `
 "<!DOCTYPE html>
-        <html>
+        <html lang=\\"en\\">
           <head>
             <title data-react-helmet=\\"true\\"></title>
             
+            <meta name=\\"theme-color\\" content=\\"#FFFFFF\\"/>
+            <link rel=\\"manifest\\" href=\\"/test/public/path/manifest.json\\">
             <link
               href=\\"/test/public/path/main-1511941200000.css\\"
+              
               id=\\"tru-style\\"
               rel=\\"stylesheet\\"
             />
-            <link data-chunk=\\"test-chunk-a\\" id=\\"tru-style\\" href=\\"/test/public/path/test-chunk-a-1511941200000.css\\" rel=\\"stylesheet\\" /><link data-chunk=\\"test-chunk-b\\" id=\\"tru-style\\" href=\\"/test/public/path/test-chunk-b-1511941200000.css\\" rel=\\"stylesheet\\" />
+            <link data-chunk=\\"test-chunk-a\\" id=\\"tru-style\\" href=\\"/test/public/path/test-chunk-a-1511941200000.css\\"  rel=\\"stylesheet\\" /><link data-chunk=\\"test-chunk-b\\" id=\\"tru-style\\" href=\\"/test/public/path/test-chunk-b-1511941200000.css\\"  rel=\\"stylesheet\\" />
             <link rel=\\"shortcut icon\\" href=\\"/favicon.ico\\" />
             <meta charset=\\"utf-8\\" />
             <meta
@@ -179,11 +202,13 @@ exports[`Server-side rendering (SSR); injection of CSS chunks & Redux state 1`] 
             </script>
             <script
               src=\\"/test/public/path/polyfills-1511941200000.js\\"
+              
               type=\\"application/javascript\\"
             ></script>
             
             <script
               src=\\"/test/public/path/main-1511941200000.js\\"
+              
               type=\\"application/javascript\\"
             ></script>
           </body>
@@ -193,12 +218,15 @@ exports[`Server-side rendering (SSR); injection of CSS chunks & Redux state 1`] 
 exports[`Setting of response HTTP status the server-side rendering 1`] = `
 "HTTP STATUS: 404
 <!DOCTYPE html>
-        <html>
+        <html lang=\\"en\\">
           <head>
             <title data-react-helmet=\\"true\\"></title>
             
+            <meta name=\\"theme-color\\" content=\\"#FFFFFF\\"/>
+            <link rel=\\"manifest\\" href=\\"/test/public/path/manifest.json\\">
             <link
               href=\\"/test/public/path/main-1511941200000.css\\"
+              
               id=\\"tru-style\\"
               rel=\\"stylesheet\\"
             />
@@ -218,11 +246,13 @@ exports[`Setting of response HTTP status the server-side rendering 1`] = `
             </script>
             <script
               src=\\"/test/public/path/polyfills-1511941200000.js\\"
+              
               type=\\"application/javascript\\"
             ></script>
             
             <script
               src=\\"/test/public/path/main-1511941200000.js\\"
+              
               type=\\"application/javascript\\"
             ></script>
           </body>

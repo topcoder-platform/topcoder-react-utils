@@ -19,7 +19,7 @@ import defaultStyle from './style.scss';
 
 /* NOTE: Modal component is implemented as class, as it demands advanced
  * interaction with DOM upon mount and unmount. */
-class Modal extends React.Component {
+class BaseModal extends React.Component {
   constructor(props) {
     super(props);
     this.portal = document.createElement('div');
@@ -62,19 +62,19 @@ class Modal extends React.Component {
   }
 }
 
-Modal.defaultProps = {
+BaseModal.defaultProps = {
   onCancel: _.noop,
   children: null,
   theme: {},
 };
 
-Modal.propTypes = {
+BaseModal.propTypes = {
   onCancel: PT.func,
   children: PT.node,
   theme: PT.shape(),
 };
 
 /* Non-themed version of the Modal. */
-export const BaseModal = Modal;
+export { BaseModal };
 
-export default themr('Modal', defaultStyle)(Modal);
+export default themr('Modal', defaultStyle)(BaseModal);
